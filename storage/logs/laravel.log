@@ -1,0 +1,779 @@
+[2024-04-01 21:40:13] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-01 21:40:16] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-01 21:40:19] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-01 21:41:03] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-01 21:41:09] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-01 21:41:51] local.ERROR: Please provide a valid cache path. {"exception":"[object] (InvalidArgumentException(code: 0): Please provide a valid cache path. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Compilers\\Compiler.php:36)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(88): Illuminate\\View\\Compilers\\Compiler->__construct(Object(Illuminate\\Filesystem\\Filesystem), false)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(873): Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(758): Illuminate\\Container\\Container->build(Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): Illuminate\\Container\\Container->resolve('blade.compiler', Array, true)
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(694): Illuminate\\Foundation\\Application->resolve('blade.compiler', Array)
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(836): Illuminate\\Container\\Container->make('blade.compiler', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(1419): Illuminate\\Foundation\\Application->make('blade.compiler')
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\ViewServiceProvider.php(150): Illuminate\\Container\\Container->offsetGet('blade.compiler')
+#8 [internal function]: Illuminate\\View\\ViewServiceProvider->Illuminate\\View\\{closure}()
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\View\\Engines\\EngineResolver.php(55): call_user_func(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(467): Illuminate\\View\\Engines\\EngineResolver->resolve('blade')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(158): Facade\\Ignition\\IgnitionServiceProvider->hasCustomViewEnginesRegistered()
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\facade\\ignition\\src\\IgnitionServiceProvider.php(101): Facade\\Ignition\\IgnitionServiceProvider->registerViewEngines()
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Facade\\Ignition\\IgnitionServiceProvider->boot()
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(924): Illuminate\\Container\\Container->call(Array)
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(905): Illuminate\\Foundation\\Application->bootProvider(Object(Facade\\Ignition\\IgnitionServiceProvider))
+#20 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Facade\\Ignition\\IgnitionServiceProvider), 15)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(906): array_walk(Array, Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#26 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 {main}
+"} 
+[2024-04-02 00:52:04] local.ERROR: Command "migrate:make" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"migrate:make\" is not defined.
+
+Did you mean one of these?
+    migrate
+    migrate:fresh
+    migrate:install
+    migrate:refresh
+    migrate:reset
+    migrate:rollback
+    migrate:status at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('migrate:make')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2024-04-02 00:52:55] local.ERROR: Command "make:migrations" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrations\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('make:migrations')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2024-04-02 01:00:43] local.ERROR: Command "make:migrations" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrations\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('make:migrations')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2024-04-02 01:00:52] local.ERROR: Command "make:migrations" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrations\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('make:migrations')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2024-04-02 01:17:37] local.ERROR: Method Illuminate\Database\Schema\Blueprint::bigint does not exist. {"exception":"[object] (BadMethodCallException(code: 0): Method Illuminate\\Database\\Schema\\Blueprint::bigint does not exist. at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Macroable\\Traits\\Macroable.php:113)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_005305_create_master_location_table.php(21): Illuminate\\Database\\Schema\\Blueprint->__call('bigint', Array)
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(226): CreateMasterLocationTable->{closure}(Object(Illuminate\\Database\\Schema\\Blueprint))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\helpers.php(263): Illuminate\\Database\\Schema\\Builder->Illuminate\\Database\\Schema\\{closure}(Object(Illuminate\\Database\\Schema\\Blueprint))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): tap(Object(Illuminate\\Database\\Schema\\Blueprint), Object(Closure))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('master_location', Object(Closure))
+#5 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_005305_create_master_location_table.php(24): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreateMasterLocationTable->up()
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateMasterLocationTable), 'up')
+#8 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateMasterLocationTable), 'up')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 {main}
+"} 
+[2024-04-02 01:17:57] local.ERROR: Command "make:migrations" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrations\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('make:migrations')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
+[2024-04-02 01:17:59] local.ERROR: SQLSTATE[42701]: Duplicate column: 7 ERROR:  column "id_master_location" specified more than once (SQL: create table "task_location" ("id" bigserial primary key not null, "task_type" varchar(255) not null, "std_value" varchar(255) not null, "remark" varchar(255) not null, "created_at" timestamp(0) without time zone null, "updated_at" timestamp(0) without time zone null, "id_master_location" integer not null, "id_item_location" integer not null, "id_master_location" bigint not null, "id_item_location" bigint not null)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42701): SQLSTATE[42701]: Duplicate column: 7 ERROR:  column \"id_master_location\" specified more than once (SQL: create table \"task_location\" (\"id\" bigserial primary key not null, \"task_type\" varchar(255) not null, \"std_value\" varchar(255) not null, \"remark\" varchar(255) not null, \"created_at\" timestamp(0) without time zone null, \"updated_at\" timestamp(0) without time zone null, \"id_master_location\" integer not null, \"id_item_location\" integer not null, \"id_master_location\" bigint not null, \"id_item_location\" bigint not null)) at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:712)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('create table \"t...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('create table \"t...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"t...')
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('task_location', Object(Closure))
+#6 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010058_create_task_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreateTaskLocationTable->up()
+#8 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTaskLocationTable), 'up')
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTaskLocationTable), 'up')
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 {main}
+
+[previous exception] [object] (PDOException(code: 42701): SQLSTATE[42701]: Duplicate column: 7 ERROR:  column \"id_master_location\" specified more than once at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:501)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(501): PDOStatement->execute()
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(705): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table \"t...', Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('create table \"t...', Array, Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('create table \"t...', Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"t...')
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('task_location', Object(Closure))
+#8 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010058_create_task_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreateTaskLocationTable->up()
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTaskLocationTable), 'up')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTaskLocationTable), 'up')
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+"} 
+[2024-04-02 01:18:24] local.ERROR: SQLSTATE[42701]: Duplicate column: 7 ERROR:  column "id_master_location" specified more than once (SQL: create table "task_location" ("id" bigserial primary key not null, "task_type" varchar(255) not null, "std_value" varchar(255) not null, "remark" varchar(255) not null, "created_at" timestamp(0) without time zone null, "updated_at" timestamp(0) without time zone null, "id_master_location" integer not null, "id_item_location" integer not null, "id_master_location" bigint not null, "id_item_location" bigint not null)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42701): SQLSTATE[42701]: Duplicate column: 7 ERROR:  column \"id_master_location\" specified more than once (SQL: create table \"task_location\" (\"id\" bigserial primary key not null, \"task_type\" varchar(255) not null, \"std_value\" varchar(255) not null, \"remark\" varchar(255) not null, \"created_at\" timestamp(0) without time zone null, \"updated_at\" timestamp(0) without time zone null, \"id_master_location\" integer not null, \"id_item_location\" integer not null, \"id_master_location\" bigint not null, \"id_item_location\" bigint not null)) at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:712)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('create table \"t...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('create table \"t...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"t...')
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('task_location', Object(Closure))
+#6 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010058_create_task_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreateTaskLocationTable->up()
+#8 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTaskLocationTable), 'up')
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTaskLocationTable), 'up')
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 {main}
+
+[previous exception] [object] (PDOException(code: 42701): SQLSTATE[42701]: Duplicate column: 7 ERROR:  column \"id_master_location\" specified more than once at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:501)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(501): PDOStatement->execute()
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(705): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table \"t...', Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('create table \"t...', Array, Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('create table \"t...', Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('create table \"t...')
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('task_location', Object(Closure))
+#8 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010058_create_task_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreateTaskLocationTable->up()
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTaskLocationTable), 'up')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTaskLocationTable), 'up')
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+"} 
+[2024-04-02 01:18:58] local.ERROR: SQLSTATE[42601]: Syntax error: 7 ERROR:  zero-length delimited identifier at or near """"
+LINE 1: ..._user_foreign" foreign key ("id_user") references "" () on d...
+                                                             ^ (SQL: alter table "patrol_location" add constraint "patrol_location_id_user_foreign" foreign key ("id_user") references "" () on delete cascade) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42601): SQLSTATE[42601]: Syntax error: 7 ERROR:  zero-length delimited identifier at or near \"\"\"\"
+LINE 1: ..._user_foreign\" foreign key (\"id_user\") references \"\" () on d...
+                                                             ^ (SQL: alter table \"patrol_location\" add constraint \"patrol_location_id_user_foreign\" foreign key (\"id_user\") references \"\" () on delete cascade) at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:712)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('alter table \"pa...', Array, Object(Closure))
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('alter table \"pa...', Array, Object(Closure))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table \"pa...')
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('patrol_location', Object(Closure))
+#6 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010139_create_patrol_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreatePatrolLocationTable->up()
+#8 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreatePatrolLocationTable), 'up')
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreatePatrolLocationTable), 'up')
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 {main}
+
+[previous exception] [object] (PDOException(code: 42601): SQLSTATE[42601]: Syntax error: 7 ERROR:  zero-length delimited identifier at or near \"\"\"\"
+LINE 1: ..._user_foreign\" foreign key (\"id_user\") references \"\" () on d...
+                                                             ^ at C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php:501)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(501): PDOStatement->execute()
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(705): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('alter table \"pa...', Array)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(672): Illuminate\\Database\\Connection->runQueryCallback('alter table \"pa...', Array, Object(Closure))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Connection.php(502): Illuminate\\Database\\Connection->run('alter table \"pa...', Array, Object(Closure))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Blueprint.php(109): Illuminate\\Database\\Connection->statement('alter table \"pa...')
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(364): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Schema\\Builder.php(227): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php(261): Illuminate\\Database\\Schema\\Builder->create('patrol_location', Object(Closure))
+#8 C:\\xampp\\htdocs\\backend-dfi\\database\\migrations\\2024_04_02_010139_create_patrol_location_table.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(472): CreatePatrolLocationTable->up()
+#10 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreatePatrolLocationTable), 'up')
+#11 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Concerns\\ManagesTransactions.php(29): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#12 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(402): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#13 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreatePatrolLocationTable), 'up')
+#14 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('C:\\\\xampp\\\\htdocs...', 2, false)
+#15 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#16 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(86): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#17 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Migrations\\Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#18 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Database\\Console\\Migrations\\MigrateCommand.php(98): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#19 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#20 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#21 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#22 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(37): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#23 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#24 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(136): Illuminate\\Container\\Container->call(Array)
+#25 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#26 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#27 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#28 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 {main}
+"} 
+[2024-04-05 06:19:22] local.ERROR: Too many arguments to "make:model" command, expected arguments "name". {"exception":"[object] (Symfony\\Component\\Console\\Exception\\RuntimeException(code: 0): Too many arguments to \"make:model\" command, expected arguments \"name\". at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Input\\ArgvInput.php:193)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Input\\ArgvInput.php(86): Symfony\\Component\\Console\\Input\\ArgvInput->parseArgument('/product')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Input\\ArgvInput.php(71): Symfony\\Component\\Console\\Input\\ArgvInput->parseToken('/product', true)
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Input\\Input.php(55): Symfony\\Component\\Console\\Input\\ArgvInput->parse()
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Command\\Command.php(257): Symfony\\Component\\Console\\Input\\Input->bind(Object(Symfony\\Component\\Console\\Input\\InputDefinition))
+#4 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php(121): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#5 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Foundation\\Console\\ModelMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#9 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#10 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#11 {main}
+"} 
+[2024-04-05 06:21:17] local.ERROR: Command "make:migrations" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:migrations\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php:720)
+[stacktrace]
+#0 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(259): Symfony\\Component\\Console\\Application->find('make:migrations')
+#1 C:\\xampp\\htdocs\\backend-dfi\\vendor\\symfony\\console\\Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\xampp\\htdocs\\backend-dfi\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\xampp\\htdocs\\backend-dfi\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 {main}
+"} 
