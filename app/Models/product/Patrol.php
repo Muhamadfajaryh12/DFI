@@ -2,8 +2,8 @@
 
 namespace App\Models\product;
 
-use App\Models\Item;
-use App\Models\Product;
+use App\Models\product\Item;
+use App\Models\product\Product;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,12 +22,12 @@ class Patrol extends Model
     ];
 
     public function item(){
-        return $this->belongsTo(Item::class,'item_id');
+        return $this->belongsTo(Item::class,'id_item_product');
     }
     public function product(){
-        return $this->belongsTo(Product::class,'product_id');
+        return $this->belongsTo(Product::class,'id_master_product');
     }
     public function user(){
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class,'id_user');
     }
 }

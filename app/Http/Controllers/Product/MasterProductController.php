@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
-use App\Models\Product;
+namespace App\Http\Controllers\product;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\ResponseResource;
+use App\Models\product\Product;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Resources\ResponseResource;
-class ProductController extends Controller
+
+class MasterProductController extends Controller
 {
     public function insert(Request $request){
         $validator = Validator::make($request->all(),[

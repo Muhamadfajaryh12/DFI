@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\product;
 
-use App\Models\Task;
+use App\Http\Controllers\Controller;
+use App\Models\product\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class TaskController extends Controller
+class TaskProductController extends Controller
 {
     public function insert(Request $request){
         $validator = Validator::make($request->all(),[

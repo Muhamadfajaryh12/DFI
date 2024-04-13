@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\product;
 
-use App\Http\Resources\ResponseResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ResponseResource;
 use App\Models\product\Patrol;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class PatrolController extends Controller
+class PatrolProductController extends Controller
 {
     public function insert(Request $request){
         $validator = Validator::make($request->all(),[

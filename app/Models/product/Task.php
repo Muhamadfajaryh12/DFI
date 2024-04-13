@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\product\Item;
+use App\Models\product\Product;
 class Task extends Model
 {
     use HasFactory;
