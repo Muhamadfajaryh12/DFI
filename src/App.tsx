@@ -3,21 +3,22 @@ import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import loginPage from "./pages/loginPage";
-import PegawaiPage from "./pages/pegawaiPage";
-import SidebarMain from "./components/SidebarMain";
-
+import dashboardPage from "./pages/dashboardPage";
+import ProfilePage from "./pages/ProfilePage";
+import CategoryPage from "./pages/CategoryPage";
+import LoginPage from "./pages/LoginPage";
+import EmployePage from "./pages/EmployePage";
 function App() {
   return (
     <>
       <Router>
-        <div className="">
-          <SidebarMain />
-          <Routes>
-            <Route path="/" Component={loginPage} />
-            <Route path="/employee" Component={PegawaiPage} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" Component={LoginPage} />
+          <Route path="/profile" Component={ProfilePage} />
+          <Route path="/dashboard" Component={dashboardPage} />
+          <Route path="/category" Component={CategoryPage} />
+          <Route path="/employee" Component={EmployePage} />
+        </Routes>
       </Router>
     </>
   );

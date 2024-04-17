@@ -1,32 +1,56 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { FilterMatchMode, FilterOperator } from "primereact/api";
-import { Paginator } from "primereact/paginator";
+import { FilterMatchMode } from "primereact/api";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 
-const TableMain = (props) => {
-  const { products } = props;
+const TableMain = (props: any) => {
+  const { headers, body, contentModal, itemId } = props;
   const [visible, setVisible] = useState(false);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const [modalType, setModalType] = useState("");
+  const dt = useRef<DataTable<any>>(null);
   const [filters, setFilters] = useState({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   });
+
   useEffect(() => {
     setLoading(false);
-  });
-  const onGlobalFilterChange = (e) => {
-    const value = e.target.value;
-    let _filters = { ...filters };
+  }, []);
+
+  const handleOpenModal = (type: string, id: number | null) => {
+    setVisible(true);
+    itemId(id);
+    setModalType(type);
+  };
+
+  const onGlobalFilterChange = (e: any) => {
+    const value = e?.target?.value;
+    const _filters = { ...filters };
 
     _filters["global"].value = value;
 
     setFilters(_filters);
     setGlobalFilterValue(value);
+  };
+
+  const exportColumns = headers.map((col: any) => ({
+    title: col.name,
+    dataKey: col.name.toLowerCase(),
+  }));
+
+  const exportPdf = () => {
+    import("jspdf").then((jsPDF: any) => {
+      import("jspdf-autotable").then(() => {
+        const doc = new jsPDF();
+
+        doc.autoTable(exportColumns, body);
+        doc.save("products.pdf");
+      });
+    });
   };
 
   const renderHeader = () => {
@@ -37,7 +61,7 @@ const TableMain = (props) => {
             label="Create"
             icon="pi pi-plus"
             className="mx-2"
-            onClick={() => setVisible(true)}
+            onClick={() => handleOpenModal("store", null)}
           />
 
           <span className="p-input-icon-left">
@@ -60,33 +84,56 @@ const TableMain = (props) => {
             label="PDF"
             icon="pi pi-file-pdf"
             className="p-button-danger"
+            onClick={exportPdf}
+            data-pr-tooltip="PDF"
           />
         </div>
       </div>
     );
   };
 
-  const actionTemplate = () => {
+  const actionTemplate = (data: any) => {
     return (
       <div className="flex justify-center">
         <Button
           icon="pi pi-info-circle"
           className=" mx-1 p-button-primary p-mr-2"
         />
-
-        <Button icon="pi pi-pencil" className=" mx-1 p-button-warning p-mr-2" />
-        <Button icon="pi pi-trash" className=" mx-1 p-button-danger" />
+        <Button
+          icon="pi pi-pencil"
+          className=" mx-1 p-button-warning p-mr-2"
+          onClick={() => handleOpenModal("update", data.id)}
+        />
+        <Button
+          icon="pi pi-trash"
+          className=" mx-1 p-button-danger"
+          onClick={() => handleOpenModal("delete", data.id)}
+        />
       </div>
     );
   };
   const header = renderHeader();
 
+  const renderModalContent = () => {
+    switch (modalType) {
+      case "store":
+        return contentModal.store;
+      case "update":
+        return contentModal.update;
+      case "delete":
+        return contentModal.delete;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <DataTable
-        value={products}
+        ref={dt}
+        value={body}
         header={header}
-        tableStyle={{ minWidth: "20rem" }}
+        tableStyle={{ minWidth: "100%" }}
         paginator
         rows={10}
         rowsPerPageOptions={[10, 25, 50]}
@@ -98,22 +145,17 @@ const TableMain = (props) => {
         size={"small"}
         loading={loading}
       >
-        <Column field="code" header="Code" sortable style={{ width: "25%" }} />
-        <Column field="name" header="Name" sortable style={{ width: "25%" }} />
+        {headers.map((item: any) => (
+          <Column
+            field={item.name.toLowerCase()}
+            header={item.name}
+            sortable
+            style={{ width: "25%" }}
+          />
+        ))}
+
         <Column
-          field="category"
-          header="Category"
-          sortable
-          style={{ width: "25%" }}
-        />
-        <Column
-          field="quantity"
-          header="Quantity"
-          sortable
-          style={{ width: "25%" }}
-        />
-        <Column
-          field="action"
+          field="id"
           header="Action"
           style={{ width: "25%" }}
           body={actionTemplate}
@@ -125,15 +167,7 @@ const TableMain = (props) => {
         style={{ width: "50vw" }}
         onHide={() => setVisible(false)}
       >
-        <p className="m-0">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        {renderModalContent()}
       </Dialog>
     </>
   );
