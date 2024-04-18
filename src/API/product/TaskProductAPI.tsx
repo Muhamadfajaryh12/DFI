@@ -1,5 +1,16 @@
 import axios from "axios";
 
+export interface InputTaskProductProps {
+  id?: number;
+  task_type: string;
+  std_value: string | number;
+  remark: string;
+  min_spec: string;
+  max_spec: string;
+  id_master_product: number;
+  id_item_product: number;
+}
+
 const TaskProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/task";
 
@@ -37,15 +48,7 @@ const TaskProductAPI = (() => {
     max_spec,
     id_master_product,
     id_item_product,
-  }: {
-    task_type: string;
-    std_value: string | number;
-    remark: string;
-    min_spec: string;
-    max_spec: string;
-    id_master_product: number;
-    id_item_product: number;
-  }) => {
+  }: InputTaskProductProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         task_type,
@@ -74,16 +77,7 @@ const TaskProductAPI = (() => {
     max_spec,
     id_master_product,
     id_item_product,
-  }: {
-    id: number;
-    task_type: string;
-    std_value: string | number;
-    remark: string;
-    min_spec: string;
-    max_spec: string;
-    id_master_product: number;
-    id_item_product: number;
-  }) => {
+  }: InputTaskProductProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         id,

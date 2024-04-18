@@ -64,6 +64,35 @@ const AuthenticationAPI = (() => {
     }
   };
 
+  const changeProfile = async ({
+    id,
+    name,
+    no_telp,
+    jenis_kelamin,
+    kota,
+  }: {
+    id: number;
+    name: string;
+    no_telp: number;
+    jenis_kelamin: string;
+    kota: string;
+  }) => {
+    try {
+      const response = await axios.put(`${BASE_URL}/${id}`, {
+        name,
+        no_telp,
+        jenis_kelamin,
+        kota,
+      });
+      const {
+        data: { data, status, message },
+      } = response;
+      return { data, status, message };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const logout = async () => {
     const response = await axios.post(`${BASE_URL}/logout`, null, {
       headers: {
@@ -82,6 +111,7 @@ const AuthenticationAPI = (() => {
     setAccessToken,
     getAccessToken,
     profile,
+    changeProfile,
     login,
     logout,
   };

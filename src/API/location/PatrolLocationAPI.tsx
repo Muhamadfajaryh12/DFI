@@ -1,5 +1,15 @@
 import axios from "axios";
 
+export interface InputPatrolLocationProps {
+  id?: number;
+  patrol_type: string;
+  patrol_value: string;
+  remark: string;
+  id_master_location: number;
+  id_item_location: number;
+  id_user: number;
+}
+
 const PatrolLocationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/locations/patrol";
 
@@ -36,14 +46,7 @@ const PatrolLocationAPI = (() => {
     id_master_location,
     id_item_location,
     id_user,
-  }: {
-    patrol_type: string;
-    patrol_value: string;
-    remark: string;
-    id_master_location: number;
-    id_item_location: number;
-    id_user: number;
-  }) => {
+  }: InputPatrolLocationProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         patrol_type,
@@ -70,15 +73,7 @@ const PatrolLocationAPI = (() => {
     id_master_location,
     id_item_location,
     id_user,
-  }: {
-    id: number;
-    patrol_type: string;
-    patrol_value: string;
-    remark: string;
-    id_master_location: number;
-    id_item_location: number;
-    id_user: number;
-  }) => {
+  }: InputPatrolLocationProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         patrol_type,

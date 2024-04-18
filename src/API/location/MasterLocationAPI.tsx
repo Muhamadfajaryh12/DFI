@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export interface InputMasterLocationProps {
+  id?: number;
+  location_name: string;
+  no_referensi: number;
+  check_allow: string;
+}
+
 const MasterLocationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/locations/master";
 
@@ -33,11 +40,7 @@ const MasterLocationAPI = (() => {
     location_name,
     no_referensi,
     check_allow,
-  }: {
-    location_name: string;
-    no_referensi: number;
-    check_allow: string;
-  }) => {
+  }: InputMasterLocationProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         location_name,
@@ -58,12 +61,7 @@ const MasterLocationAPI = (() => {
     location_name,
     no_referensi,
     check_allow,
-  }: {
-    id: number;
-    location_name: string;
-    no_referensi: number;
-    check_allow: string;
-  }) => {
+  }: InputMasterLocationProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         location_name,

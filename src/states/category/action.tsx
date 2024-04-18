@@ -78,7 +78,6 @@ const asyncStoreCategory = (name: string) => {
   return async (dispatch: Dispatch) => {
     try {
       const response: any = await CategoryAPI.storeCategory(name);
-      console.log(response);
       dispatch(storeCategoryActionCreator(response));
       return response;
     } catch (error) {

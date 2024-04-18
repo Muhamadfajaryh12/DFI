@@ -83,7 +83,7 @@ const EmployeeAPI = (() => {
     kota: string;
   }) => {
     try {
-      const response = await axios.post(`${BASE_URL}/${id}`, {
+      const response = await axios.put(`${BASE_URL}/${id}`, {
         name,
         username,
         password,
@@ -101,9 +101,9 @@ const EmployeeAPI = (() => {
     }
   };
 
-  const deleteEmployee = async ({ id }: { id: number }) => {
+  const deleteEmployee = async (id: number) => {
     try {
-      const response = await axios.post(`${BASE_URL}/${id}`);
+      const response = await axios.delete(`${BASE_URL}/${id}`);
       const {
         data: { data, status, message },
       } = response;

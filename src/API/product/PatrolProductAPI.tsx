@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export interface InputPatrolProductProps {
+  id?: number;
+  patrol_type: string;
+  patrol_value: number | string;
+  id_master_product: number;
+  id_item_product: number;
+  id_user: number;
+}
 const PatrolProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/patrol";
 
@@ -35,13 +43,7 @@ const PatrolProductAPI = (() => {
     id_master_product,
     id_item_product,
     id_user,
-  }: {
-    patrol_type: string;
-    patrol_value: number | string;
-    id_master_product: number;
-    id_item_product: number;
-    id_user: number;
-  }) => {
+  }: InputPatrolProductProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         patrol_type,
@@ -66,14 +68,7 @@ const PatrolProductAPI = (() => {
     id_master_product,
     id_item_product,
     id_user,
-  }: {
-    id: number;
-    patrol_type: string;
-    patrol_value: number | string;
-    id_master_product: number;
-    id_item_product: number;
-    id_user: number;
-  }) => {
+  }: InputPatrolProductProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         patrol_type,

@@ -1,5 +1,12 @@
 import axios from "axios";
 
+export interface InputMasterProductProps {
+  id?: number;
+  product_name: string;
+  barcode: number;
+  category_id: number;
+}
+
 const MasterProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/master";
 
@@ -33,11 +40,7 @@ const MasterProductAPI = (() => {
     product_name,
     barcode,
     category_id,
-  }: {
-    product_name: string;
-    barcode: number;
-    category_id: number;
-  }) => {
+  }: InputMasterProductProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         product_name,
@@ -58,12 +61,7 @@ const MasterProductAPI = (() => {
     product_name,
     barcode,
     category_id,
-  }: {
-    id: number;
-    product_name: string;
-    barcode: number;
-    category_id: number;
-  }) => {
+  }: InputMasterProductProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         product_name,

@@ -46,22 +46,22 @@ const SidebarMain = () => {
         {
           title: "Master Product",
           icon: "pi pi-home",
-          link: "/master_product",
+          link: "/product/master",
         },
         {
           title: "Item Product",
           icon: "pi pi-home",
-          link: "/master_product",
+          link: "/product/item",
         },
         {
           title: "Task Product",
           icon: "pi pi-home",
-          link: "/master_product",
+          link: "/product/task",
         },
         {
           title: "Patrol Product",
           icon: "pi pi-home",
-          link: "/master_product",
+          link: "/product/patrol",
         },
       ],
     },
@@ -72,22 +72,22 @@ const SidebarMain = () => {
         {
           title: "Master Location",
           icon: "pi pi-home",
-          link: "/master_location",
+          link: "/location/master",
         },
         {
           title: "Item Location",
           icon: "pi pi-home",
-          link: "/master_location",
+          link: "/location/item",
         },
         {
           title: "Task Location",
           icon: "pi pi-home",
-          link: "/master_location",
+          link: "/location/task",
         },
         {
           title: "Patrol Location",
           icon: "pi pi-home",
-          link: "/master_location",
+          link: "/location/patrol",
         },
       ],
     },

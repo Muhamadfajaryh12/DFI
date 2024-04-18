@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export interface InputItemProductProps {
+  id?: number;
+  item_name: string;
+  item_value: number | string;
+  remark: string;
+  category_id: number;
+}
+
 const ItemProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/item";
 
@@ -34,12 +42,7 @@ const ItemProductAPI = (() => {
     item_value,
     remark,
     category_id,
-  }: {
-    item_name: string;
-    item_value: number | string;
-    remark: string;
-    category_id: number;
-  }) => {
+  }: InputItemProductProps) => {
     try {
       const response = await axios.post(`${BASE_URL}`, {
         item_name,
@@ -62,13 +65,7 @@ const ItemProductAPI = (() => {
     item_value,
     remark,
     category_id,
-  }: {
-    id: number;
-    item_name: string;
-    item_value: number | string;
-    remark: string;
-    category_id: number;
-  }) => {
+  }: InputItemProductProps) => {
     try {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         item_name,
