@@ -19,8 +19,6 @@ class CreateItemTable extends Migration
             $table->string('slug');
             $table->string('item_value');
             $table->string('remark');
-            $table->string('opt')->nullable();
-            $table->bigInteger('no');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

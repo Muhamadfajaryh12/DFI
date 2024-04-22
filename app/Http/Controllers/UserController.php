@@ -60,7 +60,7 @@ class UserController extends Controller
 
         if (!$token = auth()->attempt($credentials)) {
             $responseData = new ResponseResource(false, 'Incorrect username or password', null);
-            return response()->json($responseData);      
+            return response()->json($responseData,400);      
           }
         
           $user = auth()->user();

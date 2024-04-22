@@ -14,8 +14,6 @@ class Item extends Model
         'slug',
         'item_value',
         'remark',
-        'opt',
-        'no',
         'category_id'
     ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ResponseResource;
 use App\Models\Category;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -26,10 +27,8 @@ class CategoryController extends Controller
                 'name' => strtoupper($request->input('name')), 
                 'slug' => strtolower($request->input('name'))
             ]);
-            return response()->json([
-                'message'=>'Created Succesfully',
-                'data'=>$categories
-            ],200);
+            return response()->json(new ResponseResource(true, 'Created Successfuly', $categories), 201);
+
         }
         catch (Exception $e) {
             return response()->json([
@@ -42,6 +41,14 @@ class CategoryController extends Controller
         return response()->json([
             'message'=>"List Category",
             'data'=>Category::all()
+        ]);
+    }
+
+    public function detail ($id){
+        $category = Category::find($id);
+        return response()->json([
+            'message'=>"List Category",
+            'data'=>$category
         ]);
     }
 

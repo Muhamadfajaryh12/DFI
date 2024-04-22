@@ -34,18 +34,19 @@ Route::prefix('user')->group(function () {
     Route::post('/register',[UserController::class, 'register']);
     Route::delete('/{id}',[UserController::class, 'delete']);
     Route::middleware(['api', 'prefix' => 'auth'])->group(function () {
+    Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/{id}', [UserController::class, 'profile']);
     Route::post('/pwd/{id}',[UserController::class,'changepassword']);
     Route::post('/{id}',[UserController::class,'changeprofile']);
-    Route::post('/logout', [UserController::class, 'logout']);
     });
 });
 
 Route::prefix('categories')->group(function(){
     Route::post('/',[CategoryController::class,'insert']);
     Route::get('/',[CategoryController::class,'getAll']);
-    Route::put('/{id}',[CategoryController::class,'update']);
+    Route::get('/{id}',[CategoryController::class,'detail']);
     Route::delete('/{id}',[CategoryController::class,'delete']);
+    Route::put('/{id}',[CategoryController::class,'update']);
 });
 
 Route::prefix('products')->group(function(){
