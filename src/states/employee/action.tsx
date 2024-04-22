@@ -9,47 +9,47 @@ const ActionType = {
   DELETE_EMPLOYEE: "DELETE_EMPLOYEE",
 };
 
-const setEmployeeActionCreator = (users: any) => {
+const setEmployeeActionCreator = (employee: any) => {
   return {
     type: ActionType.GET_EMPLOYEE,
     payload: {
-      users,
+      employee,
     },
   };
 };
 
-const setDetailEmployeeActionCreator = (user: any) => {
+const setDetailEmployeeActionCreator = (employee: any) => {
   return {
     type: ActionType.DETAIL_EMPLOYEE,
     payload: {
-      user,
+      employee,
     },
   };
 };
 
-const setStoreEmployeeActionCreator = (user: any) => {
+const setStoreEmployeeActionCreator = (employee: any) => {
   return {
     type: ActionType.STORE_EMPLOYEE,
     payload: {
-      user,
+      employee,
     },
   };
 };
 
-const setUpdateEmployeeActionCreator = (user: any) => {
+const setUpdateEmployeeActionCreator = (employee: any) => {
   return {
     type: ActionType.UPDATE_EMPLOYEE,
     payload: {
-      user,
+      employee,
     },
   };
 };
 
-const setDeleteEmployeeActionCreator = (user: any) => {
+const setDeleteEmployeeActionCreator = (employee: any) => {
   return {
     type: ActionType.DELETE_EMPLOYEE,
     payload: {
-      user,
+      employee,
     },
   };
 };
@@ -58,6 +58,7 @@ const asyncGetEmployee = () => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await EmployeeAPI.getEmployee();
+      console.log(response);
       dispatch(setEmployeeActionCreator(response?.data));
       return response;
     } catch (error) {

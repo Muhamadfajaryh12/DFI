@@ -2,8 +2,9 @@ import LayoutMain from "../templates/LayoutMain";
 import Doughnut from "../components/chart/Doughnut";
 import VerticalBar from "../components/chart/VerticalBar";
 import StackedBar from "../components/chart/StackedBar";
+import Header from "../components/common/Header";
 
-const dashboardPage = () => {
+const DashboardPage = () => {
   const content = () => {
     return (
       <>
@@ -24,11 +25,10 @@ const dashboardPage = () => {
   };
   return (
     <>
-      <div>
-        <LayoutMain title={"Dashboard"} content={content()} />
-      </div>
+      <Header title="Dashboard" />
+      <article>{content()} </article>
     </>
   );
 };
 
-export default dashboardPage;
+export default DashboardPage;

@@ -29,29 +29,29 @@ const setDetailMasterProductActionCreator = (master_product: any) => {
   };
 };
 
-const setStoreMasterProductActionCreator = (master_product: any) => {
+const setStoreMasterProductActionCreator = (mastered_product: any) => {
   return {
     type: ActionType.STORE_MASTER_PRODUCT,
     payload: {
-      master_product,
+      mastered_product,
     },
   };
 };
 
-const setUpdateMasterProductActionCreator = (master_product: any) => {
+const setUpdateMasterProductActionCreator = (mastered_product: any) => {
   return {
     type: ActionType.UPDATE_MASTER_PRODUCT,
     payload: {
-      master_product,
+      mastered_product,
     },
   };
 };
 
-const setDeleteMasterProductActionCreator = (master_product: any) => {
+const setDeleteMasterProductActionCreator = (mastered_product: any) => {
   return {
     type: ActionType.DELETE_MASTER_PRODUCT,
     payload: {
-      master_product,
+      mastered_product,
     },
   };
 };
@@ -60,6 +60,7 @@ const asyncGetMasterProduct = () => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await MasterProductAPI.getMasterProduct();
+      console.log(response);
       dispatch(setGetMasterProductActionCreator(response?.data));
       return response;
     } catch (error) {

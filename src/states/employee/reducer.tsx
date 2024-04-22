@@ -9,7 +9,7 @@ const EmployeeReducer = (state = initialState, action: any) => {
     case ActionType.GET_EMPLOYEE:
       return {
         ...state,
-        employee: action.payload?.employee.data,
+        employee: action.payload?.employee,
       };
     case ActionType.STORE_EMPLOYEE:
       return {

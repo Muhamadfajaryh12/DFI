@@ -7,9 +7,10 @@ const EmployeeAPI = (() => {
     try {
       const response = await axios.get(`${BASE_URL}`);
       const {
-        data: { data, status, message },
+        data: { data },
       } = response;
-      return { data, status, message };
+
+      return { data };
     } catch (error) {
       console.log(error);
     }

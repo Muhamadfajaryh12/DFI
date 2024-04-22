@@ -37,7 +37,7 @@ const TableMain = (props: any) => {
     setGlobalFilterValue(value);
   };
 
-  const exportColumns = headers.map((col: any) => ({
+  const exportColumns = headers?.map((col: any) => ({
     title: col.name,
     dataKey: col.name.toLowerCase(),
   }));
@@ -98,6 +98,7 @@ const TableMain = (props: any) => {
         <Button
           icon="pi pi-info-circle"
           className=" mx-1 p-button-primary p-mr-2"
+          onClick={() => handleOpenModal("detail", data.id)}
         />
         <Button
           icon="pi pi-pencil"
@@ -122,6 +123,8 @@ const TableMain = (props: any) => {
         return contentModal.update;
       case "delete":
         return contentModal.delete;
+      case "detail":
+        return contentModal.detail;
       default:
         return null;
     }
@@ -145,21 +148,11 @@ const TableMain = (props: any) => {
         size={"small"}
         loading={loading}
       >
-        {headers.map((item: any) => (
-          <Column
-            field={item.name.toLowerCase()}
-            header={item.name}
-            sortable
-            style={{ width: "25%" }}
-          />
+        {headers?.map((item: any) => (
+          <Column field={item.name.toLowerCase()} header={item.name} sortable />
         ))}
 
-        <Column
-          field="id"
-          header="Action"
-          style={{ width: "25%" }}
-          body={actionTemplate}
-        />
+        <Column field="id" header="Action" body={actionTemplate} />
       </DataTable>
       <Dialog
         header="Header"

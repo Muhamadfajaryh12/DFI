@@ -6,12 +6,12 @@ import {
   asyncStoreCategory,
   asyncUpdateCategory,
 } from "../states/category/action";
-import LayoutMain from "../templates/LayoutMain";
 import TableMain from "../components/TableMain";
 import Input from "../components/form/Input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useAppSelector } from "../hooks/useRedux";
+import Header from "../components/common/Header";
 
 type FormInputs = {
   id_category: null;
@@ -170,24 +170,22 @@ const CategoryPage = () => {
   };
   return (
     <div>
-      <LayoutMain
-        title="Category"
-        content={
-          <TableMain
-            headers={header}
-            body={categorys.categorys.map((item: any, index: number) => ({
-              ...item,
-              no: index + 1,
-            }))}
-            contentModal={{
-              store: layoutModalStore(),
-              update: layoutModalUpdate(),
-              delete: layoutModalDelete(),
-            }}
-            itemId={setId}
-          />
-        }
-      />
+      <Header title="Category" />
+      <main>
+        <TableMain
+          headers={header}
+          body={categorys.categorys.map((item: any, index: number) => ({
+            ...item,
+            no: index + 1,
+          }))}
+          contentModal={{
+            store: layoutModalStore(),
+            update: layoutModalUpdate(),
+            delete: layoutModalDelete(),
+          }}
+          itemId={setId}
+        />
+      </main>
     </div>
   );
 };

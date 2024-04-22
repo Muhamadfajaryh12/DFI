@@ -1,15 +1,12 @@
 import { useState } from "react";
-// import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncLogout } from "../states/authentication/action";
-// import { Dispatch } from "redux";
 import { RiProductHuntLine, RiDashboardFill } from "react-icons/ri";
-import { FiUsers } from "react-icons/fi";
-import {
-  MdOutlineCategory,
-  MdLocationSearching,
-  MdLogout,
-} from "react-icons/md";
+import { MdOutlineCategory, MdLogout, MdLocationCity } from "react-icons/md";
+import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
+import { FaUserFriends } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { FaTableList } from "react-icons/fa6";
 
 interface dataItem {
   title: string;
@@ -19,74 +16,74 @@ interface dataItem {
 }
 
 const SidebarMain = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState<string[]>([]);
   const data: dataItem[] = [
     {
       title: "Dashboard",
-      icon: <RiDashboardFill />,
+      icon: <RiDashboardFill className="mr-2" />,
       link: "/dashboard",
     },
     {
       title: "Employee",
-      icon: <FiUsers />,
+      icon: <FaUserFriends className="mr-2" />,
       link: "/employee",
     },
     {
       title: "Category",
-      icon: <MdOutlineCategory />,
+      icon: <MdOutlineCategory className="mr-2" />,
       link: "/category",
     },
     {
       title: "Product",
-      icon: <RiProductHuntLine />,
+      icon: <RiProductHuntLine className="mr-2" />,
       child: [
         {
           title: "Master Product",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/product/master",
         },
         {
           title: "Item Product",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/product/item",
         },
         {
           title: "Task Product",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/product/task",
         },
         {
           title: "Patrol Product",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/product/patrol",
         },
       ],
     },
     {
       title: "Location",
-      icon: <MdLocationSearching />,
+      icon: <MdLocationCity className="mr-2" />,
       child: [
         {
           title: "Master Location",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/location/master",
         },
         {
           title: "Item Location",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/location/item",
         },
         {
           title: "Task Location",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/location/task",
         },
         {
           title: "Patrol Location",
-          icon: "pi pi-home",
+          icon: <FaTableList className="mr-2" />,
           link: "/location/patrol",
         },
       ],
@@ -110,10 +107,10 @@ const SidebarMain = () => {
     navigate("/");
   };
   return (
-    <div
+    <aside
       className={`card flex flex-col justify-content-center ${
         visible == false ? "w-72" : "w-14"
-      } min-h-screen shadow-md`}
+      }  shadow-lg`}
     >
       <div className="p-3">
         <div className="flex justify-between items-center">
@@ -126,7 +123,7 @@ const SidebarMain = () => {
             <span className="pi pi-bars"></span>
           </button>
         </div>
-        <ul className={`list-none   ${visible == false ? "p-3" : "px-0"} m-0`}>
+        <ul className={`list-none   ${visible == false ? "p-2" : "px-0"} m-0`}>
           {data.map((item) => (
             <li className="p-2" key={item.title}>
               {item.link != null ? (
@@ -144,12 +141,16 @@ const SidebarMain = () => {
                     className="flex justify-between items-center"
                     onClick={() => openGroup(item.title)}
                   >
-                    <div className="font-medium">
-                      <span className={item?.icon + " mr-2"}></span>
+                    <div className="font-medium flex items-center">
+                      {item.icon}
                       <span>{visible == false ? item.title : ""}</span>
                     </div>
                     {visible == false ? (
-                      <span className="pi pi-chevron-down"></span>
+                      open.includes(item.title) ? (
+                        <IoIosArrowBack />
+                      ) : (
+                        <IoIosArrowDown />
+                      )
                     ) : (
                       ""
                     )}
@@ -157,7 +158,7 @@ const SidebarMain = () => {
                   {item?.child?.map((items) => (
                     <li
                       key={items.title}
-                      className={`p-3 ${
+                      className={`p-2 ${
                         open.includes(item.title) ? "block" : "hidden"
                       } `}
                     >
@@ -165,7 +166,7 @@ const SidebarMain = () => {
                         className="hover:text-blue-400 font-medium flex items-center"
                         to={items?.link ? items.link : "/"}
                       >
-                        <span className={items?.icon + " mr-2"}></span>
+                        {items.icon}
                         <span>{visible == false ? items.title : ""}</span>
                       </Link>
                     </li>
@@ -178,15 +179,15 @@ const SidebarMain = () => {
             <button
               type="button"
               className="font-medium flex items-center "
-              onClick={onLogout}
+              onClick={() => onLogout(dispatch)}
             >
-              <MdLogout />
+              <MdLogout className="mr-2" />
               <span>{visible == false ? "Logout" : ""}</span>
             </button>
           </li>
         </ul>
       </div>
-    </div>
+    </aside>
   );
 };
 
