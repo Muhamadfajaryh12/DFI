@@ -13,6 +13,7 @@ class PatrolLocation extends Model
     use HasFactory;
     protected $fillable = [
         'patrol_type',
+        'patrol_status',
         'patrol_value',
         'remark',
         'foto',

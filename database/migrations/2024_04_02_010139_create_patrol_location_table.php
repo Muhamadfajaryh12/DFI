@@ -19,6 +19,7 @@ class CreatePatrolLocationTable extends Migration
             $table->string('patrol_value');
             $table->string('remark')->nullable();
             $table->text('foto');
+            $table->string('patrol_status');
             $table->timestamps();
             $table->foreignId('id_master_location')->constrained('master_location')->onDelete('cascade');
             $table->foreignId('id_item_location')->constrained('item_location')->onDelete('cascade');
