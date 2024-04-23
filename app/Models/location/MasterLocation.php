@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class MasterLocation extends Model
 {
+    protected $table = 'master_location';
+
     use HasFactory;
 
     protected $fillable = [

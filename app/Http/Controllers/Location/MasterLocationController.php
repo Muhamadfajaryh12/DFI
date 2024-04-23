@@ -26,8 +26,8 @@ class MasterLocationController extends Controller
         }
 
         try{
-            $qrCode = QrCode::format('png')->size(300)->errorCorrection('H')->generate($request->input('qrcode'));
-            $qrCodePath = 'qrcode/' . $request->input('qrcode') . '.png';
+            $qrCode = QrCode::format('png')->size(300)->errorCorrection('H')->generate($request->input('no_referensi'));
+            $qrCodePath = 'qrcode/' . $request->input('no_referensi') . '.png';
             Storage::disk('public')->put($qrCodePath, $qrCode);
             $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // daftar karakter yang dapat digunakan
             $randomString = '';
@@ -67,7 +67,7 @@ class MasterLocationController extends Controller
     }
 
     public function destroy($id){
-        $master_location = MasterLocation::findOrFail($id);
+        $master_location = MasterLocation::find($id);
         $master_location->delete();
         $response = new ResponseResource(true,'Deleted Successfully',$master_location);
         return response()->json($response);
@@ -94,8 +94,8 @@ class MasterLocationController extends Controller
                 Storage::disk('public')->delete($path);
             }
 
-            $qrCode = QrCode::format('png')->size(300)->errorCorrection('H')->generate($request->input('qrcode'));
-            $qrCodePath = 'qrcode/' . $request->input('qrcode') . '.png';
+            $qrCode = QrCode::format('png')->size(300)->errorCorrection('H')->generate($request->input('location_name'));
+            $qrCodePath = 'qrcode/' . $request->input('location_name') . '.png';
             Storage::disk('public')->put($qrCodePath, $qrCode);
             $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; // daftar karakter yang dapat digunakan
             $randomString = '';

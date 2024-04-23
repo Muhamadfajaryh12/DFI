@@ -8,6 +8,8 @@ use App\Models\product\Item;
 use App\Models\product\Product;
 class Task extends Model
 {
+    protected $table = 'task_product';
+
     use HasFactory;
     protected $fillable = [
         'product_id',

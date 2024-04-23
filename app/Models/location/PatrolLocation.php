@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PatrolLocation extends Model
 {
+    protected $table = 'patrol_location';
+
     use HasFactory;
     protected $fillable = [
         'patrol_type',

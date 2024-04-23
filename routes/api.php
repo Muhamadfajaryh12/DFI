@@ -91,7 +91,7 @@ Route::prefix('locations')->group(function(){
         Route::post('/',[MasterLocationController::class,'insert']);
         Route::get('/{id}',[MasterLocationController::class,'detail']);
         Route::put('/{id}',[MasterLocationController::class,'update']);
-        Route::delete('/{id]',[MasterLocationController::class,'destroy']);
+        Route::delete('/{id}',[MasterLocationController::class,'destroy']);
     });
 
     Route::prefix('item')->group(function(){
@@ -99,7 +99,7 @@ Route::prefix('locations')->group(function(){
         Route::post('/',[ItemLocationController::class,'insert']);
         Route::get('/{id}',[ItemLocationController::class,'detail']);
         Route::put('/{id}',[ItemLocationController::class,'update']);
-        Route::delete('/{id]',[ItemLocationController::class,'destroy']);
+        Route::delete('/{id}',[ItemLocationController::class,'destroy']);
     });
 
     Route::prefix('task')->group(function(){
@@ -107,7 +107,7 @@ Route::prefix('locations')->group(function(){
         Route::post('/',[TaskLocationController::class,'insert']);
         Route::get('/{id}',[TaskLocationController::class,'detail']);
         Route::put('/{id}',[TaskLocationController::class,'update']);
-        Route::delete('/{id]',[TaskLocationController::class,'destroy']);
+        Route::delete('/{id}',[TaskLocationController::class,'destroy']);
     });
     
     Route::prefix('patrol')->group(function(){
@@ -115,7 +115,7 @@ Route::prefix('locations')->group(function(){
         Route::post('/',[PatrolLocationController::class,'insert']);
         Route::get('/{id}',[PatrolLocationController::class,'detail']);
         Route::put('/{id}',[PatrolLocationController::class,'update']);
-        Route::delete('/{id]',[PatrolLocationController::class,'destroy']);
+        Route::delete('/{id}',[PatrolLocationController::class,'destroy']);
     });
     
 });

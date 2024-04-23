@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patrol extends Model
 {
+    protected $table = 'patrol_product';
+
     use HasFactory;
 
     protected $fillable = [

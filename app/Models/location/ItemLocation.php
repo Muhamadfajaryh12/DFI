@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ItemLocation extends Model
 {
+    protected $table = 'item_location';
     use HasFactory;
-}
+
+    protected $fillable = [
+        'item_name'
+    ];
+}   

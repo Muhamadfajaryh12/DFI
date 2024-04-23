@@ -77,10 +77,10 @@ class ItemLocationController extends Controller
         }
     }
 
-    public function delete($id){
+    public function destroy($id){
         $itemLocation = ItemLocation::find($id);
         if(!$itemLocation){
-            $response = new ResponseResource(true,'User not found',null);
+            $response = new ResponseResource(true,'Item not found',null);
             return response()->json($response,500);
         }else{
             $itemLocation->delete();

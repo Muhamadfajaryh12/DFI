@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaskLocation extends Model
 {
+    protected $table = 'task_location';
+
     use HasFactory;
     protected $fillable = [
         'task_type',
