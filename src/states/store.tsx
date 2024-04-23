@@ -5,6 +5,8 @@ import CategoryReducer from "./category/reducer";
 import EmployeeReducer from "./employee/reducer";
 import PreloadReducer from "./preload/reducer";
 import MasterProductReducer from "./product/master/reducer";
+import MasterLocationReducer from "./location/master/reducer";
+import ItemLocationReducer from "./location/item/reducer";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     categorys: CategoryReducer,
     employee: EmployeeReducer,
     master_product: MasterProductReducer,
+    master_location: MasterLocationReducer,
+    item_location: ItemLocationReducer,
   },
 });
 

@@ -16,17 +16,17 @@ const MasterProductReducer = (state = initialState, action: any) => {
         ...state,
         master_product: [
           ...state.master_product,
-          action.payload?.mastered_product.data,
+          action.payload?.mastered_product,
         ],
       };
     case ActionType.UPDATE_MASTER_PRODUCT: {
-      const masterProductUpdate = action.payload?.mastered_product.data;
-      const updateIndex: any = state.mastered_product.findIndex(
+      const masterProductUpdate = action.payload?.mastered_product;
+      const updateIndex: any = state.master_product.findIndex(
         (item: any) => item.id === masterProductUpdate?.id
       );
 
       if (updateIndex !== -1) {
-        const stateMasterProduct: any = [...state.mastered_product];
+        const stateMasterProduct: any = [...state.master_product];
         stateMasterProduct[updateIndex] = masterProductUpdate;
         return {
           ...state,
@@ -41,7 +41,7 @@ const MasterProductReducer = (state = initialState, action: any) => {
         ...state,
         master_product: [
           ...state.master_product.filter(
-            (item: any) => item.id !== action.payload?.mastered_product.data
+            (item: any) => item.id !== action.payload?.mastered_product.id
           ),
         ],
       };

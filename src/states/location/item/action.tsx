@@ -18,38 +18,38 @@ const setGetItemLocationActionCreator = (item_location: any) => {
   };
 };
 
-const setDetailItemLocationActionCreator = (item_location: any) => {
+const setDetailItemLocationActionCreator = (itemed_location: any) => {
   return {
     type: ActionType.DETAIL_ITEM_LOCATION,
     payload: {
-      item_location,
+      itemed_location,
     },
   };
 };
 
-const setStoreItemLocationActionCreator = (item_location: any) => {
+const setStoreItemLocationActionCreator = (itemed_location: any) => {
   return {
     type: ActionType.STORE_ITEM_LOCATION,
     payload: {
-      item_location,
+      itemed_location,
     },
   };
 };
 
-const setUpdateItemLocationActionCreator = (item_location: any) => {
+const setUpdateItemLocationActionCreator = (itemed_location: any) => {
   return {
     type: ActionType.UPDATE_ITEM_LOCATION,
     payload: {
-      item_location,
+      itemed_location,
     },
   };
 };
 
-const setDeleteItemLocationActionCreator = (item_location: any) => {
+const setDeleteItemLocationActionCreator = (itemed_location: any) => {
   return {
     type: ActionType.DELETE_ITEM_LOCATION,
     payload: {
-      item_location,
+      itemed_location,
     },
   };
 };

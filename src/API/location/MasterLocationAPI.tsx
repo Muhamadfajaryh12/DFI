@@ -16,7 +16,7 @@ const MasterLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
-
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -50,6 +50,7 @@ const MasterLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -83,6 +84,7 @@ const MasterLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);

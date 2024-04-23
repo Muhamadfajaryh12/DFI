@@ -50,6 +50,9 @@ const MasterProductPage = () => {
         data: { data },
       } = response;
       setValue("id_master_product", data.id);
+      setValue("name_master_product", data.product_name);
+      setValue("barcode_master_product", data.barcode);
+      setValue("category", data.category_id);
       return setDatas(data);
     };
 
@@ -127,7 +130,7 @@ const MasterProductPage = () => {
               src={`http://127.0.0.1:8000/storage/${data?.foto_barcode}`}
               alt=""
             />
-            <p className="p-2 mt-1 bg-green-300">{data?.barcode}</p>
+            <p className="p-2 mt-1 bg-green-500 text-white">{data?.barcode}</p>
           </div>
         </div>
       </>
@@ -235,7 +238,7 @@ const MasterProductPage = () => {
   return (
     <>
       <Header title="Master Product" />
-      <main>
+      <main className="p-2">
         <TableMain
           headers={dataTableHeader}
           body={master_product?.master_product?.map(

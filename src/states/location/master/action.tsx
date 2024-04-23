@@ -20,38 +20,38 @@ const setGetMasterLocationActionCreator = (master_location: any) => {
   };
 };
 
-const setDetailMasterLocationActionCreator = (master_location: any) => {
+const setDetailMasterLocationActionCreator = (mastered_location: any) => {
   return {
     type: ActionType.DETAIL_MASTER_LOCATION,
     payload: {
-      master_location,
+      mastered_location,
     },
   };
 };
 
-const setStoreMasterLocationActionCreator = (master_location: any) => {
+const setStoreMasterLocationActionCreator = (mastered_location: any) => {
   return {
     type: ActionType.STORE_MASTER_LOCATION,
     payload: {
-      master_location,
+      mastered_location,
     },
   };
 };
 
-const setUpdateMasterLocationActionCreator = (master_location: any) => {
+const setUpdateMasterLocationActionCreator = (mastered_location: any) => {
   return {
     type: ActionType.UPDATE_MASTER_LOCATION,
     payload: {
-      master_location,
+      mastered_location,
     },
   };
 };
 
-const setDeleteMasterLocationActionCreator = (master_location: any) => {
+const setDeleteMasterLocationActionCreator = (mastered_location: any) => {
   return {
     type: ActionType.DELETE_MASTER_LOCATION,
     payload: {
-      master_location,
+      mastered_location,
     },
   };
 };
