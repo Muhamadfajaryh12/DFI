@@ -1,11 +1,5 @@
 import axios from "axios";
-
-export interface InputMasterLocationProps {
-  id?: number;
-  location_name: string;
-  no_referensi: number;
-  check_allow: string;
-}
+import { InputMasterLocationProps } from "../../types/location/MasterLocationType";
 
 const MasterLocationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/locations/master";

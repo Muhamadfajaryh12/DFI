@@ -14,12 +14,17 @@ import Input from "../../components/form/Input";
 import Selected from "../../components/form/Selected";
 import axios from "axios";
 import { asyncGetCategory } from "../../states/category/action";
+import { ToastSuccess } from "../../components/common/MessageToast";
 
-const MasterProductPage = () => {
+const MasterProductPage = (props: any) => {
+  const { toggle } = props;
+
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
-  const { master_product = [] } = useAppSelector((state) => state);
+  const { master_product = [] } = useAppSelector(
+    (state) => state.master_product
+  );
   const { categorys = [] } = useAppSelector((state) => state);
   const {
     register,
@@ -30,9 +35,15 @@ const MasterProductPage = () => {
     control,
   } = useForm();
 
-  useEffect(() => {
+  const getMasterProduct = (dispatch: any) => {
     dispatch(asyncGetMasterProduct());
+  };
+  const getCategory = (dispatch: any) => {
     dispatch(asyncGetCategory());
+  };
+  useEffect(() => {
+    getMasterProduct(dispatch);
+    getCategory(dispatch);
   }, [dispatch]);
 
   const dataTableHeader = [
@@ -62,17 +73,21 @@ const MasterProductPage = () => {
   }, [itemId]);
 
   const storeMasterProduct = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncStoreMasterProduct({
         product_name: data.name_master_product,
         barcode: data.barcode_master_product,
         category_id: data.category,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+      reset();
+    }
   };
 
   const updateMasterProduct = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncUpdateMasterProduct({
         id: data.id_master_product,
         product_name: data.name_master_product,
@@ -80,18 +95,23 @@ const MasterProductPage = () => {
         category_id: data.category,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const deleteMasterProduct = async (dispatch: any, data: any) => {
-    return await dispatch(asyncDeleteMasterProduct(data.id_master_product));
+    const response: any = await dispatch(
+      asyncDeleteMasterProduct(data.id_master_product)
+    );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const onStore = async (data: any, e: any) => {
     e.preventDefault();
-    const response = await storeMasterProduct(dispatch, data);
-    if (response.status === true) {
-      reset();
-    }
+    storeMasterProduct(dispatch, data);
   };
   const onUpdate = (data: any, e: any) => {
     e.preventDefault();
@@ -108,20 +128,20 @@ const MasterProductPage = () => {
       <>
         <div className="flex justify-evenly items-center">
           <div className="">
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               <label className="col-span-1">Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.product_name}</h6>
+              <p className="">:</p>
+              <h6 className="">{data?.product_name}</h6>
             </div>
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               <label className="col-span-1">Category</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.category?.name}</h6>
+              <p className="">:</p>
+              <h6 className="">{data?.category?.name}</h6>
             </div>
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-4 gap-2">
               <label className="col-span-1">Slug</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.slug}</h6>
+              <p className="">:</p>
+              <h6 className="">{data?.slug}</h6>
             </div>
           </div>
           <div className="text-center w-40">
@@ -167,12 +187,14 @@ const MasterProductPage = () => {
           data={categorys.categorys}
         />
 
-        <button
-          type="submit"
-          className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-        >
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     );
   };
@@ -207,12 +229,14 @@ const MasterProductPage = () => {
           data={categorys.categorys}
         />
 
-        <button
-          type="submit"
-          className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-        >
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     );
   };
@@ -224,7 +248,6 @@ const MasterProductPage = () => {
           <Input type="hidden" name="id_master_product" register={register} />
 
           <h4 className="font-bold">Are you sure delete this item?</h4>
-          <Input type="hidden" name="id_category" register={register} />
           <button
             type="submit"
             className="p-2 my-2 rounded-md bg-red-400 hover:bg-red-500 text-white"
@@ -235,27 +258,30 @@ const MasterProductPage = () => {
       </>
     );
   };
+  const dataFormat = master_product.map((item: any, index: number) => ({
+    no: index + 1,
+    name: item?.product_name,
+    barcode: item?.barcode,
+    id: item?.id,
+  }));
   return (
     <>
-      <Header title="Master Product" />
-      <main className="p-2">
-        <TableMain
-          headers={dataTableHeader}
-          body={master_product?.master_product?.map(
-            (item: any, index: number) => ({
-              ...item,
-              no: index + 1,
-            })
-          )}
-          contentModal={{
-            detail: layoutModalDetail(datas),
-            store: layoutModalStore(),
-            update: layoutModalUpdate(),
-            delete: layoutModalDelete(),
-          }}
-          itemId={setId}
-        />
-      </main>
+      <div className="h-screen p-2 m-2">
+        <Header title="Master Product" toggle={toggle} />
+        <main className="p-2">
+          <TableMain
+            headers={dataTableHeader}
+            body={dataFormat}
+            contentModal={{
+              detail: layoutModalDetail(datas),
+              store: layoutModalStore(),
+              update: layoutModalUpdate(),
+              delete: layoutModalDelete(),
+            }}
+            itemId={setId}
+          />
+        </main>
+      </div>
     </>
   );
 };

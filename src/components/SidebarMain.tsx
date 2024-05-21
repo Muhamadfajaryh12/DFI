@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { asyncLogout } from "../states/authentication/action";
 import { RiProductHuntLine, RiDashboardFill } from "react-icons/ri";
@@ -6,94 +6,108 @@ import { MdOutlineCategory, MdLogout, MdLocationCity } from "react-icons/md";
 import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 import { FaUserFriends } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { FaTableList } from "react-icons/fa6";
-
+import { FiMinus } from "react-icons/fi";
+import { asyncGetProfile } from "../states/users/action";
+import { useAppSelector } from "../hooks/useRedux";
+import imageProfile from "../assets/user_profile.png";
 interface dataItem {
   title: string;
   icon: JSX.Element | string;
+  role?: string;
   link?: string;
   child?: dataItem[];
 }
 
-const SidebarMain = () => {
+const SidebarMain = (props: any) => {
+  const { visible } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [visible, setVisible] = useState(false);
+  const { user = [] } = useAppSelector((state) => state);
+  const getProfile = (dispatch: any) => {
+    dispatch(asyncGetProfile());
+  };
+  useEffect(() => {
+    getProfile(dispatch);
+  }, [dispatch]);
+
   const [open, setOpen] = useState<string[]>([]);
   const data: dataItem[] = [
     {
       title: "Dashboard",
-      icon: <RiDashboardFill className="mr-2" />,
+      icon: <RiDashboardFill className={visible == false ? "mr-2" : "m-0"} />,
       link: "/dashboard",
+      role: "ALL",
     },
     {
       title: "Employee",
-      icon: <FaUserFriends className="mr-2" />,
+      icon: <FaUserFriends className={visible == false ? "mr-2" : "m-0"} />,
       link: "/employee",
+      role: "Admin",
     },
     {
       title: "Category",
-      icon: <MdOutlineCategory className="mr-2" />,
+      icon: <MdOutlineCategory className={visible == false ? "mr-2" : "m-0"} />,
       link: "/category",
+      role: "Admin",
     },
     {
       title: "Product",
-      icon: <RiProductHuntLine className="mr-2" />,
+      role: "Quality Control",
+      icon: <RiProductHuntLine className={visible == false ? "mr-2" : "m-0"} />,
       child: [
         {
           title: "Master Product",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/product/master",
         },
         {
           title: "Item Product",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/product/item",
         },
         {
           title: "Task Product",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/product/task",
         },
         {
           title: "Patrol Product",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/product/patrol",
         },
       ],
     },
     {
       title: "Location",
-      icon: <MdLocationCity className="mr-2" />,
+      role: "Quality Control",
+      icon: <MdLocationCity className={visible == false ? "mr-2" : "m-0"} />,
       child: [
         {
           title: "Master Location",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/location/master",
         },
         {
           title: "Item Location",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/location/item",
         },
         {
           title: "Task Location",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/location/task",
         },
         {
           title: "Patrol Location",
-          icon: <FaTableList className="mr-2" />,
+          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
           link: "/location/patrol",
         },
       ],
     },
   ];
-
-  const toggle = () => {
-    setVisible(!visible);
-    setOpen([]);
-  };
+  const filteredData = data.filter(
+    (item) => item.role === user?.role || item.role === "ALL"
+  );
 
   const openGroup = (title: string) => {
     if (open.includes(title)) {
@@ -108,23 +122,39 @@ const SidebarMain = () => {
   };
   return (
     <aside
-      className={`card flex flex-col justify-content-center ${
-        visible == false ? "w-72" : "w-14"
-      }  shadow-lg`}
+      className={`card flex flex-col justify-content-center sm:relative bg-white h-screen ${
+        visible == false ? "sm:block sm:w-72" : "block absolute w-72 sm:w-14"
+      } shadow-lg z-50 sm:z-auto transition-all duration-300`}
     >
       <div className="p-3">
         <div className="flex justify-between items-center">
           {visible == false ? (
-            <h5 className="font-semibold text-sm">Daesang Food Indonesia</h5>
+            <h5 className="font-semibold text-sm my-2">
+              Daesang Food Indonesia
+            </h5>
           ) : (
             ""
           )}
-          <button className=" p-2 rounded-md" onClick={toggle}>
-            <span className="pi pi-bars"></span>
-          </button>
         </div>
-        <ul className={`list-none   ${visible == false ? "p-2" : "px-0"} m-0`}>
-          {data.map((item) => (
+        <div className="border-2 rounded-md bg-gray-200 p-2">
+          <Link to="profile" className="flex items-center justify-evenly">
+            <img
+              className="w-14 rounded-full"
+              src={
+                user?.foto != null
+                  ? `http://127.0.0.1:8000/storage/${user?.foto}`
+                  : imageProfile
+              }
+              alt=""
+            />
+            <div className="">
+              <h6>{visible == false ? user?.name : ""}</h6>
+              <p className="text-xs">{visible == false ? user?.role : ""}</p>
+            </div>
+          </Link>
+        </div>
+        <ul className={`list-none ${visible == false ? "p-2" : "px-0"} m-0`}>
+          {filteredData.map((item) => (
             <li className="p-2" key={item.title}>
               {item.link != null ? (
                 <Link
@@ -138,7 +168,7 @@ const SidebarMain = () => {
                 <ul>
                   <li
                     key={item.title}
-                    className="flex justify-between items-center"
+                    className="flex  justify-between items-center"
                     onClick={() => openGroup(item.title)}
                   >
                     <div className="font-medium flex items-center">
@@ -147,9 +177,9 @@ const SidebarMain = () => {
                     </div>
                     {visible == false ? (
                       open.includes(item.title) ? (
-                        <IoIosArrowBack />
-                      ) : (
                         <IoIosArrowDown />
+                      ) : (
+                        <IoIosArrowBack />
                       )
                     ) : (
                       ""
@@ -158,7 +188,7 @@ const SidebarMain = () => {
                   {item?.child?.map((items) => (
                     <li
                       key={items.title}
-                      className={`p-2 ${
+                      className={`p-2 my-1 ${
                         open.includes(item.title) ? "block" : "hidden"
                       } `}
                     >
@@ -181,7 +211,7 @@ const SidebarMain = () => {
               className="font-medium flex items-center "
               onClick={() => onLogout(dispatch)}
             >
-              <MdLogout className="mr-2" />
+              <MdLogout className={visible == false ? "mr-2" : "m-0"} />
               <span>{visible == false ? "Logout" : ""}</span>
             </button>
           </li>

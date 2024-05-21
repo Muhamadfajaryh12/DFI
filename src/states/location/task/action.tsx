@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import TaskLocationAPI, {
-  InputTaskLocationProps,
-} from "../../../API/location/TaskLocationAPI";
+import TaskLocationAPI from "../../../API/location/TaskLocationAPI";
+import { InputTaskLocationProps } from "../../../types/location/TaskLocationType";
 
 const ActionType = {
   GET_TASK_LOCATION: "GET_TASK_LOCATION",
@@ -29,11 +28,11 @@ const setDetailTaskLocationActionCreator = (task_location: any) => {
   };
 };
 
-const setStoreTaskLocationActionCreator = (task_location: any) => {
+const setStoreTaskLocationActionCreator = (tasked_location: any) => {
   return {
     type: ActionType.STORE_TASK_LOCATION,
     payload: {
-      task_location,
+      tasked_location,
     },
   };
 };
@@ -47,11 +46,11 @@ const setUpdateTaskLocationActionCreator = (task_location: any) => {
   };
 };
 
-const setDeleteTaskLocationActionCreator = (task_location: any) => {
+const setDeleteTaskLocationActionCreator = (tasked_location: any) => {
   return {
     type: ActionType.DELETE_TASK_LOCATION,
     payload: {
-      task_location,
+      tasked_location,
     },
   };
 };
@@ -60,6 +59,7 @@ const asyncGetTaskLocation = () => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await TaskLocationAPI.getTaskLocation();
+      console.log(response);
       dispatch(setGetTaskLocationActionCreator(response?.data));
       return response;
     } catch (error) {

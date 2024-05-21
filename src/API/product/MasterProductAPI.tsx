@@ -1,11 +1,5 @@
 import axios from "axios";
-
-export interface InputMasterProductProps {
-  id?: number;
-  product_name: string;
-  barcode: number;
-  category_id: number;
-}
+import { InputMasterProductProps } from "../../types/product/MasterProductType";
 
 const MasterProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/master";

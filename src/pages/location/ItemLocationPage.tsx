@@ -12,24 +12,30 @@ import {
 import TableMain from "../../components/TableMain";
 import { useAppSelector } from "../../hooks/useRedux";
 import axios from "axios";
+import { ToastSuccess } from "../../components/common/MessageToast";
 
-const ItemLocationPage = () => {
+const ItemLocationPage = (props: any) => {
+  const { toggle } = props;
+
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
-  const { item_location = [] } = useAppSelector((state) => state);
+  const { item_location = [] } = useAppSelector((state) => state.item_location);
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
     setValue,
+    reset,
   } = useForm();
 
-  const dataTableHeader = [{ name: "No" }, { name: "Item_Name" }];
+  const dataTableHeader = [{ name: "No" }, { name: "Item Name" }];
+  const getItemLocation = (dispatch: any) => {
+    dispatch(asyncGetItemLocation());
+  };
 
   useEffect(() => {
-    dispatch(asyncGetItemLocation());
+    getItemLocation(dispatch);
   }, [dispatch]);
 
   useEffect(() => {
@@ -41,6 +47,7 @@ const ItemLocationPage = () => {
         data: { data },
       } = response;
       setValue("id_item_location", data.id);
+      setValue("name_item_location", data.item_name);
       console.log(data);
       return setDatas(data);
     };
@@ -51,24 +58,36 @@ const ItemLocationPage = () => {
   }, [itemId]);
 
   const storeItemLocation = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncStoreItemLocation({
         item_name: data.name_item_location,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+      reset();
+    }
   };
 
   const updateItemLocation = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncUpdateItemLocation({
         id: data.id_item_location,
         item_name: data.name_item_location,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const deleteItemLocation = async (dispatch: any, data: any) => {
-    return await dispatch(asyncDeleteItemLocation(data.id_item_location));
+    const response: any = await dispatch(
+      asyncDeleteItemLocation(data.id_item_location)
+    );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const onStore = async (data: any, e: any) => {
@@ -84,6 +103,21 @@ const ItemLocationPage = () => {
     e.preventDefault();
     await deleteItemLocation(dispatch, data);
   };
+  const layoutModalDetail = (data: any) => {
+    return (
+      <>
+        <div className="flex justify-evenly items-center">
+          <div className="">
+            <div className="grid grid-cols-4 gap-2">
+              <label className="col-span-1">Item Name</label>
+              <p className="">:</p>
+              <h6 className="">{data?.item_name}</h6>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
 
   const layoutModalStore = () => {
     return (
@@ -97,12 +131,14 @@ const ItemLocationPage = () => {
             error={errors.name_item_location}
             required={true}
           />
-          <button
-            type="submit"
-            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-          >
-            Submit
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </>
     );
@@ -120,12 +156,14 @@ const ItemLocationPage = () => {
             error={errors.name_item_location}
             required={true}
           />
-          <button
-            type="submit"
-            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-          >
-            Submit
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </>
     );
@@ -146,20 +184,21 @@ const ItemLocationPage = () => {
       </>
     );
   };
+  const dataFormat = item_location.map((item: any, index: number) => ({
+    no: index + 1,
+    "item name": item?.item_name,
+    id: item?.id,
+  }));
   return (
     <>
-      <Header title="Item Location" />
+      <Header title="Item Location" toggle={toggle} />
       <main className="p-2">
         <TableMain
           headers={dataTableHeader}
-          body={item_location?.item_location?.map(
-            (item: any, index: number) => ({
-              ...item,
-              no: index + 1,
-            })
-          )}
+          body={dataFormat}
           contentModal={{
             store: layoutModalStore(),
+            detail: layoutModalDetail(datas),
             update: layoutModalUpdate(),
             delete: layoutModalDelete(),
           }}

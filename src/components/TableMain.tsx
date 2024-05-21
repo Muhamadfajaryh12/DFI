@@ -5,6 +5,8 @@ import { FilterMatchMode } from "primereact/api";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
+import { IconField } from "primereact/iconfield";
+import { InputIcon } from "primereact/inputicon";
 
 const TableMain = (props: any) => {
   const { headers, body, contentModal, itemId } = props;
@@ -43,7 +45,8 @@ const TableMain = (props: any) => {
   }));
 
   const exportPdf = () => {
-    import("jspdf").then((jsPDF: any) => {
+    import("jspdf").then((jspdfModule) => {
+      const jsPDF = jspdfModule.default;
       import("jspdf-autotable").then(() => {
         const doc = new jsPDF();
 
@@ -53,48 +56,78 @@ const TableMain = (props: any) => {
     });
   };
 
-  const renderHeader = () => {
-    return (
-      <div className="flex justify-between w-full ">
-        <div className=" flex">
-          <Button
-            label="Create"
-            icon="pi pi-plus"
-            className="mx-2"
-            onClick={() => handleOpenModal("store", null)}
-          />
+  const exportExcel = () => {
+    import("xlsx").then((xlsx) => {
+      const worksheet = xlsx.utils.json_to_sheet(body);
+      const workbook = { Sheets: { data: worksheet }, SheetNames: ["data"] };
+      const excelBuffer = xlsx.write(workbook, {
+        bookType: "xlsx",
+        type: "array",
+      });
 
-          <span className="p-input-icon-left">
-            <i className="pi pi-search" />
-            <InputText
-              value={globalFilterValue}
-              onChange={onGlobalFilterChange}
-              placeholder="Keyword Search"
-            />
-          </span>
-        </div>
-        <div className="flex">
-          <Button
-            label="XLSX"
-            className="mx-2 p-button-success"
-            icon="pi pi-file-excel"
-          />
-
-          <Button
-            label="PDF"
-            icon="pi pi-file-pdf"
-            className="p-button-danger"
-            onClick={exportPdf}
-            data-pr-tooltip="PDF"
-          />
-        </div>
-      </div>
-    );
+      saveAsExcelFile(excelBuffer);
+    });
   };
+
+  const saveAsExcelFile = (buffer: any) => {
+    import("file-saver").then((module: any) => {
+      if (module && module.default) {
+        const EXCEL_TYPE =
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8";
+        const EXCEL_EXTENSION = ".xlsx";
+        const data = new Blob([buffer], {
+          type: EXCEL_TYPE,
+        });
+
+        module.default.saveAs(
+          data,
+          "export_" + new Date().getTime() + EXCEL_EXTENSION
+        );
+      }
+    });
+  };
+
+  const renderHeader = () => (
+    <div className="flex flex-wrap justify-between w-full ">
+      <div className=" flex flex-wrap justify-items-center justify-center gap-1">
+        <Button
+          label="Create"
+          icon="pi pi-plus"
+          className="sm:w-40 w-72"
+          onClick={() => handleOpenModal("store", null)}
+        />
+        <IconField iconPosition="left" className="w-72">
+          <InputIcon className="pi pi-search" />
+          <InputText
+            value={globalFilterValue}
+            onChange={onGlobalFilterChange}
+            placeholder="Keyword Search"
+            className="w-72"
+          />
+        </IconField>
+      </div>
+      <div className="flex flex-wrap gap-1 justify-items-center justify-center w-full">
+        <Button
+          label="XLSX"
+          className="sm:w-40 p-button-success w-72"
+          onClick={exportExcel}
+          icon="pi pi-file-excel"
+        />
+
+        <Button
+          label="PDF"
+          icon="pi pi-file-pdf"
+          className="p-button-danger sm:w-40 w-72 "
+          onClick={exportPdf}
+          data-pr-tooltip="PDF"
+        />
+      </div>
+    </div>
+  );
 
   const actionTemplate = (data: any) => {
     return (
-      <div className="flex justify-center">
+      <div className="flex">
         <Button
           icon="pi pi-info-circle"
           className=" mx-1 p-button-primary p-mr-2"
@@ -155,7 +188,17 @@ const TableMain = (props: any) => {
         <Column field="id" header="Action" body={actionTemplate} />
       </DataTable>
       <Dialog
-        header="Header"
+        header={
+          modalType === "store"
+            ? "Create"
+            : modalType === "update"
+            ? "Update"
+            : modalType === "delete"
+            ? "Delete"
+            : modalType === "detail"
+            ? "Detail"
+            : ""
+        }
         visible={visible}
         style={{ width: "50vw" }}
         onHide={() => setVisible(false)}

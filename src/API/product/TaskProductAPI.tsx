@@ -1,15 +1,5 @@
 import axios from "axios";
-
-export interface InputTaskProductProps {
-  id?: number;
-  task_type: string;
-  std_value: string | number;
-  remark: string;
-  min_spec: string;
-  max_spec: string;
-  id_master_product: number;
-  id_item_product: number;
-}
+import { InputTaskProductProps } from "../../types/product/TaskProductType";
 
 const TaskProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/task";

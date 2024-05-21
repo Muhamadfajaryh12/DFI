@@ -1,14 +1,5 @@
 import axios from "axios";
-
-export interface InputPatrolLocationProps {
-  id?: number;
-  patrol_type: string;
-  patrol_value: string;
-  remark: string;
-  id_master_location: number;
-  id_item_location: number;
-  id_user: number;
-}
+import { InputPatrolLocationProps } from "../../types/location/PatrolLocationType";
 
 const PatrolLocationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/locations/patrol";
@@ -43,6 +34,7 @@ const PatrolLocationAPI = (() => {
     patrol_type,
     patrol_value,
     remark,
+    patrol_status,
     id_master_location,
     id_item_location,
     id_user,
@@ -52,6 +44,7 @@ const PatrolLocationAPI = (() => {
         patrol_type,
         patrol_value,
         remark,
+        patrol_status,
         id_master_location,
         id_item_location,
         id_user,
@@ -59,6 +52,7 @@ const PatrolLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -70,6 +64,7 @@ const PatrolLocationAPI = (() => {
     patrol_type,
     patrol_value,
     remark,
+    patrol_status,
     id_master_location,
     id_item_location,
     id_user,
@@ -79,6 +74,7 @@ const PatrolLocationAPI = (() => {
         patrol_type,
         patrol_value,
         remark,
+        patrol_status,
         id_master_location,
         id_item_location,
         id_user,
@@ -86,6 +82,7 @@ const PatrolLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);

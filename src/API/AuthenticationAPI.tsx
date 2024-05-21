@@ -3,9 +3,10 @@ import axios from "axios";
 const AuthenticationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/user";
 
-  const setAccessToken = (token: string, id: string) => {
+  const setAccessToken = (token: string, id: string, role: string) => {
     localStorage.setItem("access_token", token);
     localStorage.setItem("id", id);
+    localStorage.setItem("role", role);
   };
 
   const getAccessToken = () => {
@@ -24,25 +25,26 @@ const AuthenticationAPI = (() => {
         username,
         password,
       });
-
+      console.log(response);
       if (response.data.status != false) {
         const {
           data: {
             data: {
               token,
-              user: { id },
+              user: { id, role },
             },
             status,
             message,
           },
         } = response;
         console.log(response);
-        return { id, token, status, message };
+        return { id, role, token, status, message };
       }
     } catch (error: any) {
       const {
         data: { status, message },
       } = error.response;
+      console.log(error);
       return { message, status };
     }
   };
@@ -70,23 +72,27 @@ const AuthenticationAPI = (() => {
     no_telp,
     jenis_kelamin,
     kota,
+    image,
   }: {
     id: number;
     name: string;
     no_telp: number;
     jenis_kelamin: string;
     kota: string;
+    image?: File;
   }) => {
     try {
-      const response = await axios.put(`${BASE_URL}/${id}`, {
+      const response = await axios.post(`${BASE_URL}/${id}`, {
         name,
         no_telp,
         jenis_kelamin,
         kota,
+        image,
       });
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);

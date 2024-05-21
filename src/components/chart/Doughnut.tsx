@@ -1,50 +1,36 @@
-import { useState, useEffect } from "react";
-import { Chart } from "primereact/chart";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
 
-export default function Doughnut() {
-  const [chartData, setChartData] = useState({});
-  const [chartOptions, setChartOptions] = useState({});
-
-  useEffect(() => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    const data = {
-      labels: ["A", "B", "C"],
-      datasets: [
-        {
-          data: [540, 325, 702],
-          backgroundColor: [
-            documentStyle.getPropertyValue("--blue-500"),
-            documentStyle.getPropertyValue("--yellow-500"),
-            documentStyle.getPropertyValue("--green-500"),
-          ],
-          hoverBackgroundColor: [
-            documentStyle.getPropertyValue("--blue-400"),
-            documentStyle.getPropertyValue("--yellow-400"),
-            documentStyle.getPropertyValue("--green-400"),
-          ],
-        },
-      ],
-    };
-    const options = {
-      plugins: {
-        legend: {
-          labels: {
-            usePointStyle: true,
-          },
-        },
+const Doughnut = (props: any) => {
+  const { datas } = props;
+  ChartJS.register(ArcElement, Tooltip, Legend);
+  const data = {
+    labels: datas?.data?.map((item: any) => item.product.product_name),
+    datasets: [
+      {
+        label: "Total",
+        data: datas?.data?.map((item: any) => item.total_count),
+        backgroundColor: [
+          "rgba(255, 99, 132 )",
+          "rgba(54, 162, 235)",
+          "rgba(255, 206, 86)",
+          "rgba(75, 192, 192)",
+          "rgba(153, 102, 255)",
+          "rgba(255, 159, 64)",
+        ],
       },
-    };
+    ],
+  };
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+      },
+    },
+  };
+  return <Pie data={data} options={options} width={100} height={100} />;
+};
 
-    setChartData(data);
-    setChartOptions(options);
-  }, []);
-
-  return (
-    <Chart
-      type="pie"
-      data={chartData}
-      options={chartOptions}
-      className="h-64"
-    />
-  );
-}
+export default Doughnut;

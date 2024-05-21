@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import ItemProductAPI, {
-  InputItemProductProps,
-} from "../../../API/product/ItemProductAPI";
+import ItemProductAPI from "../../../API/product/ItemProductAPI";
+import { InputItemProductProps } from "../../../types/product/ItemProductType";
 
 const ActionType = {
   GET_ITEM_PRODUCT: "GET_ITEM_PRODUCT",
@@ -20,38 +19,38 @@ const setGetItemProductActionCreator = (item_product: any) => {
   };
 };
 
-const setDetailItemProductActionCreator = (item_product: any) => {
+const setDetailItemProductActionCreator = (item_producted: any) => {
   return {
     type: ActionType.DETAIL_ITEM_PRODUCT,
     payload: {
-      item_product,
+      item_producted,
     },
   };
 };
 
-const setStoreItemProductActionCreator = (item_product: any) => {
+const setStoreItemProductActionCreator = (item_producted: any) => {
   return {
     type: ActionType.STORE_ITEM_PRODUCT,
     payload: {
-      item_product,
+      item_producted,
     },
   };
 };
 
-const setUpdateItemProductActionCreator = (item_product: any) => {
+const setUpdateItemProductActionCreator = (item_producted: any) => {
   return {
     type: ActionType.UPDATE_ITEM_PRODUCT,
     payload: {
-      item_product,
+      item_producted,
     },
   };
 };
 
-const setDeleteItemProductActionCreator = (item_product: any) => {
+const setDeleteItemProductActionCreator = (item_producted: any) => {
   return {
     type: ActionType.DELETE_ITEM_PRODUCT,
     payload: {
-      item_product,
+      item_producted,
     },
   };
 };
@@ -83,7 +82,6 @@ const asyncDetailItemProduct = (id: number) => {
 const asyncStoreItemProduct = ({
   item_name,
   item_value,
-  remark,
   category_id,
 }: InputItemProductProps) => {
   return async (dispatch: Dispatch) => {
@@ -91,7 +89,6 @@ const asyncStoreItemProduct = ({
       const response = await ItemProductAPI.storeItemProduct({
         item_name,
         item_value,
-        remark,
         category_id,
       });
       dispatch(setStoreItemProductActionCreator(response?.data));
@@ -106,7 +103,6 @@ const asyncUpdateItemProduct = ({
   id,
   item_name,
   item_value,
-  remark,
   category_id,
 }: InputItemProductProps) => {
   return async (dispatch: Dispatch) => {
@@ -115,7 +111,6 @@ const asyncUpdateItemProduct = ({
         id,
         item_name,
         item_value,
-        remark,
         category_id,
       });
       dispatch(setUpdateItemProductActionCreator(response?.data));

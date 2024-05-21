@@ -1,5 +1,5 @@
 type InputProps = {
-  type: "text" | "password" | "email" | "number" | "hidden";
+  type: "text" | "password" | "email" | "number" | "hidden" | "date";
   placeholder: string;
   disabled: boolean;
   required: boolean;

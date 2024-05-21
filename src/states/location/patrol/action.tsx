@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import PatrolLocationAPI, {
-  InputPatrolLocationProps,
-} from "../../../API/location/PatrolLocationAPI";
+import PatrolLocationAPI from "../../../API/location/PatrolLocationAPI";
+import { InputPatrolLocationProps } from "../../../types/location/PatrolLocationType";
 
 const ActionType = {
   GET_PATROL_LOCATION: "GET_PATROL_LOCATION",
@@ -20,38 +19,38 @@ const setGetPatrolLocationActionCreator = (patrol_location: any) => {
   };
 };
 
-const setDetailPatrolLocationActionCreator = (patrol_location: any) => {
+const setDetailPatrolLocationActionCreator = (patroled_location: any) => {
   return {
     type: ActionType.DETAIL_PATROL_LOCATION,
     payload: {
-      patrol_location,
+      patroled_location,
     },
   };
 };
 
-const setStorePatrolLocationActionCreator = (patrol_location: any) => {
+const setStorePatrolLocationActionCreator = (patroled_location: any) => {
   return {
     type: ActionType.STORE_PATROL_LOCATION,
     payload: {
-      patrol_location,
+      patroled_location,
     },
   };
 };
 
-const setUpdatePatrolLocationActionCreator = (patrol_location: any) => {
+const setUpdatePatrolLocationActionCreator = (patroled_location: any) => {
   return {
     type: ActionType.UPDATE_PATROL_LOCATION,
     payload: {
-      patrol_location,
+      patroled_location,
     },
   };
 };
 
-const setDeletePatrolLocationActionCreator = (patrol_location: any) => {
+const setDeletePatrolLocationActionCreator = (patroled_location: any) => {
   return {
     type: ActionType.DELETE_PATROL_LOCATION,
     payload: {
-      patrol_location,
+      patroled_location,
     },
   };
 };
@@ -83,6 +82,7 @@ const asyncDetailPatrolLocation = (id: number) => {
 const asyncStorePatrolLocation = ({
   patrol_type,
   patrol_value,
+  patrol_status,
   remark,
   id_master_location,
   id_item_location,
@@ -93,6 +93,7 @@ const asyncStorePatrolLocation = ({
       const response = await PatrolLocationAPI.storePatrolLocation({
         patrol_type,
         patrol_value,
+        patrol_status,
         remark,
         id_master_location,
         id_item_location,
@@ -110,6 +111,7 @@ const asyncUpdatePatrolLocation = ({
   id,
   patrol_type,
   patrol_value,
+  patrol_status,
   remark,
   id_master_location,
   id_item_location,
@@ -121,6 +123,7 @@ const asyncUpdatePatrolLocation = ({
         id,
         patrol_type,
         patrol_value,
+        patrol_status,
         remark,
         id_master_location,
         id_item_location,

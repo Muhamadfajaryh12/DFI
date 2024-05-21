@@ -35,7 +35,11 @@ const asyncLogin = ({
     try {
       const response = await AuthenticationAPI.login({ username, password });
       if (response?.status == true) {
-        AuthenticationAPI.setAccessToken(response?.token, response?.id);
+        AuthenticationAPI.setAccessToken(
+          response?.token,
+          response?.id,
+          response?.role
+        );
         dispatch(setLoginActionCreator(response?.token));
       }
       return response;
@@ -52,6 +56,7 @@ const asyncLogout = () => {
     dispatch(setLogoutActionCreator());
     localStorage.removeItem("access_token");
     localStorage.removeItem("id");
+    localStorage.removeItem("role");
     return response;
   };
 };

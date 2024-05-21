@@ -54,7 +54,7 @@ const Selected = ({
                       value={item.id}
                       selected={item.id === value}
                     >
-                      {item.id}
+                      {item.name}
                     </option>
                   )
                 )}

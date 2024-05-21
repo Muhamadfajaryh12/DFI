@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import MasterProductAPI, {
-  InputMasterProductProps,
-} from "../../../API/product/MasterProductAPI";
+import MasterProductAPI from "../../../API/product/MasterProductAPI";
+import { InputMasterProductProps } from "../../../types/product/MasterProductType";
 
 const ActionType = {
   GET_MASTER_PRODUCT: "GET_MASTER_PRODUCT",

@@ -46,7 +46,7 @@ const EmployeeAPI = (() => {
     kota: string;
   }) => {
     try {
-      const response = await axios.post(`${BASE_URL}`, {
+      const response = await axios.post(`${BASE_URL}/register`, {
         name,
         username,
         password,
@@ -58,6 +58,7 @@ const EmployeeAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -67,8 +68,6 @@ const EmployeeAPI = (() => {
   const updateEmployee = async ({
     id,
     name,
-    username,
-    password,
     role,
     no_telp,
     jenis_kelamin,
@@ -76,18 +75,14 @@ const EmployeeAPI = (() => {
   }: {
     id: number;
     name: string;
-    username: string;
-    password: string;
     role: string;
     no_telp: number;
     jenis_kelamin: string;
     kota: string;
   }) => {
     try {
-      const response = await axios.put(`${BASE_URL}/${id}`, {
+      const response = await axios.post(`${BASE_URL}/update/${id}`, {
         name,
-        username,
-        password,
         role,
         no_telp,
         jenis_kelamin,
@@ -96,6 +91,7 @@ const EmployeeAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -108,6 +104,7 @@ const EmployeeAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);

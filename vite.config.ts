@@ -1,14 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { VitePWA } from "vite-plugin-pwa";
+import { VitePWA, VitePWAOptions } from "vite-plugin-pwa";
 
-const manifestForPlugIn = {
+const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: "prompt",
-  includeAssests: ["icon-72.ico", "icon-72.png", "vite.svg"],
+  includeAssets: ["icon-72.ico", "icon-72.png", "maskable-icon.png"],
   manifest: {
-    name: "React-vite-app",
-    short_name: "react-vite-app",
-    description: "I am a simple vite app",
+    name: "E-Checklist",
+    short_name: "E-Checklist",
+    description: "Daesang Food Indonesia Application",
     icons: [
       {
         src: "/icon-192.png",
@@ -29,7 +29,7 @@ const manifestForPlugIn = {
         purpose: "apple touch icon",
       },
       {
-        src: "/icon-512.png",
+        src: "/maskable-icon.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any maskable",
@@ -43,7 +43,6 @@ const manifestForPlugIn = {
     orientation: "portrait",
   },
 };
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), VitePWA(manifestForPlugIn)],
 });

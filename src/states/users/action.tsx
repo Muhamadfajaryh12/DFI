@@ -44,12 +44,14 @@ const asyncUpdateProfile = ({
   no_telp,
   jenis_kelamin,
   kota,
+  image,
 }: {
   id: number;
   name: string;
   no_telp: number;
   jenis_kelamin: string;
   kota: string;
+  image?: File;
 }) => {
   return async (dispatch: Dispatch) => {
     try {
@@ -59,6 +61,7 @@ const asyncUpdateProfile = ({
         no_telp,
         jenis_kelamin,
         kota,
+        image,
       });
       dispatch(setUpdateProfileActionCreator(response?.data));
       return response;

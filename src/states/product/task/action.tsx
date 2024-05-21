@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import TaskProductAPI, {
-  InputTaskProductProps,
-} from "../../../API/product/TaskProductAPI";
+import TaskProductAPI from "../../../API/product/TaskProductAPI";
+import { InputTaskProductProps } from "../../../types/product/TaskProductType";
 
 const ActionType = {
   GET_TASK_PRODUCT: "GET_TASK_PRODUCT",
@@ -20,38 +19,38 @@ const setGetTaskProductActionCreator = (task_product: any) => {
   };
 };
 
-const setDetailTaskProductActionCreator = (task_product: any) => {
+const setDetailTaskProductActionCreator = (task_producted: any) => {
   return {
     type: ActionType.DETAIL_TASK_PRODUCT,
     payload: {
-      task_product,
+      task_producted,
     },
   };
 };
 
-const setStoreTaskProductActionCreator = (task_product: any) => {
+const setStoreTaskProductActionCreator = (task_producted: any) => {
   return {
     type: ActionType.STORE_TASK_PRODUCT,
     payload: {
-      task_product,
+      task_producted,
     },
   };
 };
 
-const setUpdateTaskProductActionCreator = (task_product: any) => {
+const setUpdateTaskProductActionCreator = (task_producted: any) => {
   return {
     type: ActionType.UPDATE_TASK_PRODUCT,
     payload: {
-      task_product,
+      task_producted,
     },
   };
 };
 
-const setDeleteTaskProductActionCreator = (task_product: any) => {
+const setDeleteTaskProductActionCreator = (task_producted: any) => {
   return {
     type: ActionType.DELETE_TASK_PRODUCT,
     payload: {
-      task_product,
+      task_producted,
     },
   };
 };

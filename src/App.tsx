@@ -16,19 +16,23 @@ import MasterLocationPage from "./pages/location/MasterLocationPage";
 import ItemLocationPage from "./pages/location/ItemLocationPage";
 import TaskLocationPage from "./pages/location/TaskLocationPage";
 import PatrolLocationPage from "./pages/location/PatrolLocationPage";
-import NotFoundPage from "./pages/NotFoundPage";
 import Footer from "./components/common/Footer";
 import SidebarMain from "./components/SidebarMain";
 import { useAppSelector } from "./hooks/useRedux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { asyncPreload } from "./states/preload/action";
 import { AppDispatch } from "./states/store";
 import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { auth = null, preload = false } = useAppSelector((state) => state);
+  const [visible, setVisible] = useState(false);
   const dispatch: AppDispatch = useDispatch();
-
+  const toggle = () => {
+    setVisible(!visible);
+  };
   useEffect(() => {
     dispatch(asyncPreload());
   }, [dispatch]);
@@ -38,36 +42,65 @@ function App() {
   }
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        className={"text-white"}
+      />
       <Router>
         {auth != null && (
-          <div className="h-screen">
+          <div className="">
             <div className="flex">
-              <SidebarMain />
-              <div className="h-screen w-screen">
+              <SidebarMain visible={visible} />
+              <div className="h-screen w-screen bg-gray-100">
                 <Routes>
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/dashboard" element={<DashboardPage />} />
-                  <Route path="/category" element={<CategoryPage />} />
-                  <Route path="/employee" element={<EmployePage />} />
+                  <Route
+                    path="/profile"
+                    element={<ProfilePage toggle={toggle} />}
+                  />
+                  <Route
+                    path="/dashboard"
+                    element={<DashboardPage toggle={toggle} />}
+                  />
+                  <Route
+                    path="/category"
+                    element={<CategoryPage toggle={toggle} />}
+                  />
+                  <Route
+                    path="/employee"
+                    element={<EmployePage toggle={toggle} />}
+                  />
                   <Route
                     path="/product/master"
-                    element={<MasterProductPage />}
+                    element={<MasterProductPage toggle={toggle} />}
                   />
-                  <Route path="/product/item" element={<ItemProductPage />} />
-                  <Route path="/product/task" element={<TaskProductPage />} />
+                  <Route
+                    path="/product/item"
+                    element={<ItemProductPage toggle={toggle} />}
+                  />
+                  <Route
+                    path="/product/task"
+                    element={<TaskProductPage toggle={toggle} />}
+                  />
                   <Route
                     path="/product/patrol"
-                    element={<PatrolProductPage />}
+                    element={<PatrolProductPage toggle={toggle} />}
                   />
                   <Route
                     path="/location/master"
-                    element={<MasterLocationPage />}
+                    element={<MasterLocationPage toggle={toggle} />}
                   />
-                  <Route path="/location/item" element={<ItemLocationPage />} />
-                  <Route path="/location/task" element={<TaskLocationPage />} />
+                  <Route
+                    path="/location/item"
+                    element={<ItemLocationPage toggle={toggle} />}
+                  />
+                  <Route
+                    path="/location/task"
+                    element={<TaskLocationPage toggle={toggle} />}
+                  />
                   <Route
                     path="/location/patrol"
-                    element={<PatrolLocationPage />}
+                    element={<PatrolLocationPage toggle={toggle} />}
                   />
                 </Routes>
                 <Footer />
@@ -76,10 +109,16 @@ function App() {
           </div>
         )}
 
-        <Routes>
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/" element={<LoginPage />} />
-        </Routes>
+        <>
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            className={"text-white"}
+          />
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+          </Routes>
+        </>
       </Router>
     </>
   );

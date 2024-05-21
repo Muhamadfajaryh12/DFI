@@ -4,6 +4,15 @@ import App from "./App.tsx";
 import "./index.css";
 import store from "./states/store.tsx";
 import { Provider } from "react-redux";
+// import { registerSW } from "virtual:pwa-register";
+
+// const updateSW = registerSW({
+//   onNeedRefresh() {
+//     if (confirm("New content available. Reload?")) {
+//       updateSW(true);
+//     }
+//   },
+// });
 
 ReactDOM.render(
   <Provider store={store}>

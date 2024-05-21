@@ -1,13 +1,6 @@
 import axios from "axios";
+import { InputPatrolProductProps } from "../../types/product/PatrolProductType";
 
-export interface InputPatrolProductProps {
-  id?: number;
-  patrol_type: string;
-  patrol_value: number | string;
-  id_master_product: number;
-  id_item_product: number;
-  id_user: number;
-}
 const PatrolProductAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/products/patrol";
 
@@ -40,6 +33,8 @@ const PatrolProductAPI = (() => {
   const storePatrolProduct = async ({
     patrol_type,
     patrol_value,
+    patrol_status,
+    remark,
     id_master_product,
     id_item_product,
     id_user,
@@ -48,6 +43,8 @@ const PatrolProductAPI = (() => {
       const response = await axios.post(`${BASE_URL}`, {
         patrol_type,
         patrol_value,
+        patrol_status,
+        remark,
         id_master_product,
         id_item_product,
         id_user,
@@ -55,6 +52,7 @@ const PatrolProductAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -65,6 +63,8 @@ const PatrolProductAPI = (() => {
     id,
     patrol_type,
     patrol_value,
+    patrol_status,
+    remark,
     id_master_product,
     id_item_product,
     id_user,
@@ -73,6 +73,8 @@ const PatrolProductAPI = (() => {
       const response = await axios.put(`${BASE_URL}/${id}`, {
         patrol_type,
         patrol_value,
+        patrol_status,
+        remark,
         id_master_product,
         id_item_product,
         id_user,

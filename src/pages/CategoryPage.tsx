@@ -18,7 +18,8 @@ type FormInputs = {
   name_category: string;
 };
 
-const CategoryPage = () => {
+const CategoryPage = (props: any) => {
+  const { toggle } = props;
   const { categorys = [] } = useAppSelector((state) => state);
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -54,6 +55,7 @@ const CategoryPage = () => {
   const getCategory = (dispatch: any) => {
     dispatch(asyncGetCategory());
   };
+
   useEffect(() => {
     getCategory(dispatch);
   }, [dispatch]);
@@ -169,12 +171,12 @@ const CategoryPage = () => {
     );
   };
   return (
-    <div>
-      <Header title="Category" />
+    <div className="p-2 m-2">
+      <Header title="Category" toggle={toggle} />
       <main>
         <TableMain
           headers={header}
-          body={categorys.categorys.map((item: any, index: number) => ({
+          body={categorys?.categorys?.map((item: any, index: number) => ({
             ...item,
             no: index + 1,
           }))}

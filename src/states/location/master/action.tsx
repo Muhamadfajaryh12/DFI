@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import MasterLocationAPI, {
-  InputMasterLocationProps,
-} from "../../../API/location/MasterLocationAPI";
+import MasterLocationAPI from "../../../API/location/MasterLocationAPI";
+import { InputMasterLocationProps } from "../../../types/location/MasterLocationType";
 
 const ActionType = {
   GET_MASTER_LOCATION: "GET_MASTER_LOCATION",

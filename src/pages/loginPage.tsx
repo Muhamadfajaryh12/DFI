@@ -1,6 +1,5 @@
 import { Card } from "primereact/card";
 import { Carousel } from "primereact/carousel";
-import MessageToast from "../components/common/MessageToast";
 import { asyncLogin } from "../states/authentication/action";
 import { useForm } from "react-hook-form";
 import Input from "../components/form/Input";
@@ -8,10 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../hooks/useRedux";
 import { BiLock, BiUser } from "react-icons/bi";
 import LogoDFI from "../assets/logo-daesang.svg";
-// type FormInputs = {
-//   username: string;
-//   password: string;
-// };
+import { ToastError } from "../components/common/MessageToast";
 
 const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -29,10 +25,11 @@ const LoginPage = () => {
     password: string;
   }) => {
     const response: any = await dispatch(asyncLogin({ username, password }));
+    console.log(response);
     if (response.status == true) {
       navigate("/dashboard");
     } else {
-      MessageToast();
+      ToastError(response.message);
     }
   };
 
@@ -56,9 +53,9 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex justify-center h-full items-center">
-        <Card className="w-3/4 ">
-          <div className="flex justify-evenly items-center">
+      <div className="flex justify-center h-screen items-center">
+        <Card className="w-3/4 shadow-lg ">
+          <div className="flex flex-wrap justify-evenly items-center">
             <div className=" w-96 flex flex-col items-center justify-center">
               <div className="p-2 w-80 h-80">
                 <img src={LogoDFI} alt="" />
@@ -69,14 +66,14 @@ const LoginPage = () => {
                 numScroll={1}
                 orientation="horizontal"
                 itemTemplate={inlineTextTemplate}
-              ></Carousel>
+              />
             </div>
             <div className="w-1/2">
               <h2 className="font-semibold text-4xl">Sign In</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Input
                   label={"Username"}
-                  placeholder={"Input Username"}
+                  placeholder={"Username"}
                   type={"text"}
                   name={"username"}
                   register={register}
@@ -102,7 +99,6 @@ const LoginPage = () => {
                   Submit
                 </button>
               </form>
-              <MessageToast />
             </div>
           </div>
         </Card>

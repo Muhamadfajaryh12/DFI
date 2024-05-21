@@ -1,7 +1,6 @@
 import { Dispatch } from "redux";
-import PatrolProductAPI, {
-  InputPatrolProductProps,
-} from "../../../API/product/PatrolProductAPI";
+import PatrolProductAPI from "../../../API/product/PatrolProductAPI";
+import { InputPatrolProductProps } from "../../../types/product/PatrolProductType";
 
 const ActionType = {
   GET_PATROL_PRODUCT: "GET_PATROL_PRODUCT",
@@ -20,38 +19,38 @@ const setGetPatrolProductActionCreator = (patrol_product: any) => {
   };
 };
 
-const setDetailPatrolProductActionCreator = (patrol_product: any) => {
+const setDetailPatrolProductActionCreator = (patrol_producted: any) => {
   return {
     type: ActionType.DETAIL_PATROL_PRODUCT,
     payload: {
-      patrol_product,
+      patrol_producted,
     },
   };
 };
 
-const setStorePatrolProductActionCreator = (patrol_product: any) => {
+const setStorePatrolProductActionCreator = (patrol_producted: any) => {
   return {
     type: ActionType.STORE_PATROL_PRODUCT,
     payload: {
-      patrol_product,
+      patrol_producted,
     },
   };
 };
 
-const setUpdatePatrolProductActionCreator = (patrol_product: any) => {
+const setUpdatePatrolProductActionCreator = (patrol_producted: any) => {
   return {
     type: ActionType.UPDATE_PATROL_PRODUCT,
     payload: {
-      patrol_product,
+      patrol_producted,
     },
   };
 };
 
-const setDeletePatrolProductActionCreator = (patrol_product: any) => {
+const setDeletePatrolProductActionCreator = (patrol_producted: any) => {
   return {
     type: ActionType.DELETE_PATROL_PRODUCT,
     payload: {
-      patrol_product,
+      patrol_producted,
     },
   };
 };
@@ -83,6 +82,8 @@ const asyncDetailPatrolProduct = (id: number) => {
 const asyncStorePatrolProduct = ({
   patrol_type,
   patrol_value,
+  patrol_status,
+  remark,
   id_master_product,
   id_item_product,
   id_user,
@@ -92,6 +93,8 @@ const asyncStorePatrolProduct = ({
       const response = await PatrolProductAPI.storePatrolProduct({
         patrol_type,
         patrol_value,
+        patrol_status,
+        remark,
         id_master_product,
         id_item_product,
         id_user,
@@ -108,6 +111,8 @@ const asyncUpdatePatrolProduct = ({
   id,
   patrol_type,
   patrol_value,
+  patrol_status,
+  remark,
   id_master_product,
   id_item_product,
   id_user,
@@ -116,8 +121,10 @@ const asyncUpdatePatrolProduct = ({
     try {
       const response = await PatrolProductAPI.updatePatrolProduct({
         id,
+        patrol_status,
         patrol_type,
         patrol_value,
+        remark,
         id_master_product,
         id_item_product,
         id_user,

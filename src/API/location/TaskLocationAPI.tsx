@@ -1,13 +1,5 @@
 import axios from "axios";
-
-export interface InputTaskLocationProps {
-  id?: number;
-  task_type: string;
-  std_value: string;
-  remark: string;
-  id_master_location: number;
-  id_item_location: number;
-}
+import { InputTaskLocationProps } from "../../types/location/TaskLocationType";
 
 const TaskLocationAPI = (() => {
   const BASE_URL = "http://127.0.0.1:8000/api/locations/task";
@@ -18,7 +10,7 @@ const TaskLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
-
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);
@@ -56,6 +48,7 @@ const TaskLocationAPI = (() => {
       const {
         data: { data, status, message },
       } = response;
+      console.log(response);
       return { data, status, message };
     } catch (error) {
       console.log(error);

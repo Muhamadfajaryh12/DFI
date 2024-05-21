@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import TableMain from "../../components/TableMain";
 import Header from "../../components/common/Header";
 import { useEffect, useState } from "react";
@@ -13,9 +13,14 @@ import Input from "../../components/form/Input";
 import { useForm } from "react-hook-form";
 import Selected from "../../components/form/Selected";
 import axios from "axios";
-const MasterLocationPage = () => {
+import { ToastSuccess } from "../../components/common/MessageToast";
+const MasterLocationPage = (props: any) => {
+  const { toggle } = props;
+
   const dispatch = useDispatch();
-  const { master_location = [] } = useAppSelector((state) => state);
+  const { master_location = [] } = useAppSelector(
+    (state) => state.master_location
+  );
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
   const {
@@ -26,10 +31,13 @@ const MasterLocationPage = () => {
     setValue,
     control,
   } = useForm();
-
-  useEffect(() => {
+  const getMasterLocation = (dispatch: any) => {
     dispatch(asyncGetMasterLocation());
+  };
+  useEffect(() => {
+    getMasterLocation(dispatch);
   }, [dispatch]);
+
   useEffect(() => {
     const getDetail = async (id: number) => {
       const response = await axios.get(
@@ -49,31 +57,36 @@ const MasterLocationPage = () => {
       getDetail(itemId);
     }
   }, [itemId]);
+
   const dataSelected = [
-    { id: "Quality Control" },
-    { id: "Maintenance" },
-    { id: "Security" },
+    { id: "Quality Control", name: "Quality Control" },
+    { id: "Maintenance", name: "Maintenance" },
+    { id: "Security", name: "Security" },
   ];
 
   const dataTableHeader = [
     { name: "No" },
-    { name: "Location_Name" },
-    { name: "No_Referensi" },
-    { name: "Location_Code" },
+    { name: "Location Name" },
+    { name: "No Referensi" },
+    { name: "Location Code" },
   ];
 
   const storeMasterLocation = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncStoreMasterLocation({
         location_name: data.name_master_location,
         check_allow: data.check_allow_master_location,
         no_referensi: data.no_referensi_master_location,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+      reset();
+    }
   };
 
   const updateMasterLocation = async (dispatch: any, data: any) => {
-    return await dispatch(
+    const response: any = await dispatch(
       asyncUpdateMasterLocation({
         id: data.id_master_location,
         location_name: data.name_master_location,
@@ -81,18 +94,23 @@ const MasterLocationPage = () => {
         no_referensi: data.no_referensi_master_location,
       })
     );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const deleteMasterLocation = async (dispatch: any, data: any) => {
-    return await dispatch(asyncDeleteMasterLocation(data.id_master_location));
+    const response: any = await dispatch(
+      asyncDeleteMasterLocation(data.id_master_location)
+    );
+    if (response.status) {
+      ToastSuccess(response.message);
+    }
   };
 
   const onStore = async (data: any, e: any) => {
     e.preventDefault();
-    const response = await storeMasterLocation(dispatch, data);
-    if (response.status === true) {
-      reset();
-    }
+    await storeMasterLocation(dispatch, data);
   };
 
   const onUpdate = async (data: any, e: any) => {
@@ -133,12 +151,14 @@ const MasterLocationPage = () => {
             require={true}
             data={dataSelected}
           />
-          <button
-            type="submit"
-            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-          >
-            Submit
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </>
     );
@@ -207,12 +227,14 @@ const MasterLocationPage = () => {
             require={true}
             data={dataSelected}
           />
-          <button
-            type="submit"
-            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-          >
-            Submit
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+            >
+              Submit
+            </button>
+          </div>
         </form>
       </>
     );
@@ -233,27 +255,32 @@ const MasterLocationPage = () => {
       </>
     );
   };
+
+  const dataFormat = master_location.map((item: any, index: number) => ({
+    no: index + 1,
+    "location name": item.location_name,
+    "no referensi": item.no_referensi,
+    "location code": item.location_code,
+    id: item.id,
+  }));
   return (
     <>
-      <Header title="Master Location" />
-      <main className="p-2">
-        <TableMain
-          headers={dataTableHeader}
-          body={master_location?.master_location?.map(
-            (item: any, index: number) => ({
-              ...item,
-              no: index + 1,
-            })
-          )}
-          contentModal={{
-            store: layoutModalStore(),
-            update: layoutModalUpdate(),
-            delete: layoutModalDelete(),
-            detail: layoutModalDetail(datas),
-          }}
-          itemId={setId}
-        />
-      </main>
+      <div className="p-2 m-2 ">
+        <Header title="Master Location" toggle={toggle} />
+        <main className="p-2">
+          <TableMain
+            headers={dataTableHeader}
+            body={dataFormat}
+            contentModal={{
+              store: layoutModalStore(),
+              update: layoutModalUpdate(),
+              delete: layoutModalDelete(),
+              detail: layoutModalDetail(datas),
+            }}
+            itemId={setId}
+          />
+        </main>
+      </div>
     </>
   );
 };

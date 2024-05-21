@@ -118,8 +118,6 @@ const asyncStoreEmployee = ({
 const asyncUpdateEmployee = ({
   id,
   name,
-  username,
-  password,
   role,
   no_telp,
   jenis_kelamin,
@@ -127,8 +125,6 @@ const asyncUpdateEmployee = ({
 }: {
   id: number;
   name: string;
-  username: string;
-  password: string;
   role: string;
   no_telp: number;
   jenis_kelamin: string;
@@ -139,8 +135,6 @@ const asyncUpdateEmployee = ({
       const response = await EmployeeAPI.updateEmployee({
         id,
         name,
-        username,
-        password,
         role,
         no_telp,
         jenis_kelamin,
@@ -159,6 +153,7 @@ const asyncDeleteEmployee = async (id: number) => {
     try {
       const response = await EmployeeAPI.deleteEmployee(id);
       dispatch(setDeleteEmployeeActionCreator(response?.data));
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
