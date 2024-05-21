@@ -12,21 +12,19 @@ class Task extends Model
 
     use HasFactory;
     protected $fillable = [
-        'product_id',
-        'item_id',
+        'id_master_product',
+        'id_item_product',
         'task_type',
         'std_value',
-        'input_type',
-        'opt',
         'remark',
         'min_spec',
         'max_spec'
     ] ;
 
     public function item(){
-        return $this->belongsTo(Item::class,'item_id');
+        return $this->belongsTo(Item::class,'id_item_product');
     }
     public function product(){
-        return $this->belongsTo(Product::class,'product_id');
+        return $this->belongsTo(Product::class,'id_master_product');
     }
 }

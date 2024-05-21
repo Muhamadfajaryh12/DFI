@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatrolLocationTable extends Migration
+class CreatePatrolProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreatePatrolLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('patrol_location', function (Blueprint $table) {
+        Schema::create('patrol_product', function (Blueprint $table) {
             $table->id();
             $table->string('patrol_type');
             $table->string('patrol_value');
-            $table->string('remark')->nullable();
-            $table->text('foto')->nullable();
             $table->string('patrol_status');
-            $table->timestamps();
-            $table->foreignId('id_master_location')->constrained('master_location')->onDelete('cascade');
-            $table->foreignId('id_item_location')->constrained('item_location')->onDelete('cascade');
+            $table->string('remark')->nullable();
+            $table->foreignId('id_master_product')->constrained('master_product')->onDelete('cascade');
+            $table->foreignId('id_item_product')->constrained('item_product')->onDelete('cascade');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -34,6 +33,6 @@ class CreatePatrolLocationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patrol_location');
+        Schema::dropIfExists('patrol_product');
     }
 }

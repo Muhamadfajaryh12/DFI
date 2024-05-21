@@ -30,14 +30,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('user')->group(function () {
     Route::get('/',[UserController::class,'getAll']);
+    Route::get('/employee',[UserController::class,'get_gender_by_city']);
     Route::post('/login', [UserController::class, 'login']);
     Route::post('/register',[UserController::class, 'register']);
     Route::delete('/{id}',[UserController::class, 'delete']);
-    Route::middleware(['api', 'prefix' => 'auth'])->group(function () {
-    Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/{id}', [UserController::class, 'profile']);
-    Route::post('/pwd/{id}',[UserController::class,'changepassword']);
+    Route::post('/update/{id}',[UserController::class,'update']);
+    Route::post('/logout',[UserController::class,'logout']);
     Route::post('/{id}',[UserController::class,'changeprofile']);
+    Route::post('/pwd/{id}',[UserController::class,'changepassword']);
+    Route::middleware(['api', 'prefix' => 'auth'])->group(function () {
     });
 });
 
@@ -76,6 +78,8 @@ Route::prefix('products')->group(function(){
 
     Route::prefix('patrol')->group(function(){
         Route::get('/',[PatrolProductController::class,'getAll']);
+        Route::post('/status',[PatrolProductController::class,'getPatrol']);
+        Route::get('/mastered',[PatrolProductController::class,'getProductMaster']);
         Route::post('/',[PatrolProductController::class,'insert']);
         Route::get('/{id}',[PatrolProductController::class,'detail']);
         Route::put('/{id}',[PatrolProductController::class,'update']);

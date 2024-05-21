@@ -11,12 +11,10 @@ class TaskProductController extends Controller
 {
     public function insert(Request $request){
         $validator = Validator::make($request->all(),[
-            'product_id' => 'required',
-            'item_id'=> 'required',
+            'id_master_product' => 'required',
+            'id_item_product'=> 'required',
             'task_type'=>'required',
             'std_value'=>'required',
-            'input_type',
-            'opt',
             'remark',
             'min_spec',
             'max_spec'
@@ -27,12 +25,10 @@ class TaskProductController extends Controller
         }
         
         $task = Task::create([
-            'product_id' => $request->input('product_id'),
-            'item_id'=> $request->input('item_id'),
+            'id_master_product' => $request->input('id_master_product'),
+            'id_item_product'=> $request->input('id_item_product'),
             'task_type'=>$request->input('task_type'),
             'std_value'=>$request->input('std_value'),
-            'input_type'=>$request->input('input_type'),
-            'opt'=>$request->input('opt'),
             'remark'=>$request->input('remark'),
             'min_spec'=>$request->input('min_spec'),
             'max_spec'=>$request->input('max_spec')
@@ -69,12 +65,10 @@ class TaskProductController extends Controller
 
     public function update(Request $request,$id){
         $validator = Validator::make($request->all(),[
-            'product_id' => 'required',
-            'item_id'=> 'required',
+            'id_master_product' => 'required',
+            'id_item_product'=> 'required',
             'task_type'=>'required',
             'std_value'=>'required',
-            'input_type',
-            'opt',
             'remark',
             'min_spec',
             'max_spec'
@@ -86,12 +80,10 @@ class TaskProductController extends Controller
 
         $task = Task::find($id);
         $task->update([
-            'product_id' => $request->input('product_id'),
-            'item_id'=> $request->input('item_id'),
+            'id_master_product' => $request->input('id_master_product'),
+            'id_item_product'=> $request->input('id_item_product'),
             'task_type'=>$request->input('task_type'),
             'std_value'=>$request->input('std_value'),
-            'input_type'=>$request->input('input_type'),
-            'opt'=>$request->input('opt'),
             'remark'=>$request->input('remark'),
             'min_spec'=>$request->input('min_spec'),
             'max_spec'=>$request->input('max_spec')

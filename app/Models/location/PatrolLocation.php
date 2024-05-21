@@ -16,7 +16,6 @@ class PatrolLocation extends Model
         'patrol_status',
         'patrol_value',
         'remark',
-        'foto',
         'id_master_location',
         'id_item_location',
         'id_user'

@@ -14,7 +14,6 @@ class ItemProductController extends Controller
         $validator = Validator::make($request->all(),[
             'item_name'=>'required',
             'item_value'=>'required',
-            'remark'=>'required',
             'category_id'=>'required'
         ]);
 
@@ -27,7 +26,6 @@ class ItemProductController extends Controller
                 'item_name'=>$request->input('item_name'),
                 'slug'=>strtolower($request->input('item_name')),
                 'item_value'=>$request->input('item_value'),
-                'remark'=>$request->input('remark'),
                 'category_id'=>$request->input('category_id')
             ]);
 
@@ -55,7 +53,6 @@ class ItemProductController extends Controller
         $validator = Validator::make($request->all(),[
             'item_name'=>'required',
             'item_value'=>'required',
-            'remark'=>'required',
             'category_id'=>'required'
         ]);
 
@@ -68,7 +65,6 @@ class ItemProductController extends Controller
             'item_name'=>$request->input('item_name'),
             'slug'=>strtolower(str_replace('','-',$request->input('item_name'))),
             'item_value'=>$request->input('item_value'),
-            'remark'=>$request->input('remark'),
             'category_id'=>$request->input('category_id')
         ]);
         $item->load('category');

@@ -17,6 +17,7 @@ class Patrol extends Model
     protected $fillable = [
     'patrol_type',
     'patrol_value',
+    'patrol_status',
     'remark',
     'id_master_product',
     'id_item_product',

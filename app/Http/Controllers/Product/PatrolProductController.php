@@ -7,6 +7,7 @@ use App\Http\Resources\ResponseResource;
 use App\Models\product\Patrol;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PatrolProductController extends Controller
@@ -15,6 +16,7 @@ class PatrolProductController extends Controller
         $validator = Validator::make($request->all(),[
             'patrol_type'=>'required',
             'patrol_value'=>'required',
+            'patrol_status'=>'required',
             'id_master_product'=>'required',
             'id_item_product'=>'required',
             'id_user'=>'required'
@@ -28,13 +30,16 @@ class PatrolProductController extends Controller
             $patrol = Patrol::create([
                 'patrol_type' => $request->input('patrol_type'),
                 'patrol_value' => $request-> input('patrol_value'),
+                'patrol_status'=>$request->input('patrol_status'),
+                'remark'=>$request->input('remark'),
                 'id_master_product' => $request-> input('id_master_product'),
                 'id_item_product'=> $request->input('id_item_product'),
-                'id-user'=> $request->input('id_user')
+                'id_user'=> $request->input('id_user')
             ]);
 
             $patrol->load('product');
             $patrol->load('item');
+            $patrol->load('user');
 
             return response()->json(
                 new ResponseResource(true, 'Created Successfuly', $patrol)
@@ -51,6 +56,8 @@ class PatrolProductController extends Controller
         $patrol = Patrol::all();
         $patrol->load('product');
         $patrol->load('item');
+        $patrol->load('user');
+
         return response()->json(
             new ResponseResource(true, 'Patrol Product', $patrol )
         );
@@ -60,6 +67,8 @@ class PatrolProductController extends Controller
         $patrol = Patrol::find($id);
         $patrol->load('product');
         $patrol->load('item');
+        $patrol->load('user');
+
         return response()->json(
             new ResponseResource(true,'Detail Patrol Product',$patrol)
         );
@@ -77,6 +86,7 @@ class PatrolProductController extends Controller
         $validator = Validator::make($request->all(),[
             'patrol_type'=>'required',
             'patrol_value'=>'required',
+            'patrol_status'=>'required',
             'id_master_product'=>'required',
             'id_item_product'=>'required',
             'id_user'=>'required'
@@ -90,16 +100,67 @@ class PatrolProductController extends Controller
         $patrol->update([
             'patrol_type' => $request->input('patrol_type'),
             'patrol_value' => $request-> input('patrol_value'),
+            'patrol_status'=>$request->input('patrol_status'),
             'id_master_product' => $request-> input('id_master_product'),
             'id_item_product'=> $request->input('id_item_product'),
             'id-user'=> $request->input('id_user')
         ]);
         $patrol->load('product');
         $patrol->load('item');
+        $patrol->load('user');
 
         return response()->json(
             new ResponseResource(true, 'Updated Successfuly',$patrol)
         );
     }
+    public function getPatrol(Request $request)
+    {
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+        $idMasterProduct = $request->input('id_master_product');
     
+        $query = Patrol::select(
+            'id_item_product',
+            DB::raw('SUM(CASE WHEN patrol_status = \'OK\' THEN 1 ELSE 0 END) AS ok_count'),
+            DB::raw('SUM(CASE WHEN patrol_status = \'NOT OK\' THEN 1 ELSE 0 END) AS not_ok_count')
+        )->groupBy('id_item_product');
+    
+        if ($startDate && $endDate && $idMasterProduct) {
+            $query->where('id_master_product', $idMasterProduct)
+                  ->whereBetween(DB::raw('DATE(created_at)'), [$startDate, $endDate]);
+        } elseif ($startDate && $endDate) {
+            $query->whereBetween(DB::raw('DATE(created_at)'), [$startDate, $endDate]);
+        } elseif ($idMasterProduct) {
+            $query->where('id_master_product', $idMasterProduct);
+        }
+        
+    
+        $patrols = $query->get();
+    
+        $patrols->load('item');
+    
+        return response()->json(
+            new ResponseResource(true, 'Patrol Data', $patrols)
+        );
+    }
+    
+
+    public function getProductMaster()
+    {
+        $patrols = Patrol::select(
+            'id_master_product',
+            DB::raw('(SUM(CASE WHEN patrol_status = \'OK\' THEN 1 ELSE 0 END) + SUM(CASE WHEN patrol_status = \'NOT OK\' THEN 1 ELSE 0 END)) AS total_count')
+
+        )
+        ->groupBy('id_master_product')
+        ->get();
+    
+        $totalMasterProducts = $patrols->count();
+            $patrols->load('product');
+        return response()->json(
+            new ResponseResource(true, 'Patrol Data',$patrols)
+        );
+    }
+
+
 }

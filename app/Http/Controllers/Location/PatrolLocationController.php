@@ -45,20 +45,12 @@ class PatrolLocationController extends Controller
         }
 
         try{
-            $file = $request->file('foto');
-            $filePath = null; 
-
-            if ($file) {
-                $filePath = 'images/' . $file->getClientOriginalName(); // Buat path untuk file
-                Storage::disk('public')->put($filePath, file_get_contents($file)); // Simpan file ke storage
-            }
-
+         
             $patrol_location = PatrolLocation::create([
                 'patrol_type'=>$request->input('patrol_type'),
                 'patrol_value'=>$request->input('patrol_value'),
                 'patrol_status'=>$request->input('patrol_status'),
                 'remark'=>$request->input('remark'),
-                'foto'=>$filePath,
                 'id_master_location'=>$request->input('id_master_location'),
                 'id_item_location'=>$request->input('id_item_location'),
                 'id_user'=>$request->input('id_user')
@@ -80,6 +72,7 @@ class PatrolLocationController extends Controller
         $validator = Validator::make($request->all(),[
             'patrol_type' =>'required',
             'patrol_value' => 'required',
+            'patrol_status'=>'required',
             'id_master_location'=>'required',
             'id_item_location'=>'required',
             'id_user'
@@ -90,21 +83,12 @@ class PatrolLocationController extends Controller
         }
             $patrol_location = PatrolLocation::find($id);
 
-            
-            $path= $patrol_location->foto;
-            if (Storage::disk('public')->exists($path)) {
-                Storage::disk('public')->delete($path);
-            }
-            
-            $file = $request->file('foto');
-            $filePath = 'images/' . $file->getClientOriginalName();
-            Storage::disk('public')->put($filePath, file_get_contents($file));
-
+        
             $patrol_location->update([
                 'patrol_type'=>$request->input('patrol_type'),
                 'patrol_value'=>$request->input('patrol_value'),
+                'patrol_status'=>$request->input('patrol_status'),
                 'remark'=>$request->input('remark'),
-                'foto'=>$filePath,
                 'id_master_location'=>$request->input('id_master_location'),
                 'id_item_location'=>$request->input('id_item_location'),
                 'id_user'=>$request->input('id_user')

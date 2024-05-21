@@ -17,6 +17,13 @@ class UserController extends Controller
             new ResponseResource(true,'Employee',$user)
         );
     }
+    
+    public function logout(){
+        auth()->logout();
+        $responseData = new ResponseResource(true, 'Logout Successfully', null);
+        return response()->json($responseData);
+    }
+    
     public function Register(Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -72,6 +79,7 @@ class UserController extends Controller
            return response()->json($responseData);
     }
     
+ 
     public function Profile($id)
     {
         $user = User::find($id);
@@ -105,6 +113,31 @@ class UserController extends Controller
         return response()->json(new ResponseResource(true, 'Password changed successfully', null), 200);
     }
     
+    public function update($id,Request $request){
+        $validator = Validator::make($request->all(),[
+            'name' => 'required',
+            'role'=>'required',
+            'no_telp'=>'required',
+            'jenis_kelamin'=>'required',
+            'kota'=>'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(new ResponseResource(false,'There is an error',$validator->errors()));
+        }
+        $user = User::find($id);
+
+        $user->update([
+            'name' => $request->input('name'),
+            'role' => $request->input('role'),
+            'no_telp'=> $request->input('no_telp'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'kota'=>$request->input('kota'),
+        ]);
+
+        $responseData = new ResponseResource(true, 'Updated successfully', $user);
+        return response()->json($responseData);
+    }
     public function ChangeProfile($id,Request $request)
     {
         $validator = Validator::make($request->all(),[
@@ -149,9 +182,35 @@ class UserController extends Controller
             return response()->json($responseData);
         }
     }
-    public function Logout(){
-        auth()->logout();
-        $responseData = new ResponseResource(true, 'Logout Successfully', null);
-        return response()->json($responseData);
+
+    public function get_gender_by_city()
+    {
+        $results = User::selectRaw('jenis_kelamin, kota, COUNT(*) as total')
+        ->groupBy('jenis_kelamin', 'kota')
+        ->get();
+
+                $formattedResults = [];
+                foreach ($results as $result) {
+                $city = $result->kota;
+                $gender = $result->jenis_kelamin;
+                $total = $result->total;
+
+                if (!isset($formattedResults[$city])) {
+                $formattedResults[$city] = [
+                    'laki_laki' => 0,
+                    'perempuan' => 0,
+                    'city' => $city,
+                ];
+                }
+
+            if ($gender === 'Laki-Laki') {
+            $formattedResults[$city]['laki_laki'] += $total;
+            } 
+            elseif ($gender === 'Perempuan') {
+            $formattedResults[$city]['perempuan'] += $total;
+            }
+            }
+
+        return json_encode(array_values($formattedResults));
     }
 }
