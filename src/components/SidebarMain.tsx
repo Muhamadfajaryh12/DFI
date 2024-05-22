@@ -19,7 +19,7 @@ interface dataItem {
 }
 
 const SidebarMain = (props: any) => {
-  const { visible } = props;
+  const { visible, setVisible } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user = [] } = useAppSelector((state) => state);
@@ -34,45 +34,67 @@ const SidebarMain = (props: any) => {
   const data: dataItem[] = [
     {
       title: "Dashboard",
-      icon: <RiDashboardFill className={visible == false ? "mr-2" : "m-0"} />,
+      icon: (
+        <RiDashboardFill
+          className={visible == false ? "mr-2" : "mr-2 sm:m-0"}
+        />
+      ),
       link: "/dashboard",
       role: "ALL",
     },
     {
       title: "Employee",
-      icon: <FaUserFriends className={visible == false ? "mr-2" : "m-0"} />,
+      icon: (
+        <FaUserFriends className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+      ),
       link: "/employee",
       role: "Admin",
     },
     {
       title: "Category",
-      icon: <MdOutlineCategory className={visible == false ? "mr-2" : "m-0"} />,
+      icon: (
+        <MdOutlineCategory
+          className={visible == false ? "mr-2" : "mr-2 sm:m-0"}
+        />
+      ),
       link: "/category",
       role: "Admin",
     },
     {
       title: "Product",
       role: "Quality Control",
-      icon: <RiProductHuntLine className={visible == false ? "mr-2" : "m-0"} />,
+      icon: (
+        <RiProductHuntLine
+          className={visible == false ? "mr-2" : "mr-2 sm:m-0"}
+        />
+      ),
       child: [
         {
           title: "Master Product",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/product/master",
         },
         {
           title: "Item Product",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/product/item",
         },
         {
           title: "Task Product",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/product/task",
         },
         {
           title: "Patrol Product",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/product/patrol",
         },
       ],
@@ -80,26 +102,36 @@ const SidebarMain = (props: any) => {
     {
       title: "Location",
       role: "Quality Control",
-      icon: <MdLocationCity className={visible == false ? "mr-2" : "m-0"} />,
+      icon: (
+        <MdLocationCity className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+      ),
       child: [
         {
           title: "Master Location",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/location/master",
         },
         {
           title: "Item Location",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/location/item",
         },
         {
           title: "Task Location",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/location/task",
         },
         {
           title: "Patrol Location",
-          icon: <FiMinus className={visible == false ? "mr-2" : "m-0"} />,
+          icon: (
+            <FiMinus className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+          ),
           link: "/location/patrol",
         },
       ],
@@ -122,19 +154,25 @@ const SidebarMain = (props: any) => {
   };
   return (
     <aside
-      className={`card flex flex-col justify-content-center sm:relative bg-white h-screen ${
-        visible == false ? "sm:block sm:w-72" : "block absolute w-72 sm:w-14"
+      className={`card flex flex-col justify-content-center sm:relative bg-white ${
+        visible == false
+          ? "hidden sm:block sm:w-72"
+          : "block absolute w-72 h-screen sm:w-14"
       } shadow-lg z-50 sm:z-auto transition-all duration-300`}
     >
       <div className="p-3">
-        <div className="flex justify-between items-center">
-          {visible == false ? (
-            <h5 className="font-semibold text-sm my-2">
-              Daesang Food Indonesia
-            </h5>
-          ) : (
-            ""
-          )}
+        <div
+          className={`flex justify-between items-center ${
+            visible == false ? "block" : " block sm:hidden"
+          }`}
+        >
+          <h5 className="font-semibold text-sm my-2">Daesang Food Indonesia</h5>
+          <button
+            className=" p-2 rounded-md sm:hidden block"
+            onClick={() => setVisible(false)}
+          >
+            <span className="pi pi-bars"></span>
+          </button>
         </div>
         <div className="border-2 rounded-md bg-gray-200 p-2">
           <Link to="profile" className="flex items-center justify-evenly">
@@ -148,8 +186,16 @@ const SidebarMain = (props: any) => {
               alt=""
             />
             <div className="">
-              <h6>{visible == false ? user?.name : ""}</h6>
-              <p className="text-xs">{visible == false ? user?.role : ""}</p>
+              <h6 className={visible == false ? "block" : "block sm:hidden"}>
+                {user?.name}
+              </h6>
+              <p
+                className={`text-xs ${
+                  visible == false ? "block" : "block sm:hidden"
+                }`}
+              >
+                {user?.role}
+              </p>
             </div>
           </Link>
         </div>
@@ -162,7 +208,11 @@ const SidebarMain = (props: any) => {
                   to={item?.link}
                 >
                   {item.icon}
-                  <span>{visible == false ? item.title : ""}</span>
+                  <span
+                    className={visible == false ? "block" : "block sm:hidden"}
+                  >
+                    {item.title}
+                  </span>
                 </Link>
               ) : (
                 <ul>
@@ -211,8 +261,10 @@ const SidebarMain = (props: any) => {
               className="font-medium flex items-center "
               onClick={() => onLogout(dispatch)}
             >
-              <MdLogout className={visible == false ? "mr-2" : "m-0"} />
-              <span>{visible == false ? "Logout" : ""}</span>
+              <MdLogout className={visible == false ? "mr-2" : "mr-2 sm:m-0"} />
+              <span className={visible == false ? "block" : "block sm:hidden"}>
+                Logout
+              </span>
             </button>
           </li>
         </ul>

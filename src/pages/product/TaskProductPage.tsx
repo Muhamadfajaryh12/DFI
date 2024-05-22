@@ -17,7 +17,7 @@ import axios from "axios";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
 const TaskProductPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -76,6 +76,10 @@ const TaskProductPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId]);
+
+  useEffect(() => {
+    setTitle("Task Product");
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -397,7 +401,6 @@ const TaskProductPage = (props: any) => {
   return (
     <>
       <div className="h-screen m-2 p-2">
-        <Header title="Task Product" toggle={toggle} />
         <main className="p-2">
           <TableMain
             headers={dataTableHeader}

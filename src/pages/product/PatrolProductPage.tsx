@@ -18,7 +18,7 @@ import TableMain from "../../components/TableMain";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
 const PatrolProductPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const { patrol_product = [] } = useAppSelector(
@@ -47,6 +47,10 @@ const PatrolProductPage = (props: any) => {
     { name: "Patrol Status" },
     { name: "Check By" },
   ];
+
+  useEffect(() => {
+    setTitle("Patrol Product");
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -373,7 +377,6 @@ const PatrolProductPage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2 h-screen">
-        <Header title="Patrol Product" toggle={toggle} />
         <main className="p-2">
           <TableMain
             headers={dataTableHeader}

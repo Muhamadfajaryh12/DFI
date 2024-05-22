@@ -88,8 +88,8 @@ const TableMain = (props: any) => {
   };
 
   const renderHeader = () => (
-    <div className="flex flex-wrap justify-between w-full ">
-      <div className=" flex flex-wrap justify-items-center justify-center gap-1">
+    <div className="flex flex-wrap sm:flex-nowrap gap-1 justify-between w-full">
+      <div className=" flex flex-wrap sm:flex-nowrap justify-items-center justify-center gap-1">
         <Button
           label="Create"
           icon="pi pi-plus"
@@ -106,7 +106,7 @@ const TableMain = (props: any) => {
           />
         </IconField>
       </div>
-      <div className="flex flex-wrap gap-1 justify-items-center justify-center w-full">
+      <div className="flex flex-wrap gap-1 justify-items-center  sm:flex-nowrap justify-center sm:justify-end w-full">
         <Button
           label="XLSX"
           className="sm:w-40 p-button-success w-72"
@@ -166,6 +166,7 @@ const TableMain = (props: any) => {
   return (
     <>
       <DataTable
+        className="bg-red-200"
         ref={dt}
         value={body}
         header={header}

@@ -17,7 +17,7 @@ import { useAppSelector } from "../../hooks/useRedux";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
 const ItemProductPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -44,6 +44,10 @@ const ItemProductPage = (props: any) => {
   const getCategory = (dispatch: any) => {
     dispatch(asyncGetCategory());
   };
+  useEffect(() => {
+    setTitle("Item Product");
+  });
+
   useEffect(() => {
     getItemProduct(dispatch);
     getCategory(dispatch);
@@ -251,7 +255,6 @@ const ItemProductPage = (props: any) => {
   return (
     <>
       <div className="h-screen p-2 m-2">
-        <Header title="Item Product" toggle={toggle} />
         <main className="p-2">
           <TableMain
             headers={dataTableHeader}

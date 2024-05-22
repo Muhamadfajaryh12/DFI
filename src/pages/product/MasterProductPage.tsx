@@ -17,7 +17,7 @@ import { asyncGetCategory } from "../../states/category/action";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
 const MasterProductPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -34,6 +34,10 @@ const MasterProductPage = (props: any) => {
     setValue,
     control,
   } = useForm();
+
+  useEffect(() => {
+    setTitle("Master Product");
+  }, []);
 
   const getMasterProduct = (dispatch: any) => {
     dispatch(asyncGetMasterProduct());
@@ -267,7 +271,6 @@ const MasterProductPage = (props: any) => {
   return (
     <>
       <div className="h-screen p-2 m-2">
-        <Header title="Master Product" toggle={toggle} />
         <main className="p-2">
           <TableMain
             headers={dataTableHeader}

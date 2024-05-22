@@ -17,7 +17,7 @@ import { MasterLocationType } from "../../types/location/MasterLocationType";
 import { ItemLocationType } from "../../types/location/ItemLocationType";
 import { ToastSuccess } from "../../components/common/MessageToast";
 const TaskLocationPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -40,6 +40,11 @@ const TaskLocationPage = (props: any) => {
   const getTaskLocation = (dispatch: any) => {
     dispatch(asyncGetTaskLocation());
   };
+
+  useEffect(() => {
+    setTitle("Task Location");
+  }, []);
+
   useEffect(() => {
     getTaskLocation(dispatch);
   }, [dispatch]);
@@ -339,7 +344,6 @@ const TaskLocationPage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2 h-screen">
-        <Header title="Task Location" toggle={toggle} />
         <TableMain
           headers={dataTableHeader}
           body={dataFormat}

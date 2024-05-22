@@ -26,7 +26,7 @@ const PatrolLocationPage = (props: any) => {
   const { patrol_location = [] } = useAppSelector(
     (state) => state.patrol_location
   );
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const { user = [] } = useAppSelector((state) => state);
   const dispatch = useDispatch();
@@ -47,6 +47,10 @@ const PatrolLocationPage = (props: any) => {
   const getPatrolLocation = (dispatch: any) => {
     dispatch(asyncGetPatrolLocation());
   };
+
+  useEffect(() => {
+    setTitle("Patrol Location");
+  }, []);
 
   useEffect(() => {
     getPatrolLocation(dispatch);
@@ -374,7 +378,6 @@ const PatrolLocationPage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2">
-        <Header title="Patrol Location" toggle={toggle} />
         <main>
           <TableMain
             headers={dataTableHeader}

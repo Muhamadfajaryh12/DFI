@@ -25,10 +25,12 @@ import { AppDispatch } from "./states/store";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./components/common/Header";
 
 function App() {
   const { auth = null, preload = false } = useAppSelector((state) => state);
   const [visible, setVisible] = useState(false);
+  const [title, setTitle] = useState("");
   const dispatch: AppDispatch = useDispatch();
   const toggle = () => {
     setVisible(!visible);
@@ -51,58 +53,61 @@ function App() {
         {auth != null && (
           <div className="">
             <div className="flex">
-              <SidebarMain visible={visible} />
-              <div className="h-screen w-screen bg-gray-100">
-                <Routes>
-                  <Route
-                    path="/profile"
-                    element={<ProfilePage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/dashboard"
-                    element={<DashboardPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/category"
-                    element={<CategoryPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/employee"
-                    element={<EmployePage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/product/master"
-                    element={<MasterProductPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/product/item"
-                    element={<ItemProductPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/product/task"
-                    element={<TaskProductPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/product/patrol"
-                    element={<PatrolProductPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/location/master"
-                    element={<MasterLocationPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/location/item"
-                    element={<ItemLocationPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/location/task"
-                    element={<TaskLocationPage toggle={toggle} />}
-                  />
-                  <Route
-                    path="/location/patrol"
-                    element={<PatrolLocationPage toggle={toggle} />}
-                  />
-                </Routes>
+              <SidebarMain visible={visible} setVisible={setVisible} />
+              <div className=" w-screen bg-gray-200">
+                <Header title={title} toggle={toggle} />
+                <div style={{ minHeight: "900px" }}>
+                  <Routes>
+                    <Route
+                      path="/profile"
+                      element={<ProfilePage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/dashboard"
+                      element={<DashboardPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/category"
+                      element={<CategoryPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/employee"
+                      element={<EmployePage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/product/master"
+                      element={<MasterProductPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/product/item"
+                      element={<ItemProductPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/product/task"
+                      element={<TaskProductPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/product/patrol"
+                      element={<PatrolProductPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/location/master"
+                      element={<MasterLocationPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/location/item"
+                      element={<ItemLocationPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/location/task"
+                      element={<TaskLocationPage setTitle={setTitle} />}
+                    />
+                    <Route
+                      path="/location/patrol"
+                      element={<PatrolLocationPage setTitle={setTitle} />}
+                    />
+                  </Routes>
+                </div>
                 <Footer />
               </div>
             </div>

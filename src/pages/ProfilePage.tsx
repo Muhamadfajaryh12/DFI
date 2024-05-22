@@ -6,13 +6,12 @@ import { useForm } from "react-hook-form";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { useAppSelector } from "../hooks/useRedux";
-import Header from "../components/common/Header";
 import Selected from "../components/form/Selected";
 import userProfile from "../assets/user_profile.png";
 import { ToastError, ToastSuccess } from "../components/common/MessageToast";
 import axios from "axios";
 const ProfilePage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
   const [visible, setVisible] = useState(false);
   const { user = [] } = useAppSelector((state) => state);
   const [previewImage, setPreviewImage] = useState<any>(null);
@@ -22,6 +21,9 @@ const ProfilePage = (props: any) => {
   const getProfile = (dispatch: any) => {
     dispatch(asyncGetProfile());
   };
+  useEffect(() => {
+    setTitle("Profile");
+  });
   useEffect(() => {
     getProfile(dispatch);
   }, [dispatch]);
@@ -114,7 +116,6 @@ const ProfilePage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2 h-screen">
-        <Header title="Profile" toggle={toggle} />
         <main>
           <form onSubmit={handleSubmit(onUpdate)} encType="multipart/form-data">
             <div className="w-40 mx-auto flex flex-col items-center">

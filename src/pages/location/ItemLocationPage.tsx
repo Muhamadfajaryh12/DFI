@@ -15,7 +15,7 @@ import axios from "axios";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
 const ItemLocationPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -33,6 +33,10 @@ const ItemLocationPage = (props: any) => {
   const getItemLocation = (dispatch: any) => {
     dispatch(asyncGetItemLocation());
   };
+
+  useEffect(() => {
+    setTitle("Item Location");
+  });
 
   useEffect(() => {
     getItemLocation(dispatch);
@@ -191,20 +195,21 @@ const ItemLocationPage = (props: any) => {
   }));
   return (
     <>
-      <Header title="Item Location" toggle={toggle} />
-      <main className="p-2">
-        <TableMain
-          headers={dataTableHeader}
-          body={dataFormat}
-          contentModal={{
-            store: layoutModalStore(),
-            detail: layoutModalDetail(datas),
-            update: layoutModalUpdate(),
-            delete: layoutModalDelete(),
-          }}
-          itemId={setId}
-        />
-      </main>
+      <div className="p-2 m-2 ">
+        <main className="p-2">
+          <TableMain
+            headers={dataTableHeader}
+            body={dataFormat}
+            contentModal={{
+              store: layoutModalStore(),
+              detail: layoutModalDetail(datas),
+              update: layoutModalUpdate(),
+              delete: layoutModalDelete(),
+            }}
+            itemId={setId}
+          />
+        </main>
+      </div>
     </>
   );
 };

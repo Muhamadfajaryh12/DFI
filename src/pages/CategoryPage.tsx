@@ -11,7 +11,6 @@ import Input from "../components/form/Input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useAppSelector } from "../hooks/useRedux";
-import Header from "../components/common/Header";
 
 type FormInputs = {
   id_category: null;
@@ -19,7 +18,7 @@ type FormInputs = {
 };
 
 const CategoryPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
   const { categorys = [] } = useAppSelector((state) => state);
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
@@ -51,6 +50,10 @@ const CategoryPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId, setValue]);
+
+  useEffect(() => {
+    setTitle("Category");
+  }, []);
 
   const getCategory = (dispatch: any) => {
     dispatch(asyncGetCategory());
@@ -172,7 +175,6 @@ const CategoryPage = (props: any) => {
   };
   return (
     <div className="p-2 m-2">
-      <Header title="Category" toggle={toggle} />
       <main>
         <TableMain
           headers={header}

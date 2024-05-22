@@ -11,7 +11,7 @@ import { Button } from "primereact/button";
 import { jsPDF } from "jspdf";
 
 const DashboardPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const [dataEmployee, setDataEmployee] = useState([]);
   const [dataPatrolStatus, setDataPatrolStatus] = useState([]);
@@ -69,6 +69,8 @@ const DashboardPage = (props: any) => {
       );
       setDataMasterProduct(response?.data.data);
     };
+
+    setTitle("Dashboard");
     getMasterProduct();
     getDataEmployee();
     getPatrol();
@@ -193,7 +195,6 @@ const DashboardPage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2">
-        <Header title="Dashboard" toggle={toggle} />
         <main>{content()}</main>
       </div>
     </>

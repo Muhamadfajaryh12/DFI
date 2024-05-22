@@ -14,10 +14,10 @@ import Input from "../components/form/Input";
 import Selected from "../components/form/Selected";
 import axios from "axios";
 import userProfile from "../assets/user_profile.png";
-import { ToastError, ToastSuccess } from "../components/common/MessageToast";
+import { ToastSuccess } from "../components/common/MessageToast";
 
 const EmployePage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
   const { employee = [] } = useAppSelector((state) => state.employee);
 
   const [itemId, setId] = useState(null);
@@ -27,6 +27,11 @@ const EmployePage = (props: any) => {
   const getEmployee = (dispatch: any) => {
     dispatch(asyncGetEmployee());
   };
+
+  useEffect(() => {
+    setTitle("Employee");
+  }, []);
+
   useEffect(() => {
     getEmployee(dispatch);
   }, [dispatch]);
@@ -338,8 +343,7 @@ const EmployePage = (props: any) => {
   return (
     <div className="p-2 m-2">
       <>
-        <Header title="Employee" toggle={toggle} />
-        <main>
+        <main className="bg-transparent">
           <TableMain
             headers={dataTableHeader}
             body={dataFormat}

@@ -15,7 +15,7 @@ import Selected from "../../components/form/Selected";
 import axios from "axios";
 import { ToastSuccess } from "../../components/common/MessageToast";
 const MasterLocationPage = (props: any) => {
-  const { toggle } = props;
+  const { setTitle } = props;
 
   const dispatch = useDispatch();
   const { master_location = [] } = useAppSelector(
@@ -34,6 +34,11 @@ const MasterLocationPage = (props: any) => {
   const getMasterLocation = (dispatch: any) => {
     dispatch(asyncGetMasterLocation());
   };
+
+  useEffect(() => {
+    setTitle("Master Location");
+  }, []);
+
   useEffect(() => {
     getMasterLocation(dispatch);
   }, [dispatch]);
@@ -266,7 +271,6 @@ const MasterLocationPage = (props: any) => {
   return (
     <>
       <div className="p-2 m-2 ">
-        <Header title="Master Location" toggle={toggle} />
         <main className="p-2">
           <TableMain
             headers={dataTableHeader}
