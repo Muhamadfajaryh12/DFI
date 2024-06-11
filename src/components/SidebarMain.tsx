@@ -39,7 +39,7 @@ const SidebarMain = (props: any) => {
           className={visible == false ? "mr-2" : "mr-2 sm:m-0"}
         />
       ),
-      link: "/dashboard",
+      link: "/",
       role: "ALL",
     },
     {
@@ -144,10 +144,19 @@ const SidebarMain = (props: any) => {
   const openGroup = (title: string) => {
     if (open.includes(title)) {
       setOpen(open.filter((id) => id !== title));
+      setVisible(false);
     } else {
       setOpen([...open, title]);
+      setVisible(false);
     }
   };
+
+  useEffect(() => {
+    if (visible) {
+      setOpen([]);
+    }
+  }, [visible]);
+
   const onLogout = async (dispatch: any) => {
     await dispatch(asyncLogout());
     navigate("/");
@@ -177,7 +186,8 @@ const SidebarMain = (props: any) => {
         <div className="border-2 rounded-md bg-gray-200 p-2">
           <Link to="profile" className="flex items-center justify-evenly">
             <img
-              className="w-14 rounded-full"
+              className={`rounded-full
+                ${visible == false ? "w-14 h-14 " : " w-14 h-8 "}`}
               src={
                 user?.foto != null
                   ? `http://127.0.0.1:8000/storage/${user?.foto}`
@@ -223,7 +233,13 @@ const SidebarMain = (props: any) => {
                   >
                     <div className="font-medium flex items-center">
                       {item.icon}
-                      <span>{visible == false ? item.title : ""}</span>
+                      <span
+                        className={
+                          visible == false ? "block" : "block sm:hidden"
+                        }
+                      >
+                        {item.title}
+                      </span>
                     </div>
                     {visible == false ? (
                       open.includes(item.title) ? (
@@ -247,7 +263,7 @@ const SidebarMain = (props: any) => {
                         to={items?.link ? items.link : "/"}
                       >
                         {items.icon}
-                        <span>{visible == false ? items.title : ""}</span>
+                        <span>{items.title}</span>
                       </Link>
                     </li>
                   ))}

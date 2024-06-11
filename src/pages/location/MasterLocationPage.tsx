@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import TableMain from "../../components/TableMain";
-import Header from "../../components/common/Header";
 import { useEffect, useState } from "react";
 import {
   asyncDeleteMasterLocation,
@@ -62,6 +61,22 @@ const MasterLocationPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId]);
+
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   const dataSelected = [
     { id: "Quality Control", name: "Quality Control" },
@@ -171,22 +186,19 @@ const MasterLocationPage = (props: any) => {
   const layoutModalDetail = (data: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-6 gap-4">
-              <label className="col-span-1">Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.location_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>Name</label>
+              <h6>: {data?.location_name}</h6>
             </div>
-            <div className="grid grid-cols-6 gap-4">
-              <label className="col-span-1">Check Allow</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.check_allow}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>Check Allow</label>
+              <h6>: {data?.check_allow}</h6>
             </div>
-            <div className="grid grid-cols-6 gap-4">
-              <label className="col-span-1">No Referensi</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.no_referensi}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>No Referensi</label>
+              <h6>: {data?.no_referensi}</h6>
             </div>
           </div>
           <div className="text-center w-40">
@@ -282,6 +294,8 @@ const MasterLocationPage = (props: any) => {
               detail: layoutModalDetail(datas),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

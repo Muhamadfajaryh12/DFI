@@ -2,11 +2,11 @@ import axios from "axios";
 import { InputPatrolProductProps } from "../../types/product/PatrolProductType";
 
 const PatrolProductAPI = (() => {
-  const BASE_URL = "http://127.0.0.1:8000/api/products/patrol";
+  const BASE_URL = "http://127.0.0.1:8000/api/products/patrol/all";
 
   const getPatrolProduct = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}`);
+      const response = await axios.post(`${BASE_URL}`, null);
       const {
         data: { data, status, message },
       } = response;

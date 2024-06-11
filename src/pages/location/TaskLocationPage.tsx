@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Header from "../../components/common/Header";
 import Input from "../../components/form/Input";
 import Selected from "../../components/form/Selected";
 import TableMain from "../../components/TableMain";
@@ -16,16 +15,16 @@ import axios from "axios";
 import { MasterLocationType } from "../../types/location/MasterLocationType";
 import { ItemLocationType } from "../../types/location/ItemLocationType";
 import { ToastSuccess } from "../../components/common/MessageToast";
+import ItemLocationAPI from "../../API/location/ItemLocationAPI";
+import MasterLocationAPI from "../../API/location/MasterLocationAPI";
 const TaskLocationPage = (props: any) => {
   const { setTitle } = props;
 
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
-  const { master_location = [] } = useAppSelector(
-    (state) => state.master_location
-  );
-  const { item_location = [] } = useAppSelector((state) => state.item_location);
+  const [item_location, set_item_location] = useState([]);
+  const [master_location, set_master_location] = useState([]);
   const { task_location = [] } = useAppSelector((state) => state.task_location);
 
   const {
@@ -36,6 +35,22 @@ const TaskLocationPage = (props: any) => {
     setValue,
     control,
   } = useForm();
+
+  useEffect(() => {
+    const getItemLocation = async () => {
+      const response: any = await ItemLocationAPI.getItemLocation();
+      set_item_location(response?.data);
+    };
+    getItemLocation();
+  }, []);
+
+  useEffect(() => {
+    const getMasterLocation = async () => {
+      const response: any = await MasterLocationAPI.getMasterLocation();
+      set_master_location(response?.data);
+    };
+    getMasterLocation();
+  }, []);
 
   const getTaskLocation = (dispatch: any) => {
     dispatch(asyncGetTaskLocation());
@@ -70,6 +85,22 @@ const TaskLocationPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId]);
+
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   const dataSelectMasterLocation = master_location.map(
     ({ location_name, id }: MasterLocationType) => ({
@@ -215,32 +246,27 @@ const TaskLocationPage = (props: any) => {
   const layoutModalDetail = (datas: any) => {
     return (
       <>
-        <div className="flex items-center">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Location Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.master?.location_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>Location Name</label>
+              <h6>: {datas?.master?.location_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Item Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.item?.item_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>Item Name</label>
+              <h6>: {datas?.item?.item_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">STD Value</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.std_value}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>STD Value</label>
+              <h6>: {datas?.std_value}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Remark</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.remark}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>Remark</label>
+              <h6>: {datas?.remark}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">No Referensi</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.master?.no_referensi}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
+              <label>No Referensi</label>
+              <h6>: {datas?.master?.no_referensi}</h6>
             </div>
           </div>
           <div className="text-center w-40">
@@ -354,6 +380,8 @@ const TaskLocationPage = (props: any) => {
             delete: layoutModalDelete(),
           }}
           itemId={setId}
+          onOpenStoreModal={onOpenStoreModal}
+          onCloseStoreModal={onCloseStoreModal}
         />
       </div>
     </>

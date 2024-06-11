@@ -22,6 +22,9 @@ const CategoryPage = (props: any) => {
   const { categorys = [] } = useAppSelector((state) => state);
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+  const [datas, setDatas] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -42,8 +45,10 @@ const CategoryPage = (props: any) => {
       const {
         data: { data },
       } = response;
+
       setValue("id_category", data.id);
       setValue("name_category", data.name);
+      return setDatas(data);
     };
 
     if (itemId) {
@@ -74,6 +79,20 @@ const CategoryPage = (props: any) => {
       name: "Slug",
     },
   ];
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   const storeCategory = async (dispatch: any, data: any) => {
     return await dispatch(asyncStoreCategory(data.name_category));
@@ -173,6 +192,30 @@ const CategoryPage = (props: any) => {
       </>
     );
   };
+  const layoutModalDetail = (data: any) => {
+    console.log(data);
+    return (
+      <>
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
+          <div>
+            <div className="grid grid-cols-2 gap-1 text-sm sm:text-lg">
+              <label>Category</label>
+              <h6>: {data?.name}</h6>
+            </div>
+            <div className="grid grid-cols-2 gap-1 text-sm sm:text-lg">
+              <label>Slug</label>
+              <h6>: {data?.slug}</h6>
+            </div>
+            <div className="grid grid-cols-2 gap-1 text-sm sm:text-lg">
+              <label>Tanggal</label>
+              <h6>: {new Date(data?.created_at).toLocaleDateString()}</h6>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="p-2 m-2">
       <main>
@@ -183,11 +226,14 @@ const CategoryPage = (props: any) => {
             no: index + 1,
           }))}
           contentModal={{
+            detail: layoutModalDetail(datas),
             store: layoutModalStore(),
             update: layoutModalUpdate(),
             delete: layoutModalDelete(),
           }}
           itemId={setId}
+          onOpenStoreModal={onOpenStoreModal}
+          onCloseStoreModal={onCloseStoreModal}
         />
       </main>
     </div>

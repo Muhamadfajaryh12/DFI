@@ -1,5 +1,4 @@
 import { useDispatch } from "react-redux";
-import Header from "../components/common/Header";
 import { useAppSelector } from "../hooks/useRedux";
 import { useEffect, useState } from "react";
 import {
@@ -15,13 +14,14 @@ import Selected from "../components/form/Selected";
 import axios from "axios";
 import userProfile from "../assets/user_profile.png";
 import { ToastSuccess } from "../components/common/MessageToast";
-
+import cityData from "../API/data.json";
 const EmployePage = (props: any) => {
   const { setTitle } = props;
   const { employee = [] } = useAppSelector((state) => state.employee);
 
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
   const dispatch = useDispatch();
   const getEmployee = (dispatch: any) => {
@@ -44,6 +44,27 @@ const EmployePage = (props: any) => {
     control,
     reset,
   } = useForm();
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset({
+        username_employee: "",
+        name_employee: "",
+        no_telp_employee: "",
+        gender: "",
+        city: "",
+        role: "",
+      });
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   useEffect(() => {
     const getDetail = async (id: number) => {
@@ -75,13 +96,6 @@ const EmployePage = (props: any) => {
   const genderData = [
     { id: "Laki-Laki", name: "Laki-Laki" },
     { id: "Perempuan", name: "Perempuan" },
-  ];
-
-  const cityData = [
-    { id: "Jakarta", name: "Jakarta" },
-    { id: "Bandung", name: "Bandung" },
-    { id: "Surabaya", name: "Surabaya" },
-    { id: "Karawang", name: "Karawang" },
   ];
 
   const roleData = [
@@ -213,36 +227,31 @@ const EmployePage = (props: any) => {
   const layoutModalDetail = (data: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-3 gap-4">
-              <label className="col-span-1">Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label className="">Name</label>
+              <h6>: {data?.name}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-              <label className="col-span-1">Gender</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.jenis_kelamin}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Gender</label>
+              <h6>: {data?.jenis_kelamin}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-              <label className="col-span-1">City</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.kota}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>City</label>
+              <h6>: {data?.kota}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-              <label className="col-span-1">Number Telephone</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.no_telp}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Telephone</label>
+              <h6>: {data?.no_telp}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-              <label className="col-span-1">Position</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{data?.role}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Position</label>
+              <h6>: {data?.role}</h6>
             </div>
           </div>
           <img
-            className="w-40"
+            className="w-32 sm:w-40 m-2"
             src={
               data.foto != null
                 ? `http://127.0.0.1:8000/storage/${data?.foto}`
@@ -354,6 +363,8 @@ const EmployePage = (props: any) => {
               delete: layoutModalDelete(),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </>

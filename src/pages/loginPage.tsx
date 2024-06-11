@@ -25,9 +25,8 @@ const LoginPage = () => {
     password: string;
   }) => {
     const response: any = await dispatch(asyncLogin({ username, password }));
-    console.log(response);
     if (response.status == true) {
-      navigate("/dashboard");
+      navigate("/");
     } else {
       ToastError(response.message);
     }

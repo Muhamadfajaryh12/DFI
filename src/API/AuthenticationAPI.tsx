@@ -59,7 +59,6 @@ const AuthenticationAPI = (() => {
       const {
         data: { data },
       } = response;
-      console.log(response);
       return { data };
     } catch (error: any) {
       console.log(error);
@@ -82,13 +81,21 @@ const AuthenticationAPI = (() => {
     image?: File;
   }) => {
     try {
-      const response = await axios.post(`${BASE_URL}/${id}`, {
-        name,
-        no_telp,
-        jenis_kelamin,
-        kota,
-        image,
-      });
+      const response = await axios.post(
+        `${BASE_URL}/${id}`,
+        {
+          name,
+          no_telp,
+          jenis_kelamin,
+          kota,
+          image,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       const {
         data: { data, status, message },
       } = response;

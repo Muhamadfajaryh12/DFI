@@ -9,7 +9,14 @@ import { IconField } from "primereact/iconfield";
 import { InputIcon } from "primereact/inputicon";
 
 const TableMain = (props: any) => {
-  const { headers, body, contentModal, itemId } = props;
+  const {
+    headers,
+    body,
+    contentModal,
+    itemId,
+    onOpenStoreModal,
+    onCloseStoreModal,
+  } = props;
   const [visible, setVisible] = useState(false);
   const [globalFilterValue, setGlobalFilterValue] = useState("");
   const [loading, setLoading] = useState(true);
@@ -22,11 +29,28 @@ const TableMain = (props: any) => {
   useEffect(() => {
     setLoading(false);
   }, []);
+  const renderBarcodeColumn = (rowData: any) => {
+    return (
+      <div>
+        <img
+          src={`http://127.0.0.1:8000/storage/${rowData?.barcode}`}
+          alt={`Barcode for ${rowData.barcode}`}
+        />
+      </div>
+    );
+  };
 
   const handleOpenModal = (type: string, id: number | null) => {
     setVisible(true);
     itemId(id);
     setModalType(type);
+  };
+
+  const handleCloseModal = () => {
+    setVisible(false);
+    itemId(null);
+    setModalType("");
+    onCloseStoreModal();
   };
 
   const onGlobalFilterChange = (e: any) => {
@@ -49,7 +73,7 @@ const TableMain = (props: any) => {
       const jsPDF = jspdfModule.default;
       import("jspdf-autotable").then(() => {
         const doc = new jsPDF();
-
+        // @ts-ignore
         doc.autoTable(exportColumns, body);
         doc.save("products.pdf");
       });
@@ -70,6 +94,7 @@ const TableMain = (props: any) => {
   };
 
   const saveAsExcelFile = (buffer: any) => {
+    // @ts-ignore
     import("file-saver").then((module: any) => {
       if (module && module.default) {
         const EXCEL_TYPE =
@@ -88,7 +113,7 @@ const TableMain = (props: any) => {
   };
 
   const renderHeader = () => (
-    <div className="flex flex-wrap sm:flex-nowrap gap-1 justify-between w-full">
+    <div className="flex flex-wrap md:flex-nowrap gap-1 justify-between w-full">
       <div className=" flex flex-wrap sm:flex-nowrap justify-items-center justify-center gap-1">
         <Button
           label="Create"
@@ -106,7 +131,7 @@ const TableMain = (props: any) => {
           />
         </IconField>
       </div>
-      <div className="flex flex-wrap gap-1 justify-items-center  sm:flex-nowrap justify-center sm:justify-end w-full">
+      <div className="flex flex-wrap gap-1 justify-items-center  md:flex-nowrap justify-center sm:justify-end w-full">
         <Button
           label="XLSX"
           className="sm:w-40 p-button-success w-72"
@@ -151,6 +176,7 @@ const TableMain = (props: any) => {
   const renderModalContent = () => {
     switch (modalType) {
       case "store":
+        onOpenStoreModal(true);
         return contentModal.store;
       case "update":
         return contentModal.update;
@@ -182,8 +208,18 @@ const TableMain = (props: any) => {
         size={"small"}
         loading={loading}
       >
-        {headers?.map((item: any) => (
-          <Column field={item.name.toLowerCase()} header={item.name} sortable />
+        {headers?.map((item: any, index: number) => (
+          <Column
+            key={index}
+            field={item.name.toLowerCase()}
+            header={item.name}
+            sortable
+            body={
+              item.name.toLowerCase() == "barcode"
+                ? renderBarcodeColumn
+                : undefined
+            }
+          />
         ))}
 
         <Column field="id" header="Action" body={actionTemplate} />
@@ -202,7 +238,7 @@ const TableMain = (props: any) => {
         }
         visible={visible}
         style={{ width: "50vw" }}
-        onHide={() => setVisible(false)}
+        onHide={handleCloseModal}
       >
         {renderModalContent()}
       </Dialog>

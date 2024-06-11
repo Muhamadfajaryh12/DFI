@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Header from "../../components/common/Header";
 import Selected from "../../components/form/Selected";
 import Input from "../../components/form/Input";
 import TextArea from "../../components/form/TextArea";
@@ -30,8 +29,8 @@ const TaskProductPage = (props: any) => {
     handleSubmit,
     formState: { errors },
     setValue,
-    reset,
     control,
+    reset,
   } = useForm();
 
   const dataTableHeader = [
@@ -102,6 +101,22 @@ const TaskProductPage = (props: any) => {
 
     fetchData();
   }, []);
+
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   const storeTaskProduct = async (dispatch: any, data: any) => {
     const response: any = await dispatch(
@@ -238,47 +253,39 @@ const TaskProductPage = (props: any) => {
   const layoutModalDetail = (datas: any) => {
     return (
       <>
-        <div className="flex items-center justify-evenly">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Product Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.product?.product_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Product Name</label>
+              <h6>: {datas?.product?.product_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Item Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.item?.item_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Item Name</label>
+              <h6>: {datas?.item?.item_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">STD Value</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.std_value}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>STD Value</label>
+              <h6>: {datas?.std_value}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Remark</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.remark}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Remark</label>
+              <h6>: {datas?.remark}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Min SPEC</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.min_spec}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Min SPEC</label>
+              <h6>: {datas?.min_spec}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Max SPEC</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.max_spec}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Max SPEC</label>
+              <h6>: {datas?.max_spec}</h6>
             </div>
-            {/* <div className="grid grid-cols-6 gap-4">
-              <label className="col-span-1">Category</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.product?.category}</h6>
-            </div> */}
-            <div className="grid grid-cols-4 gap-4">
-              <label className="col-span-1">Type</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.task_type}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Category</label>
+              <h6>: {datas?.product?.category?.name}</h6>
+            </div>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Type</label>
+              <h6>: {datas?.task_type}</h6>
             </div>
           </div>
           <div className="text-center w-40">
@@ -412,6 +419,8 @@ const TaskProductPage = (props: any) => {
               detail: layoutModalDetail(datas),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

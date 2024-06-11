@@ -15,19 +15,22 @@ const ProfilePage = (props: any) => {
   const [visible, setVisible] = useState(false);
   const { user = [] } = useAppSelector((state) => state);
   const [previewImage, setPreviewImage] = useState<any>(null);
-
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const dispatch = useDispatch();
 
   const getProfile = (dispatch: any) => {
     dispatch(asyncGetProfile());
   };
+
   useEffect(() => {
     setTitle("Profile");
   });
+
   useEffect(() => {
     getProfile(dispatch);
   }, [dispatch]);
 
+  console.log(user);
   const genderData = [
     { id: "Laki-Laki", name: "Laki-Laki" },
     { id: "Perempuan", name: "Perempuan" },
@@ -45,6 +48,7 @@ const ProfilePage = (props: any) => {
     formState: { errors },
     control,
     setValue,
+    reset,
   } = useForm({
     defaultValues: {
       name: user?.name,
@@ -53,6 +57,8 @@ const ProfilePage = (props: any) => {
       city: user?.kota,
       gender: user?.jenis_kelamin,
       id_user: user?.id,
+      old_password: "",
+      new_password: "",
     },
   });
 
@@ -64,6 +70,7 @@ const ProfilePage = (props: any) => {
     setValue("gender", user?.jenis_kelamin);
     setValue("id_user", user?.id);
   }, [user, setValue]);
+
   const handleFileChange = (event: any) => {
     const file = event.target.files[0];
     if (file) {
@@ -72,27 +79,40 @@ const ProfilePage = (props: any) => {
         setPreviewImage(reader.result);
       };
       reader.readAsDataURL(file);
+      setSelectedFile(file);
+      setValue("image", file);
     }
   };
 
-  const updateProfile = (dispatch: any, formData: any) => {
-    dispatch(asyncUpdateProfile(formData));
-  };
   const onUpdate = async (data: any) => {
     try {
       const formData = new FormData();
-      formData.append("id", data.id_user);
+      formData.append("id", data.id_user.toString());
       formData.append("name", data.name);
-      formData.append("no_telp", data.no_telp);
+      formData.append("no_telp", data.no_telp.toString());
       formData.append("jenis_kelamin", data.gender);
       formData.append("kota", data.city);
-      if (data.image[0]) {
-        formData.append("image", data.image[0]);
+      if (selectedFile) {
+        formData.append("image", selectedFile);
       }
-      const response: any = await updateProfile(dispatch, formData);
+
+      console.log(data);
+      console.log("test");
+      const response: any = await dispatch(
+        asyncUpdateProfile({
+          id: data.id_user,
+          name: data.name,
+          no_telp: data.no_telp,
+          jenis_kelamin: data.gender,
+          kota: data.city,
+          image: selectedFile,
+        })
+      );
+
       console.log(response);
       if (response.status) {
         ToastSuccess(response.message);
+        reset();
       }
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -135,9 +155,9 @@ const ProfilePage = (props: any) => {
                 <input
                   id="file-upload"
                   name="image"
-                  onChange={handleFileChange}
                   type="file"
                   className="sr-only"
+                  onChange={handleFileChange}
                 />
               </label>
             </div>
@@ -162,8 +182,8 @@ const ProfilePage = (props: any) => {
               register={register}
               required={true}
             />
-            <div className="flex flex-nowrap">
-              <div className="w-1/3">
+            <div className="flex flex-wrap sm:flex-nowrap">
+              <div className="w-full sm:w-1/3">
                 <Input
                   label="Position"
                   type="text"
@@ -173,7 +193,7 @@ const ProfilePage = (props: any) => {
                   disabled={true}
                 />
               </div>
-              <div className="w-1/3 mx-2">
+              <div className=" w-full sm:w-1/3 sm:mx-2">
                 <Selected
                   label="City"
                   control={control}
@@ -183,7 +203,7 @@ const ProfilePage = (props: any) => {
                   data={cityData}
                 />
               </div>
-              <div className="w-1/3">
+              <div className="w-full sm:w-1/3">
                 <Selected
                   label="Gender"
                   control={control}
@@ -224,20 +244,20 @@ const ProfilePage = (props: any) => {
                 required={true}
               />
               <Input
+                name="old_password"
                 label="Old Password"
                 type="password"
-                name="old_password"
                 register={register}
-                required={true}
                 error={errors.old_password}
+                required={true}
               />
               <Input
                 label="New Password"
                 type="password"
                 name="new_password"
                 register={register}
-                required={true}
                 error={errors.new_password}
+                required={true}
               />
               <div className="flex w-full justify-center">
                 <button className="bg-blue-400 w-20 p-2 text-white hover:bg-blue-500 rounded-md m-2">

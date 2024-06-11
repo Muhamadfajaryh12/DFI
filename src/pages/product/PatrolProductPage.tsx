@@ -13,7 +13,6 @@ import {
 } from "../../states/product/patrol/action";
 import { useAppSelector } from "../../hooks/useRedux";
 import axios from "axios";
-import Header from "../../components/common/Header";
 import TableMain from "../../components/TableMain";
 import { ToastSuccess } from "../../components/common/MessageToast";
 
@@ -24,6 +23,7 @@ const PatrolProductPage = (props: any) => {
   const { patrol_product = [] } = useAppSelector(
     (state) => state.patrol_product
   );
+  console.log(patrol_product);
   const [datas, setDatas] = useState([]);
   const [dataMaster, setDataMaster] = useState([]);
   const [dataItem, setDataItem] = useState([]);
@@ -39,7 +39,6 @@ const PatrolProductPage = (props: any) => {
   } = useForm();
   setValue("patrol_by", user?.role);
   setValue("id_user", user?.id);
-
   const dataTableHeader = [
     { name: "No" },
     { name: "Product Name" },
@@ -110,6 +109,23 @@ const PatrolProductPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId]);
+
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
+
   const storePatrolProduct = async (dispatch: any, data: any) => {
     const response: any = await dispatch(
       asyncStorePatrolProduct({
@@ -306,43 +322,34 @@ const PatrolProductPage = (props: any) => {
   const layoutModalDetail = (datas: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Product Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.product?.product_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Product Name</label>
+              <h6>: {datas?.product?.product_name}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Item Name</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.item?.item_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Item Name</label>
+              <h6>: {datas?.item?.item_name}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Patrol Value</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.patrol_value}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Patrol Value</label>
+              <h6>: {datas?.patrol_value}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Patrol By</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.patrol_type}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Patrol By</label>
+              <h6>: {datas?.patrol_type}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Remark</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">{datas?.remark}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Remark</label>
+              <h6>: {datas?.remark}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Patrol Date</label>
-              <p className="col-span-1">:</p>
-              <h6 className="col-span-1">
-                {new Date(datas?.created_at).toLocaleDateString()}
-              </h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Patrol Date</label>
+              <h6>: {new Date(datas?.created_at).toLocaleDateString()}</h6>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              <label className="col-span-1">Status</label>
-              <p className="col-span-1">:</p>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Status</label>
               <h6
                 className={`col-span-1 text-center rounded-lg ${
                   datas?.patrol_status == "OK" ? "bg-green-400" : "bg-red-400"
@@ -388,6 +395,8 @@ const PatrolProductPage = (props: any) => {
               delete: layoutModalDelete(),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

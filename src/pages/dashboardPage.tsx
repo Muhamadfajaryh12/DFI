@@ -1,7 +1,6 @@
 import Doughnut from "../components/chart/Doughnut";
 import VerticalBar from "../components/chart/VerticalBar";
 import StackedBar from "../components/chart/StackedBar";
-import Header from "../components/common/Header";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Selected from "../components/form/Selected";
@@ -50,15 +49,18 @@ const DashboardPage = (props: any) => {
     };
 
     const getDataMastered = async () => {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/products/patrol/mastered"
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/products/patrol/mastered",
+        null
       );
+      console.log(response);
       setDataMastered(response?.data);
     };
 
     const getPatrol = async () => {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/products/patrol"
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/products/patrol/all",
+        null
       );
       setDataPatrol(response?.data.data);
     };
@@ -87,16 +89,39 @@ const DashboardPage = (props: any) => {
         end_date: datas.end_date,
       }
     );
-    console.log("test", response);
+
+    const response_patrol = await axios.post(
+      "http://127.0.0.1:8000/api/products/patrol/all",
+      {
+        id_master_product: datas.id_master_product,
+        start_date: datas.start_date,
+        end_date: datas.end_date,
+      }
+    );
+
+    const response_patrol_mastered = await axios.post(
+      "http://127.0.0.1:8000/api/products/patrol/mastered",
+      {
+        id_master_product: datas.id_master_product,
+        start_date: datas.start_date,
+        end_date: datas.end_date,
+      }
+    );
+
+    setDataMastered(response_patrol_mastered?.data);
+
+    setDataPatrol(response_patrol?.data.data);
+
     setDataPatrolStatus(response?.data);
   };
+
   const content = () => {
     return (
       <>
         <div>
           <form onSubmit={handleSubmit(onFilter)}>
-            <div className="flex flex-wrap justify-start items-center">
-              <div className="w-40 mx-2">
+            <div className="flex flex-wrap  justify-center sm:justify-start items-end">
+              <div className="w-full sm:w-40 mx-2">
                 <Selected
                   label="Filter Product"
                   name="id_master_product"
@@ -104,7 +129,7 @@ const DashboardPage = (props: any) => {
                   data={dataMasterProduct}
                 />
               </div>
-              <div className="w-40 mx-2">
+              <div className="w-full sm:w-40 mx-2">
                 <Input
                   label="Start Date"
                   type="date"
@@ -112,7 +137,7 @@ const DashboardPage = (props: any) => {
                   register={register}
                 />
               </div>
-              <div className="w-40 mx-2">
+              <div className="w-full sm:w-40 mx-2">
                 <Input
                   label="End Date"
                   type="date"
@@ -122,7 +147,7 @@ const DashboardPage = (props: any) => {
               </div>
               <button
                 type="submit"
-                className="p-3 m-2 text-white font-bold bg-blue-500 w-full md:w-40 rounded-md"
+                className="p-3 m-2 md:m-0 text-white font-bold bg-blue-500 w-full md:w-40 rounded-md"
               >
                 Filter
               </button>
@@ -141,8 +166,10 @@ const DashboardPage = (props: any) => {
             <div className="w-96 h-80 rounded-md shadow-lg m-2 flex flex-col justify-center items-center bg-white">
               <Doughnut datas={dataMastered} />
             </div>
-            <div className="h-80 overflow-auto shadow-lg rounded-md m-2 p-2 w-full bg-white">
-              <h5 className="text-center font-semibold">Activity</h5>
+            <div className="h-80 overflow-auto shadow-lg rounded-md m-2 w-full bg-white">
+              <h5 className="text-center font-semibold bg-gray-100">
+                Activity
+              </h5>
               <table className="table-auto w-full border border-neutral-200">
                 <thead>
                   <tr>
@@ -154,8 +181,8 @@ const DashboardPage = (props: any) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dataPatrol?.map((item: any, index) => (
-                    <tr className="border-2">
+                  {dataPatrol?.map((item: any, index: number) => (
+                    <tr className="border-2" key={index}>
                       <td className="text-center">{index + 1}</td>
                       <td>{new Date(item?.created_at).toLocaleDateString()}</td>
                       <td>{item?.product.product_name}</td>
@@ -177,16 +204,33 @@ const DashboardPage = (props: any) => {
               </table>
             </div>
           </div>
-          <div className="bg-white rounded-md shadow-md p-4 m-2">
-            <h5 className="text-center font-semibold">
+          <div className="bg-white rounded-md shadow-md m-2">
+            <h5 className="text-center font-semibold bg-gray-100 p-2">
               Data Patrol with Status
             </h5>
-
-            <StackedBar datas={dataPatrolStatus} />
+            <div
+              className="w-full"
+              style={{
+                maxWidth: "1300px",
+                maxHeight: "400px",
+                overflow: "auto",
+              }}
+            >
+              <StackedBar datas={dataPatrolStatus} />
+            </div>
           </div>
-          <div className="bg-white rounded-md shadow-md p-4 m-2">
-            <h5 className="text-center font-semibold">Data Employee</h5>
-            <VerticalBar datas={dataEmployee} />
+          <div className="bg-white rounded-md shadow-md m-2">
+            <h5 className="text-center font-semibold bg-gray-100 p-2">Data</h5>
+            <div
+              className="w-full"
+              style={{
+                maxWidth: "1300px",
+                maxHeight: "400px",
+                overflow: "auto",
+              }}
+            >
+              <VerticalBar datas={dataEmployee} />
+            </div>
           </div>
         </div>
       </>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import Header from "../../components/common/Header";
 import Input from "../../components/form/Input";
 import {
   asyncDeleteItemLocation,
@@ -61,6 +60,22 @@ const ItemLocationPage = (props: any) => {
     }
   }, [itemId]);
 
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
+
   const storeItemLocation = async (dispatch: any, data: any) => {
     const response: any = await dispatch(
       asyncStoreItemLocation({
@@ -110,7 +125,7 @@ const ItemLocationPage = (props: any) => {
   const layoutModalDetail = (data: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
+        <div className="flex justify-evenly items-center flex-wrap">
           <div className="">
             <div className="grid grid-cols-4 gap-2">
               <label className="col-span-1">Item Name</label>
@@ -207,6 +222,8 @@ const ItemLocationPage = (props: any) => {
               delete: layoutModalDelete(),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

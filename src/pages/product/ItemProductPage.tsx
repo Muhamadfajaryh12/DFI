@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import TableMain from "../../components/TableMain";
-import Header from "../../components/common/Header";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import {
@@ -73,6 +72,22 @@ const ItemProductPage = (props: any) => {
     }
   }, [itemId]);
 
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
+
   const storeItemProduct = async (dispatch: any, data: any) => {
     const response: any = await dispatch(
       asyncStoreItemProduct({
@@ -127,22 +142,19 @@ const ItemProductPage = (props: any) => {
   const layoutModalDetail = (data: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
           <div className="">
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Item Name</label>
-              <p className="">:</p>
-              <h6 className="">{data?.item_name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Item Name</label>
+              <h6>: {data?.item_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Item Value</label>
-              <p className="">:</p>
-              <h6 className="">{data?.item_value}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Item Value</label>
+              <h6>: {data?.item_value}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Category</label>
-              <p className="">:</p>
-              <h6 className="">{data?.category?.name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Category</label>
+              <h6>: {data?.category?.name}</h6>
             </div>
           </div>
         </div>
@@ -179,12 +191,14 @@ const ItemProductPage = (props: any) => {
           data={categorys.categorys}
         />
 
-        <button
-          type="submit"
-          className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-        >
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     );
   };
@@ -219,12 +233,14 @@ const ItemProductPage = (props: any) => {
           data={categorys.categorys}
         />
 
-        <button
-          type="submit"
-          className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2"
-        >
-          Submit
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="p-2 bg-blue-400 hover:bg-blue-500 text-white rounded-md m-2 w-40"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     );
   };
@@ -266,6 +282,8 @@ const ItemProductPage = (props: any) => {
               delete: layoutModalDelete(),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

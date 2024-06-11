@@ -37,12 +37,14 @@
 // }
 Cypress.Commands.add("login", (username, password) => {
   cy.visit("http://localhost:5173/");
+  cy.wait(4000);
+
   cy.get("input[name='username']").type(username);
   cy.get("input[name='password']").type(password);
 
   cy.get("button[type='submit']").click();
 
-  cy.url().should("include", "/dashboard");
+  cy.url().should("include", "/");
   cy.window().its("localStorage").invoke("setItem", "role", "Admin");
   cy.window().its("localStorage").invoke("setItem", "id", "1");
 });

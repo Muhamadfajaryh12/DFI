@@ -50,7 +50,7 @@ function App() {
         className={"text-white"}
       />
       <Router>
-        {auth != null && (
+        {auth != null ? (
           <div className="">
             <div className="flex">
               <SidebarMain visible={visible} setVisible={setVisible} />
@@ -63,7 +63,7 @@ function App() {
                       element={<ProfilePage setTitle={setTitle} />}
                     />
                     <Route
-                      path="/dashboard"
+                      path="/"
                       element={<DashboardPage setTitle={setTitle} />}
                     />
                     <Route
@@ -112,18 +112,18 @@ function App() {
               </div>
             </div>
           </div>
+        ) : (
+          <>
+            <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              className={"text-white"}
+            />
+            <Routes>
+              <Route path="/" element={<LoginPage />} />
+            </Routes>
+          </>
         )}
-
-        <>
-          <ToastContainer
-            position="top-right"
-            autoClose={2000}
-            className={"text-white"}
-          />
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-          </Routes>
-        </>
       </Router>
     </>
   );

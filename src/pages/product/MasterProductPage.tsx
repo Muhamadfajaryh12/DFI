@@ -7,14 +7,13 @@ import {
   asyncStoreMasterProduct,
   asyncUpdateMasterProduct,
 } from "../../states/product/master/action";
-import Header from "../../components/common/Header";
 import TableMain from "../../components/TableMain";
 import { useForm } from "react-hook-form";
 import Input from "../../components/form/Input";
 import Selected from "../../components/form/Selected";
 import axios from "axios";
-import { asyncGetCategory } from "../../states/category/action";
 import { ToastSuccess } from "../../components/common/MessageToast";
+import CategoryAPI from "../../API/CategoryAPI";
 
 const MasterProductPage = (props: any) => {
   const { setTitle } = props;
@@ -22,10 +21,10 @@ const MasterProductPage = (props: any) => {
   const dispatch = useDispatch();
   const [itemId, setId] = useState(null);
   const [datas, setDatas] = useState([]);
+  const [category, setCategory] = useState([]);
   const { master_product = [] } = useAppSelector(
     (state) => state.master_product
   );
-  const { categorys = [] } = useAppSelector((state) => state);
   const {
     register,
     handleSubmit,
@@ -37,24 +36,20 @@ const MasterProductPage = (props: any) => {
 
   useEffect(() => {
     setTitle("Master Product");
+    const getCategory = async () => {
+      const response: any = await CategoryAPI.getCategory();
+      setCategory(response?.data);
+    };
+    getCategory();
   }, []);
 
   const getMasterProduct = (dispatch: any) => {
     dispatch(asyncGetMasterProduct());
   };
-  const getCategory = (dispatch: any) => {
-    dispatch(asyncGetCategory());
-  };
+
   useEffect(() => {
     getMasterProduct(dispatch);
-    getCategory(dispatch);
   }, [dispatch]);
-
-  const dataTableHeader = [
-    { name: "No" },
-    { name: "Name" },
-    { name: "Barcode" },
-  ];
 
   useEffect(() => {
     const getDetail = async (id: number) => {
@@ -75,6 +70,22 @@ const MasterProductPage = (props: any) => {
       getDetail(itemId);
     }
   }, [itemId]);
+
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isCreateModalOpen) {
+      reset();
+    }
+  }, [isCreateModalOpen, reset]);
+
+  const onOpenStoreModal = () => {
+    setCreateModalOpen(true);
+  };
+
+  const onCloseStoreModal = () => {
+    setCreateModalOpen(false);
+  };
 
   const storeMasterProduct = async (dispatch: any, data: any) => {
     const response: any = await dispatch(
@@ -130,22 +141,19 @@ const MasterProductPage = (props: any) => {
   const layoutModalDetail = (data: any) => {
     return (
       <>
-        <div className="flex justify-evenly items-center">
-          <div className="">
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Name</label>
-              <p className="">:</p>
-              <h6 className="">{data?.product_name}</h6>
+        <div className="flex justify-center lg:justify-between items-center flex-wrap">
+          <div>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Name</label>
+              <h6>: {data?.product_name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Category</label>
-              <p className="">:</p>
-              <h6 className="">{data?.category?.name}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Category</label>
+              <h6>: {data?.category?.name}</h6>
             </div>
-            <div className="grid grid-cols-4 gap-2">
-              <label className="col-span-1">Slug</label>
-              <p className="">:</p>
-              <h6 className="">{data?.slug}</h6>
+            <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
+              <label>Slug</label>
+              <h6>: {data?.slug}</h6>
             </div>
           </div>
           <div className="text-center w-40">
@@ -188,7 +196,7 @@ const MasterProductPage = (props: any) => {
           name="category"
           error={errors.category}
           require={true}
-          data={categorys.categorys}
+          data={category}
         />
 
         <div className="flex justify-center">
@@ -230,7 +238,7 @@ const MasterProductPage = (props: any) => {
           name="category"
           error={errors.category}
           require={true}
-          data={categorys.categorys}
+          data={category}
         />
 
         <div className="flex justify-center">
@@ -265,9 +273,16 @@ const MasterProductPage = (props: any) => {
   const dataFormat = master_product.map((item: any, index: number) => ({
     no: index + 1,
     name: item?.product_name,
-    barcode: item?.barcode,
+    barcode: item?.foto_barcode,
     id: item?.id,
   }));
+
+  const dataTableHeader = [
+    { name: "No" },
+    { name: "Name" },
+    { name: "Barcode" },
+  ];
+
   return (
     <>
       <div className="h-screen p-2 m-2">
@@ -282,6 +297,8 @@ const MasterProductPage = (props: any) => {
               delete: layoutModalDelete(),
             }}
             itemId={setId}
+            onOpenStoreModal={onOpenStoreModal}
+            onCloseStoreModal={onCloseStoreModal}
           />
         </main>
       </div>

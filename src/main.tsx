@@ -1,24 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import store from "./states/store.tsx";
 import { Provider } from "react-redux";
-// import { registerSW } from "virtual:pwa-register";
 
-// const updateSW = registerSW({
-//   onNeedRefresh() {
-//     if (confirm("New content available. Reload?")) {
-//       updateSW(true);
-//     }
-//   },
-// });
+const container = document.getElementById("root");
 
-ReactDOM.render(
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
-  document.getElementById("root")
-);
+if (container) {
+  const root = createRoot(container);
+  root.render(
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  );
+}

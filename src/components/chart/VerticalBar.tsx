@@ -10,7 +10,6 @@ import {
 } from "chart.js";
 const VerticalBar = (props: any) => {
   const { datas } = props;
-  console.log(props);
   ChartJS.register(
     CategoryScale,
     LinearScale,

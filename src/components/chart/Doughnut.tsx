@@ -5,11 +5,11 @@ const Doughnut = (props: any) => {
   const { datas } = props;
   ChartJS.register(ArcElement, Tooltip, Legend);
   const data = {
-    labels: datas?.data?.map((item: any) => item.product.product_name),
+    labels: datas?.data?.map((item: any) => item?.product?.product_name),
     datasets: [
       {
         label: "Total",
-        data: datas?.data?.map((item: any) => item.total_count),
+        data: datas?.data?.map((item: any) => item?.total_count),
         backgroundColor: [
           "rgba(255, 99, 132 )",
           "rgba(54, 162, 235)",
@@ -30,6 +30,7 @@ const Doughnut = (props: any) => {
       },
     },
   };
+  // @ts-ignore
   return <Pie data={data} options={options} width={100} height={100} />;
 };
 

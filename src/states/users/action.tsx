@@ -51,7 +51,7 @@ const asyncUpdateProfile = ({
   no_telp: number;
   jenis_kelamin: string;
   kota: string;
-  image?: File;
+  image?: any;
 }) => {
   return async (dispatch: Dispatch) => {
     try {
@@ -63,6 +63,16 @@ const asyncUpdateProfile = ({
         kota,
         image,
       });
+      const formData = new FormData();
+      formData.append("id", id.toString());
+      formData.append("name", name);
+      formData.append("no_telp", no_telp.toString());
+      formData.append("jenis_kelamin", jenis_kelamin);
+      formData.append("kota", kota);
+      if (image) {
+        formData.append("image", image);
+      }
+      console.log(response);
       dispatch(setUpdateProfileActionCreator(response?.data));
       return response;
     } catch (error) {
