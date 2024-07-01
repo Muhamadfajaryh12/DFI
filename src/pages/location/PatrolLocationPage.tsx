@@ -87,6 +87,7 @@ const PatrolLocationPage = (props: any) => {
       setValue("id_master_location", data.id_master_location);
       setValue("id_user", data.id_user);
       setValue("id_patrol_location", data.id);
+      setValue("patrol_date", data.created_at.split("T")[0]);
       return setDatas(data);
     };
 
@@ -96,10 +97,11 @@ const PatrolLocationPage = (props: any) => {
   }, [itemId]);
 
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+  const date = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
     if (isCreateModalOpen) {
-      reset();
+      reset({ patrol_date: date });
     }
   }, [isCreateModalOpen, reset]);
 
@@ -131,7 +133,11 @@ const PatrolLocationPage = (props: any) => {
   ];
   const dataFormat = patrol_location.map((item: any, index: number) => ({
     no: index + 1,
-    "patrol date": new Date(item.created_at).toLocaleDateString(),
+    "patrol date": new Date(item?.created_at).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }),
     "name location": item.master.location_name,
     "item location": item.item.item_name,
     status: item.patrol_status,
@@ -241,6 +247,7 @@ const PatrolLocationPage = (props: any) => {
             register={register}
             label="Patrol Date"
             required={true}
+            disabled
           />
           <Input
             type="text"
@@ -294,7 +301,15 @@ const PatrolLocationPage = (props: any) => {
             </div>
             <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
               <label>Patrol Date</label>
-              <h6>: {new Date(datas?.created_at).toLocaleDateString()}</h6>
+              <h6>
+                {" "}
+                :
+                {new Date(datas?.created_at).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </h6>
             </div>
             <div className="grid grid-cols-2 gap-1 text-xs sm:text-lg">
               <label>Status</label>
@@ -357,6 +372,7 @@ const PatrolLocationPage = (props: any) => {
             register={register}
             label="Patrol Date"
             required={true}
+            disabled
           />
           <Input
             type="text"

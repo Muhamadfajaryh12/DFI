@@ -7,7 +7,6 @@ import Selected from "../components/form/Selected";
 import { useForm } from "react-hook-form";
 import Input from "../components/form/Input";
 import { Button } from "primereact/button";
-import { jsPDF } from "jspdf";
 
 const DashboardPage = (props: any) => {
   const { setTitle } = props;
@@ -19,18 +18,19 @@ const DashboardPage = (props: any) => {
   const [dataMasterProduct, setDataMasterProduct] = useState([]);
   const { register, control, handleSubmit } = useForm();
   const downloadPDF = () => {
-    const doc = new jsPDF();
-    const chartCanvases = document.querySelectorAll("canvas");
-
-    chartCanvases.forEach((canvas, index) => {
-      const imgData = canvas.toDataURL("image/jpeg", 1.0);
-      doc.addImage(imgData, "JPEG", 15, 40 + index * 150, 180, 120);
-      if (index < chartCanvases.length - 1) {
-        doc.addPage();
-      }
+    import("jspdf").then((jspdfModule) => {
+      const jsPDF = jspdfModule.default;
+      import("jspdf-autotable").then(() => {
+        const doc = new jsPDF();
+        const table = document.querySelector("table");
+        console.log(table);
+        if (table) {
+          // @ts-ignore
+          doc.autoTable({ html: table });
+        }
+        doc.save("export_" + new Date().getTime() + ".pdf");
+      });
     });
-
-    doc.save("stackedBarCharts.pdf");
   };
   useEffect(() => {
     const getDataEmployee = async () => {
@@ -181,10 +181,15 @@ const DashboardPage = (props: any) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {dataPatrol?.map((item: any, index: number) => (
+                  {dataPatrol.slice(0, 10)?.map((item: any, index: number) => (
                     <tr className="border-2" key={index}>
                       <td className="text-center">{index + 1}</td>
-                      <td>{new Date(item?.created_at).toLocaleDateString()}</td>
+                      <td>
+                        {new Date(item?.created_at).toLocaleDateString(
+                          "en-GB",
+                          { day: "2-digit", month: "2-digit", year: "numeric" }
+                        )}
+                      </td>
                       <td>{item?.product.product_name}</td>
                       <td>{item?.item.item_name}</td>
                       <td>
@@ -209,27 +214,39 @@ const DashboardPage = (props: any) => {
               Data Patrol with Status
             </h5>
             <div
-              className="w-full"
               style={{
-                maxWidth: "1300px",
-                maxHeight: "400px",
                 overflow: "auto",
+                maxWidth: "1400px",
               }}
             >
-              <StackedBar datas={dataPatrolStatus} />
+              <div
+                style={{
+                  width: "1600px",
+                  minHeight: "400px",
+                }}
+              >
+                <StackedBar datas={dataPatrolStatus} />
+              </div>
             </div>
           </div>
           <div className="bg-white rounded-md shadow-md m-2">
-            <h5 className="text-center font-semibold bg-gray-100 p-2">Data</h5>
+            <h5 className="text-center font-semibold bg-gray-100 p-2">
+              Data Employeed
+            </h5>
             <div
-              className="w-full"
               style={{
-                maxWidth: "1300px",
-                maxHeight: "400px",
                 overflow: "auto",
+                maxWidth: "1400px",
               }}
             >
-              <VerticalBar datas={dataEmployee} />
+              <div
+                style={{
+                  width: "1600px",
+                  minHeight: "400px",
+                }}
+              >
+                <VerticalBar datas={dataEmployee} />
+              </div>
             </div>
           </div>
         </div>

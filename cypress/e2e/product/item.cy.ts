@@ -1,26 +1,100 @@
 describe("Item Product Page", () => {
   beforeEach(() => {
-    cy.login("fajar", "fajar");
+    cy.login("qc", "qc");
   });
+
   it("Menampilkan Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
   });
+
   it("Membuat Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.contains("Create").click();
+    cy.get('button[type="submit"]').click();
   });
+
   it("Melihat Detail Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.get(
+      'button[class="mx-1 p-button-primary p-mr-2 p-button p-component p-button-icon-only"]'
+    );
   });
+
   it("Mengupdate Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.get(
+      'button[class="mx-1 p-button-warning p-mr-2 p-button p-component p-button-icon-only"]'
+    );
   });
+
   it("Menghapus Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.get(
+      'button[class="mx-1 p-button-danger p-mr-2 p-button p-component p-button-icon-only"]'
+    );
   });
+
   it("Melakukan pencarian Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.get(".w-72.p-inputtext.p-component").type("test");
   });
+
   it("Mengunduh Item Product", () => {
-    cy.get("h1").should("contain.text", "Dashboard");
+    cy.wait(4000);
+
+    cy.get("aside").should("be.visible");
+    cy.wait(4000);
+    cy.contains("Product").click();
+    cy.wait(1000);
+    cy.contains("Item Product").click();
+    cy.url().should("include", "/product/item");
+    cy.wait(4000);
+    cy.contains("PDF").click();
   });
 });

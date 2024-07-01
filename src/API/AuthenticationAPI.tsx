@@ -107,17 +107,16 @@ const AuthenticationAPI = (() => {
   };
 
   const logout = async () => {
-    const response = await axios.post(`${BASE_URL}/logout`, null, {
-      headers: {
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
-    });
-
-    const {
-      data: { message },
-    } = response;
-    console.log(response);
-    return { message };
+    try {
+      const response = await axios.post(`${BASE_URL}/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      });
+      return response;
+    } catch (error) {
+      return error;
+    }
   };
 
   return {

@@ -39,8 +39,8 @@ const VerticalBar = (props: any) => {
   };
 
   const options = {
-    // responsive: true,
-    // maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: false,
     // scales: {
     //   x: {
     //     stacked: true,

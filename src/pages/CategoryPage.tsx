@@ -208,7 +208,14 @@ const CategoryPage = (props: any) => {
             </div>
             <div className="grid grid-cols-2 gap-1 text-sm sm:text-lg">
               <label>Tanggal</label>
-              <h6>: {new Date(data?.created_at).toLocaleDateString()}</h6>
+              <h6>
+                :{" "}
+                {new Date(data?.created_at).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </h6>
             </div>
           </div>
         </div>

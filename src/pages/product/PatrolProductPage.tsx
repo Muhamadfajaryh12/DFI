@@ -23,7 +23,8 @@ const PatrolProductPage = (props: any) => {
   const { patrol_product = [] } = useAppSelector(
     (state) => state.patrol_product
   );
-  console.log(patrol_product);
+  const date = new Date().toISOString().split("T")[0];
+
   const [datas, setDatas] = useState([]);
   const [dataMaster, setDataMaster] = useState([]);
   const [dataItem, setDataItem] = useState([]);
@@ -41,6 +42,7 @@ const PatrolProductPage = (props: any) => {
   setValue("id_user", user?.id);
   const dataTableHeader = [
     { name: "No" },
+    { name: "Patrol Date" },
     { name: "Product Name" },
     { name: "Item Name" },
     { name: "Patrol Status" },
@@ -102,6 +104,7 @@ const PatrolProductPage = (props: any) => {
       setValue("id_master_product", data.id_master_product);
       setValue("id_user", data.id_user);
       setValue("id_patrol_product", data.id);
+      setValue("patrol_date", data.created_at.split("T")[0]);
       return setDatas(data);
     };
 
@@ -114,7 +117,7 @@ const PatrolProductPage = (props: any) => {
 
   useEffect(() => {
     if (isCreateModalOpen) {
-      reset();
+      reset({ patrol_date: date });
     }
   }, [isCreateModalOpen, reset]);
 
@@ -221,6 +224,7 @@ const PatrolProductPage = (props: any) => {
             register={register}
             label="Patrol Date"
             required={true}
+            disabled
           />
           <Input
             type="text"
@@ -279,7 +283,7 @@ const PatrolProductPage = (props: any) => {
             name="patrol_date"
             register={register}
             label="Patrol Date"
-            required={true}
+            disabled
           />
           <Input
             type="text"
@@ -346,7 +350,14 @@ const PatrolProductPage = (props: any) => {
             </div>
             <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
               <label>Patrol Date</label>
-              <h6>: {new Date(datas?.created_at).toLocaleDateString()}</h6>
+              <h6>
+                :
+                {new Date(datas?.created_at).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </h6>
             </div>
             <div className="grid grid-cols-2 gap-1 text-xs sm:text-sm">
               <label>Status</label>
@@ -375,6 +386,11 @@ const PatrolProductPage = (props: any) => {
   };
   const dataFormat = patrol_product?.map((item: any, index: number) => ({
     no: index + 1,
+    "patrol date": new Date(item?.created_at).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    }),
     "product name": item?.product?.product_name,
     "item name": item?.item?.item_name,
     "patrol status": item?.patrol_status,

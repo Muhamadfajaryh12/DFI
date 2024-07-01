@@ -45,8 +45,6 @@ Cypress.Commands.add("login", (username, password) => {
   cy.get("button[type='submit']").click();
 
   cy.url().should("include", "/");
-  cy.window().its("localStorage").invoke("setItem", "role", "Admin");
-  cy.window().its("localStorage").invoke("setItem", "id", "1");
 });
 
 Cypress.on("uncaught:exception", (err, runnable) => {

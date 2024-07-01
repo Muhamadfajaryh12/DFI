@@ -9,7 +9,7 @@ const EmployeeAPI = (() => {
       const {
         data: { data },
       } = response;
-
+      console.log(response);
       return { data };
     } catch (error) {
       console.log(error);

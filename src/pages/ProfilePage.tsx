@@ -10,13 +10,14 @@ import Selected from "../components/form/Selected";
 import userProfile from "../assets/user_profile.png";
 import { ToastError, ToastSuccess } from "../components/common/MessageToast";
 import axios from "axios";
+import { AppDispatch } from "../states/store";
 const ProfilePage = (props: any) => {
   const { setTitle } = props;
   const [visible, setVisible] = useState(false);
   const { user = [] } = useAppSelector((state) => state);
   const [previewImage, setPreviewImage] = useState<any>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const getProfile = (dispatch: any) => {
     dispatch(asyncGetProfile());
@@ -80,6 +81,7 @@ const ProfilePage = (props: any) => {
       };
       reader.readAsDataURL(file);
       setSelectedFile(file);
+      //@ts-ignore
       setValue("image", file);
     }
   };
@@ -96,8 +98,6 @@ const ProfilePage = (props: any) => {
         formData.append("image", selectedFile);
       }
 
-      console.log(data);
-      console.log("test");
       const response: any = await dispatch(
         asyncUpdateProfile({
           id: data.id_user,

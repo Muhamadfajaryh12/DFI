@@ -9,6 +9,7 @@ type InputProps = {
   error: any;
   value: any;
   icon: any;
+  readonly?: any;
 };
 
 const Input = ({
@@ -22,6 +23,7 @@ const Input = ({
   error,
   value,
   icon,
+  readonly,
 }: Partial<InputProps>) => {
   return (
     <>
@@ -41,6 +43,7 @@ const Input = ({
               value={value}
               name={name}
               {...register(name, { required: required })}
+              readOnly={readonly}
             />
           </div>
         </div>

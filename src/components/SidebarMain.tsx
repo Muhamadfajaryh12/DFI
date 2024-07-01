@@ -10,6 +10,7 @@ import { FiMinus } from "react-icons/fi";
 import { asyncGetProfile } from "../states/users/action";
 import { useAppSelector } from "../hooks/useRedux";
 import imageProfile from "../assets/user_profile.png";
+import AuthenticationAPI from "../API/AuthenticationAPI";
 interface dataItem {
   title: string;
   icon: JSX.Element | string;
@@ -17,7 +18,6 @@ interface dataItem {
   link?: string;
   child?: dataItem[];
 }
-
 const SidebarMain = (props: any) => {
   const { visible, setVisible } = props;
   const dispatch = useDispatch();
@@ -29,6 +29,20 @@ const SidebarMain = (props: any) => {
   useEffect(() => {
     getProfile(dispatch);
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleLogout = async () => {
+      const response: any = await AuthenticationAPI.logout();
+      if (response?.response?.status == 500) {
+        localStorage.removeItem("access_token");
+        localStorage.removeItem("id");
+        localStorage.removeItem("role");
+        navigate("/");
+      }
+    };
+
+    handleLogout();
+  }, [dispatch, navigate]);
 
   const [open, setOpen] = useState<string[]>([]);
   const data: dataItem[] = [
@@ -144,10 +158,8 @@ const SidebarMain = (props: any) => {
   const openGroup = (title: string) => {
     if (open.includes(title)) {
       setOpen(open.filter((id) => id !== title));
-      setVisible(false);
     } else {
       setOpen([...open, title]);
-      setVisible(false);
     }
   };
 
@@ -156,7 +168,7 @@ const SidebarMain = (props: any) => {
       setOpen([]);
     }
   }, [visible]);
-
+  console.log(visible);
   const onLogout = async (dispatch: any) => {
     await dispatch(asyncLogout());
     navigate("/");

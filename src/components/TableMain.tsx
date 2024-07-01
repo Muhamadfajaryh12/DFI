@@ -63,6 +63,11 @@ const TableMain = (props: any) => {
     setGlobalFilterValue(value);
   };
 
+  const getGlobalFilterFields = () => {
+    if (body.length === 0) return [];
+    return Object.keys(body[0]);
+  };
+
   const exportColumns = headers?.map((col: any) => ({
     title: col.name,
     dataKey: col.name.toLowerCase(),
@@ -75,7 +80,7 @@ const TableMain = (props: any) => {
         const doc = new jsPDF();
         // @ts-ignore
         doc.autoTable(exportColumns, body);
-        doc.save("products.pdf");
+        doc.save("export_" + new Date().getTime() + ".pdf");
       });
     });
   };
@@ -165,7 +170,7 @@ const TableMain = (props: any) => {
         />
         <Button
           icon="pi pi-trash"
-          className=" mx-1 p-button-danger"
+          className=" mx-1 p-button-danger p-mr-2"
           onClick={() => handleOpenModal("delete", data.id)}
         />
       </div>
@@ -200,7 +205,7 @@ const TableMain = (props: any) => {
         paginator
         rows={10}
         rowsPerPageOptions={[10, 25, 50]}
-        globalFilterFields={["code", "name"]}
+        globalFilterFields={getGlobalFilterFields()}
         filters={filters}
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"

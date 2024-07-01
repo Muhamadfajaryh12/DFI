@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA, VitePWAOptions } from "vite-plugin-pwa";
+import viteCompression from "vite-plugin-compression";
 
 const manifestForPlugIn: Partial<VitePWAOptions> = {
   registerType: "prompt",
@@ -44,5 +45,17 @@ const manifestForPlugIn: Partial<VitePWAOptions> = {
   },
 };
 export default defineConfig({
-  plugins: [react(), VitePWA(manifestForPlugIn)],
+  plugins: [
+    react(),
+    VitePWA(manifestForPlugIn),
+    viteCompression({ algorithm: "gzip", ext: ".gz" }),
+  ],
+  build: {
+    minify: "terser",
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+  },
 });

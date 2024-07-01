@@ -8,6 +8,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
 const StackedBar = (props: any) => {
   const { datas } = props;
   ChartJS.register(
@@ -16,7 +19,8 @@ const StackedBar = (props: any) => {
     BarElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    ChartDataLabels
   );
   const data = {
     labels: datas?.data?.map((item: any) => item.item.item_name),
@@ -41,6 +45,18 @@ const StackedBar = (props: any) => {
   };
 
   const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      datalabels: {
+        anchor: "middle",
+        align: "middle",
+        formatter: (value: any) => value,
+        font: {
+          weight: "bold",
+        },
+      },
+    },
     scales: {
       x: {
         stacked: true,
@@ -50,7 +66,7 @@ const StackedBar = (props: any) => {
       },
     },
   };
-
+  // @ts-ignore
   return <Bar data={data} options={options} />;
 };
 
